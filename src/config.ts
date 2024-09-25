@@ -19,5 +19,3 @@ const firebaseConfig = {
   const db=getFirestore(app)
 
   export{app,auth,db}
-
-//test
