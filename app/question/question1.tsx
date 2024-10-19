@@ -1,3 +1,4 @@
+import React from "react";
 import { View, Text, StyleSheet } from "react-native";
 
 const Question1 = () => {
@@ -58,7 +59,7 @@ const styles = StyleSheet.create({
         marginBottom: 10
     },
     footer: {
-        marginTop: 60
+        marginTop: 60,
     }
 })
 
