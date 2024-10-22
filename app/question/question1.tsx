@@ -1,64 +1,116 @@
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet, ScrollView } from "react-native";
+import { registerRootComponent } from 'expo';
+import { useRouter } from 'expo-router';
 
 const Question1 = () => {
+    const router = useRouter();
+
+    const handlePress = () =>{
+        router.push('/app/login');
+    }
     return(
-        <View style={styles.container}>
-                <Text style={styles.main}>クレジットカード情報の更新、追加などにつきまして、以下の手順をご確認ください。アカウントサービスからAmazon情報を管理するページにアクセスして、更新してください。</Text>
-
-                <Text style={styles.main}>また、Amazonプライム期間が終了したら、お急ぎ便無料やプライム・ビデオ見放題　などのプライム会員特典のご利用ができなくなります。（主なプライム会員特典を確認するには <Text style={styles.link}>こちら </Text>をクリックしてください）。お早めにお手続きの程よろしくお願い致します</Text>
-
-                <Text style={styles.main}>継続してプライム会員特典をお楽しみいただきたい場合は、｢Amazonプライム会員情報の管理｣ページににて｢会員資格を帰属する｣をクリックしてください。</Text>
-        
-                <Text style={styles.button}>会員情報の管理ページで確認</Text>
-
-                <Text style={styles.alert}>なお、72時間以内にご確認がない場合、誠に申し訳ございません、お客様の安全のため、アカウントの利用制限をさせていただきますので、あらかじめご了承ください。</Text>
-
-                <Text style={styles.inquiry}>アカウントに登録のEメールアドレスにアクセスできない場合</Text>
-
-                <Text style={styles.inquiry}>お問い合わせ：Amazonカスタマーサービス。</Text>
-
-                <Text style={styles.main}>Amazonサービスをご利用いただき、ありがとうございました。</Text>
-
-                <Text style={styles.footer}>Amazon.co.jp　カスタマーサービス</Text>
-
-        </View>
-    )
+        <ScrollView style = {styles.container}>
+            <View>
+                <View style = {styles.mailTitleContent}>
+                    <Text style = {styles.mailTitle}>【重要】Amazon.co.jp: お支払い方法の設定を更新してください</Text>
+                </View>
+            </View>
+            <View>
+                <View>
+                    <View style = {styles.fromContent}>
+                        <View style = {styles.iconContent}>
+                        <Text style = {styles.iconLetter}>A</Text>
+                        </View>
+                        <Text style = {styles.fromAmazon}>Amazon</Text>
+                    </View>
+                </View>
+                <View>
+                    <View>
+                        <Text style = {styles.mailFirst}>この度はAmazon.co.jpをご利用いただき、ありがとうございます。 {"\n"} {"\n"}
+                            ご注文の商品の出荷に際し、以下の情報が不足しているため、出荷が遅延する可能性がございます。{"\n"}{"\n"}
+                            ・住所{"\n"}
+                            ・電話番号{"\n"}
+                            ・配達希望日{"\n"}{"\n"}
+                            恐れ入りますが、以下のリンクより必要な手続きを入力していただき、更新手続きをお願いいたします。{"\n"}
+                        </Text>
+                    </View>
+                    <View>
+                        <Text style = {styles.mailLink}>
+                            ----------------------------------------{"\n"}
+                            <Text style = {styles.link} onPress = {handlePress}>情報更新ページ</Text>{"\n"}
+                            ----------------------------------------{"\n"}
+                        </Text>
+                    </View>
+                    <View>
+                        <Text style = {styles.mailSecond}>
+                        ご入力いただいた情報は、厳重に保管し、プライバシーの保護に努めております。{"\n"}
+                        ご不明な点がございましたら、カスタマーサービスへお問い合わせください。{"\n"}
+                        今後ともAmazon.co.jpへのご愛顧のほどよろしくお願いいたします。{"\n"}
+                        </Text>
+                    </View>
+                    <View style = {styles.footer}>
+                        <Text >Amazon.co.jp</Text>
+                    </View>
+                </View>
+            </View>
+        </ScrollView>
+    );
 }
 
 const styles = StyleSheet.create({
-    container: {
-        padding: 25,
-        backgroundColor: "#ffffff",
-        alignItems: 'center',
+    container:{
+        flex:1
     },
-    main:{
-        marginBottom:20
+    mailTitleContent:{
+        backgroundColor: '#F5F5F5',
+        height:122,
+        flexDirection: 'column',
+        alignItems:'center',
+        justifyContent: 'center',
+        paddingHorizontal: 30,
+        paddingTop: 40
     },
-    link : {
-        color: "#007AFF",
-        textDecorationLine: 'underline'
+    mailTitle:{
+        fontSize:20,
     },
-    button: {
-        backgroundColor: "#FFB74B",
-        paddingVertical: 10,
-        paddingHorizontal: 16,
-        borderRadius: 10,
-        margin: 12,
-        textAlign: 'center',
-        fontWeight: 'bold',
-        marginBottom: 25
+    fromContent:{
+        flexDirection: 'row',
+        padding:20
     },
-    alert: {
-        fontWeight: 'bold',
-        marginBottom:20
+    iconContent:{
+        width:70,
+        height:70,
+        backgroundColor:'#3988A1',
+        justifyContent:'center',
+        alignItems:'center'
     },
-    inquiry: {
-        fontSize: 12,
-        alignSelf: 'flex-start',
-        marginBottom: 10
+    iconLetter:{
+        fontSize:40,
+        color:'#FFFFFF'
     },
-    footer: {
-        marginTop: 60
+    fromAmazon:{
+        fontSize:20,
+        fontWeight:'bold',
+        paddingTop:10,
+        paddingLeft:10
+    },
+    mailFirst:{
+        fontSize:20,
+        paddingHorizontal:20
+    },
+    mailLink:{
+        fontSize:20,
+        paddingHorizontal:20
+    },
+    mailSecond:{
+        fontSize:20,
+        paddingHorizontal:20
+    },
+    footer:{
+        paddingHorizontal:20
+    },
+    link:{
+        color:'#438FC6'
     }
 })
 
