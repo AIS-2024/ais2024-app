@@ -1,4 +1,9 @@
-import { View, Text, StyleSheet, ScrollView } from "react-native";
+import { View, Text, StyleSheet, ScrollView, TouchableOpacity } from "react-native";
+import { router } from "expo-router";
+
+const handlePress = (): void => {
+    router.push('question/goji')
+}
 
 const Nottori = ()=> {
     return (
@@ -37,7 +42,7 @@ const Nottori = ()=> {
                         <Text style={styles.category}>{"\n"}配送オプション：</Text>
                         <Text style={styles.categoryText}>お急ぎ便</Text>
                         <View style={styles.button}>
-                            <Text style={styles.buttonText}>この注文をキャンセルする</Text>
+                            <TouchableOpacity style={styles.buttonText} onPress={handlePress}>この注文をキャンセルする</TouchableOpacity>
                         </View>
                     </View>
                     <View style={styles.orderInner}>
