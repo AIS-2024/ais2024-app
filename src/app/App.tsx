@@ -21,11 +21,11 @@ export default function App() {
         {/* タイトル */}
         <Text style={styles.mainTitle}>300円割引が、Amazonの受け取りスポット利用時</Text>
 
-        {/* 画像 */}
+        {/* 画像
         <Image
           source={require('./assets/MailIcon.png/300.png')}
           style={styles.promoImage}
-        />
+        /> */}
 
         {/* 説明テキスト */}
         <Text style={styles.description}>
