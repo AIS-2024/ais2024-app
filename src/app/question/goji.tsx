@@ -1,7 +1,10 @@
-/** @format */
+import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { router } from 'expo-router';
+import React from 'react';
 
-import React from "react";
-import { StyleSheet, Text, View } from "react-native";
+const handlePress = (): void => {
+  router.push('question/nottori')
+}
 
 export default function App() {
   return (
@@ -40,7 +43,9 @@ export default function App() {
         <Text>から発信されてから72時間以内です。</Text>
 
         <View style={styles.button}>
-          <Text style={styles.buttonText}>商品を見る</Text>
+          <TouchableOpacity style={styles.buttonText} onPress={handlePress}>
+            <Text style={styles.buttonText}>商品を見る</Text>
+          </TouchableOpacity>
         </View>
 
         <Text>
