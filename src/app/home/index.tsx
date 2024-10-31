@@ -12,6 +12,8 @@ const Home = () => {
       <Link href="home/question/nottori">問題ページ2</Link>
       <Link href="home/question/question1">問題ページ3</Link>
       <Link href="home/question/question2">問題ページ4</Link>
+      <Link href="home/question/quiz1">問題ページ5</Link>
+      <Link href="home/question/quiz2">問題ページ6</Link>
     </>
   );
 };
