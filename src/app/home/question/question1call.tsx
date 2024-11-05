@@ -6,7 +6,7 @@ import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import { GestureHandlerRootView, ScrollView } from "react-native-gesture-handler";
 
 const handlepress = () : void => {
-  router.push("home/question/question2mailaddress")
+  router.push("home/question/question2")
 }
 
 const Question1 = () => {
@@ -40,7 +40,7 @@ const Question1 = () => {
         </Text>
 
         <Text style={styles.inquiry}>
-          お問い合わせ：Amazonカスタマーサービス。
+          お問い合わせ:Amazonカスタマーサービス<Text style={styles.link}>(070-1234-5678)</Text>
         </Text>
 
         <Text style={styles.main}>

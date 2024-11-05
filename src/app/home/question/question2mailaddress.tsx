@@ -4,7 +4,7 @@ import { Text, View, StyleSheet, ScrollView } from "react-native";
 import { GestureHandlerRootView, TouchableOpacity } from "react-native-gesture-handler";
 
 const handlepress = () : void => {
-  router.push("home/question/question1")
+  router.push("home/question/question1call")
 }
 
 const Question2 = () => {
@@ -15,7 +15,7 @@ const Question2 = () => {
         <View style={styles.headerContainer}>
             <Text style={styles.header}>【重要】Amazon株式会社からの緊急のご連絡</Text>
 
-            <Text style={styles.title}>amazon.co.jp</Text>
+            <Text style={styles.title}>support@amazn-co.jp</Text>
             <Text style={styles.underline}>___________________________________________</Text>
         </View>
 
