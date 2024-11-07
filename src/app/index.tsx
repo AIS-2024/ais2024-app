@@ -1,8 +1,9 @@
-import {Redirect} from "expo-router"
-import React from "react"
+
+import { Redirect } from "expo-router";
+import React from "react";
 
 const Index = () => {
-    return <Redirect href='App' />
+    return <Redirect href='spot' />
 }
 
 export default Index
