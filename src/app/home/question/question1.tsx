@@ -2,6 +2,8 @@
 
 import React from "react";
 import { View, Text, StyleSheet } from "react-native";
+import ChangeButton from "../../../components/ChangeButton";
+import { AntDesign } from "@expo/vector-icons";
 
 const Question1 = () => {
   return (
@@ -39,6 +41,9 @@ const Question1 = () => {
       </Text>
 
       <Text style={styles.footer}>Amazon.co.jp　カスタマーサービス</Text>
+      <ChangeButton>
+        <AntDesign name='exclamation' size={40} />
+      </ChangeButton>
     </View>
   );
 };

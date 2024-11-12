@@ -1,5 +1,7 @@
 import React from "react";
 import { Text, View, StyleSheet, ScrollView } from "react-native";
+import ChangeButton from "../../../components/ChangeButton";
+import { AntDesign } from "@expo/vector-icons";
 
 const Question2 = () => {
     return (
@@ -13,11 +15,11 @@ const Question2 = () => {
         </View>
 
 
-        <View style={styles.mailContainer}>   
+        <View style={styles.mailContainer}>
             <Text style={styles.sectionHeader}>【重要】カスタマセンターからのご案内</Text>
-           
+
             <Text>あなたのAmazonアカウント：○○○@sample.jp、異常なログインが見つかり、配送先住所が変更されました！</Text>
-           
+
         <View style={styles.address}>
             <Text>ログイン日時：2024-10-05, 4:23:31</Text>
             <Text>IPアドレス：[000.0.0.00]</Text>
@@ -41,6 +43,9 @@ const Question2 = () => {
         </View>
 
         </View>
+        <ChangeButton>
+          <AntDesign name='exclamation' size={40} />
+        </ChangeButton>
         </ScrollView>
     )
 }

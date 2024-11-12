@@ -4,6 +4,8 @@ import { View, Text, StyleSheet, ScrollView, Image } from "react-native";
 import React from "react";
 import { registerRootComponent } from "expo";
 import { useRouter } from "expo-router";
+import ChangeButton from "../../../components/ChangeButton";
+import { AntDesign } from "@expo/vector-icons";
 
 const quiz1 = () => {
   const router = useRouter();
@@ -81,6 +83,9 @@ const quiz1 = () => {
           </View>
         </View>
       </View>
+      <ChangeButton>
+        <AntDesign name='exclamation' size={40} />
+      </ChangeButton>
     </ScrollView>
   );
 };

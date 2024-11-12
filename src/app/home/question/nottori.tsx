@@ -8,7 +8,9 @@ import {
   TouchableOpacity,
 } from "react-native";
 import { router } from "expo-router";
+import { AntDesign } from "@expo/vector-icons";
 import React from "react";
+import ChangeButton from "../../../components/ChangeButton";
 
 const handlePress = (): void => {
   router.push("/home/question/goji");
@@ -72,6 +74,9 @@ const Nottori = () => {
           </View>
         </View>
       </View>
+      <ChangeButton>
+        <AntDesign name='exclamation' size={40} />
+      </ChangeButton>
     </ScrollView>
   );
 };
