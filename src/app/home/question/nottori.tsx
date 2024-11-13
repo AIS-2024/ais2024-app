@@ -11,7 +11,7 @@ import { router } from "expo-router";
 import React from "react";
 
 const handlePress = (): void => {
-  router.push("/home/question/goji");
+  router.push("/home/question/question1");
 };
 
 const Nottori = () => {
