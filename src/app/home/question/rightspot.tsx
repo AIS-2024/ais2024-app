@@ -43,7 +43,7 @@ export default function App() {
    
         <View style={styles.actionContainer}>    
          <TouchableOpacity style={styles.declineButton}>
-          <Icon name="excalmationcircleo" size={28} color="white" />
+          <Icon name="exclamation-circle" size={28} color="white" />
           <Text style={styles.actionText}>違和感</Text>
          </TouchableOpacity>
         </View>
