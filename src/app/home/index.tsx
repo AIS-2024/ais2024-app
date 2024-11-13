@@ -14,6 +14,9 @@ const Home = () => {
       <Link href="home/question/question2mailaddress">問題ページ4</Link>
       <Link href="home/question/quiz1">問題ページ5</Link>
       <Link href="home/question/quiz2">問題ページ6</Link>
+      <Link href="home/question/spot">問題ページ7</Link>
+      <Link href="home/question/rightspot">問題ページ8</Link>
+      <Link href="home/question/call">問題ページ9</Link>
     </>
   );
 };
