@@ -2,17 +2,13 @@
 
 import { router } from "expo-router";
 import React from "react";
-import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
-import { GestureHandlerRootView, ScrollView } from "react-native-gesture-handler";
-
-const handlepress = () : void => {
-  router.push("home/question/question2mailaddress")
-}
+import { View, Text, StyleSheet } from "react-native";
+import ChangeButton from "../../../components/ChangeButton";
+import { AntDesign } from "@expo/vector-icons";
 
 const Question1 = () => {
   return (
-    <GestureHandlerRootView>
-      <ScrollView style={styles.container}>
+      <View style={styles.container}>
         <Text style={styles.main}>
           クレジットカード情報の更新、追加などにつきまして、以下の手順をご確認ください。アカウントサービスからAmazon情報を管理するページにアクセスして、更新してください。
         </Text>
@@ -27,9 +23,7 @@ const Question1 = () => {
           継続してプライム会員特典をお楽しみいただきたい場合は、｢Amazonプライム会員情報の管理｣ページににて｢会員資格を帰属する｣をクリックしてください。
         </Text>
 
-        <TouchableOpacity style={styles.button} onPress={handlepress} >
-          <Text >会員情報の管理ページで確認</Text>
-        </TouchableOpacity>
+        <Text style={styles.button}>会員情報の管理ページで確認</Text>
 
         <Text style={styles.alert}>
           なお、72時間以内にご確認がない場合、誠に申し訳ございません、お客様の安全のため、アカウントの利用制限をさせていただきますので、あらかじめご了承ください。
@@ -47,11 +41,11 @@ const Question1 = () => {
           Amazonサービスをご利用いただき、ありがとうございました。
         </Text>
 
-        <Text style={styles.footer}>
-          Amazon.co.jp　カスタマーサービス
-        </Text>
-      </ScrollView>
-    </GestureHandlerRootView>
+      <Text style={styles.footer}>Amazon.co.jp　カスタマーサービス</Text>
+      <ChangeButton>
+        <AntDesign name='exclamation' size={40} />
+      </ChangeButton>
+    </View>
   );
 };
 
