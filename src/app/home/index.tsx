@@ -1,24 +1,3 @@
-// /** @format */
-
-// import { Link } from "expo-router";
-// import { Text } from "react-native";
-
-// const Home = () => {
-//   return (
-//     <>
-//       <Text>Homeページ</Text>
-//       <Link href="home/question/goji">問題ページ1</Link>
-//       <Link href="home/question/nottori">問題ページ2</Link>
-//       <Link href="home/question/question1call">問題ページ3</Link>
-//       <Link href="home/question/question2mailaddress">問題ページ4</Link>
-//       <Link href="home/question/quiz1">問題ページ5</Link>
-//       <Link href="home/question/quiz2">問題ページ6</Link>
-//     </>
-//   );
-// };
-
-// export default Home;
-
 import { ImageBackground, View,  Text, StyleSheet, Image, TouchableOpacity } from "react-native";
 import React from "react";
 import { router } from "expo-router";
@@ -58,7 +37,7 @@ const Home = () => {
         </TouchableOpacity>
       </View>
 
-      <View style={styles.iconBottomContainer}>
+      {/* <View style={styles.iconBottomContainer}>
         <Image
           source={{uri: 'https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/63/08/f1/6308f11b-2ab3-94c5-6640-d0f578365e52/AppIcon-0-0-1x_U007emarketing-0-10-0-85-220.png/340x340bb.webp'}}
           style={styles.safariIcon}
@@ -67,7 +46,7 @@ const Home = () => {
           source={{uri: 'https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/d3/04/9c/d3049c85-1b6b-df5c-ed76-73e8d2fd098e/AppIcon-0-0-1x_U007emarketing-0-10-0-85-220.png/340x340bb.webp'}}
           style={styles.musicIcon}
         />
-      </View>
+      </View> */}
     </ImageBackground>
 
   );
@@ -128,3 +107,23 @@ const styles = StyleSheet.create({
 });
 
 export default Home;
+// /** @format */
+
+// import { Link } from "expo-router";
+// import { Text } from "react-native";
+
+// const Home = () => {
+//   return (
+//     <>
+//       <Text>Homeページ</Text>
+//       <Link href="home/question/goji">問題ページ1</Link>
+//       <Link href="home/question/nottori">問題ページ2</Link>
+//       <Link href="home/question/question1call">問題ページ3</Link>
+//       <Link href="home/question/question2mailaddress">問題ページ4</Link>
+//       <Link href="home/question/quiz1">問題ページ5</Link>
+//       <Link href="home/question/quiz2">問題ページ6</Link>
+//     </>
+//   );
+// };
+
+// export default Home;
