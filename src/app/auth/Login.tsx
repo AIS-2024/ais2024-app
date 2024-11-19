@@ -8,7 +8,7 @@ const Login = () => {
   return (
     <>
       <Text>Loginページ</Text>
-      <Link replace href="../home/Home">
+      <Link replace href="../home/">
         Homeページに移動
       </Link>
     </>
