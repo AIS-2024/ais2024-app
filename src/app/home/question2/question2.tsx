@@ -4,6 +4,10 @@ import { Text, View, StyleSheet, ScrollView } from "react-native";
 import ChangeButton from "../../../components/ChangeButton";
 import { AntDesign } from "@expo/vector-icons";
 
+const handlepress = () : void => {
+  router.push("home/question3/quiz1")
+}
+
 const Question2 = () => {
     return (
         <ScrollView contentContainerStyle={styles.container}>
@@ -35,7 +39,9 @@ const Question2 = () => {
 
             <Text style={styles.warning}>お客様のアカウントに再度有効化していただけるようになります。次のリンクをクリックして指示に従ってください。</Text>
 
-            <Text style={styles.button}>アカウント管理に移動</Text>
+            <View style={styles.button}>
+              <Text style={styles.buttonText} onPress={handlepress}>アカウント管理に移動</Text>
+            </View> 
 
 
         <View style={styles.footerContainer}>
@@ -112,10 +118,10 @@ const styles = StyleSheet.create({
     alignItems: "center",
     alignSelf: "center",
     marginTop:40,
-    marginBottom: 40
+    marginBottom: 40,
   },
   buttonText: {
-    color: "#fff",
+    color: "#62AEF4",
     textAlign: "center",
     fontSize: 16,
   },

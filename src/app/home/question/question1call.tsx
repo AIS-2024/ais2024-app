@@ -6,7 +6,7 @@ import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import { GestureHandlerRootView, ScrollView } from "react-native-gesture-handler";
 
 const handlepress = () : void => {
-  router.push("home/question/question2")
+  router.push("home/question2/question2")
 }
 
 const Question1 = () => {

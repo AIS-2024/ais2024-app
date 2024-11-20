@@ -8,7 +8,7 @@ const Quiz2 = () => {
     const router = useRouter();
 
     const handlePress = () => {
-        router.push('/app/login');
+        router.push('/home/question/spot');
     };
 
     return (
