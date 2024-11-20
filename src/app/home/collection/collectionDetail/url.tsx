@@ -2,7 +2,7 @@
 
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
-import CollectionTop from "../../../../components/collectionTop";
+import CollectionTop from "../../../../components/CollectionTop";
 import { GestureHandlerRootView, ScrollView } from "react-native-gesture-handler";
 import BackButton from "../../../../components/BackButton";
 

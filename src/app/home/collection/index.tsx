@@ -5,7 +5,7 @@ import React from "react";
 import { Text, TouchableOpacity, View } from "react-native";
 import { GestureHandlerRootView, ScrollView } from "react-native-gesture-handler";
 import { StyleSheet } from "react-native";
-import CollectionTop from "../../../components/collectionTop";
+import CollectionTop from "../../../components/CollectionTop";
 import BackButton from "../../../components/BackButton";
 
 const handlepress1 = () : void => {

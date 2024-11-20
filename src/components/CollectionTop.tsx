@@ -1,7 +1,7 @@
 import React from "react"
 import { View, Text, StyleSheet } from "react-native"
 
-const collectionTop = () => {
+const CollectionTop = () => {
     return (
         <View style={styles.topContainer}>
             <Text style={styles.topText}>コレクション</Text>
@@ -24,4 +24,4 @@ topContainer: {
   },
 })
 
-export default collectionTop
+export default CollectionTop
