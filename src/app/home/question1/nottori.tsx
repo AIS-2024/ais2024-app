@@ -13,7 +13,7 @@ import React from "react";
 import ChangeButton from "../../../components/ChangeButton";
 
 const handlePress = (): void => {
-  router.push("/home/question/question1");
+  router.push("/home/question6/question1");
 };
 
 const Nottori = () => {

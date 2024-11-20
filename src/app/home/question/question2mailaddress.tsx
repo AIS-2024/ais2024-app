@@ -1,7 +1,8 @@
 import { router } from "expo-router";
 import React from "react";
 import { Text, View, StyleSheet, ScrollView } from "react-native";
-import { GestureHandlerRootView, TouchableOpacity } from "react-native-gesture-handler";
+import ChangeButton from "../../../components/ChangeButton";
+import { AntDesign } from "@expo/vector-icons";
 
 const handlepress = () : void => {
   router.push("home/question/question1call")
@@ -9,22 +10,21 @@ const handlepress = () : void => {
 
 const Question2 = () => {
     return (
-      <GestureHandlerRootView>
         <ScrollView contentContainerStyle={styles.container}>
 
         <View style={styles.headerContainer}>
             <Text style={styles.header}>【重要】Amazon株式会社からの緊急のご連絡</Text>
 
-            <Text style={styles.title}>support@amazn.co.jp</Text>
+            <Text style={styles.title}>amazon-co.jp</Text>
             <Text style={styles.underline}>___________________________________________</Text>
         </View>
 
 
-        <View style={styles.mailContainer}>   
+        <View style={styles.mailContainer}>
             <Text style={styles.sectionHeader}>【重要】カスタマセンターからのご案内</Text>
-           
+
             <Text>あなたのAmazonアカウント：○○○@sample.jp、異常なログインが見つかり、配送先住所が変更されました！</Text>
-           
+
         <View style={styles.address}>
             <Text>ログイン日時：2024-10-05, 4:23:31</Text>
             <Text>IPアドレス：[000.0.0.00]</Text>
@@ -39,9 +39,10 @@ const Question2 = () => {
 
             <Text style={styles.warning}>お客様のアカウントに再度有効化していただけるようになります。次のリンクをクリックして指示に従ってください。</Text>
 
-          <TouchableOpacity style={styles.button}  onPress={handlepress} >
-            <Text style={{color: "#62AEF4"}}>アカウント管理に移動</Text>
-          </TouchableOpacity>
+            <View style={styles.button}>
+              <Text style={styles.buttonText} onPress={handlepress}>アカウント管理に移動</Text>
+            </View> 
+
 
         <View style={styles.footerContainer}>
             <Text style={styles.underline}>___________________________________________</Text>
@@ -50,8 +51,10 @@ const Question2 = () => {
         </View>
 
         </View>
+        <ChangeButton>
+          <AntDesign name='exclamation' size={40} />
+        </ChangeButton>
         </ScrollView>
-      </GestureHandlerRootView>
     )
 }
 
@@ -115,10 +118,10 @@ const styles = StyleSheet.create({
     alignItems: "center",
     alignSelf: "center",
     marginTop:40,
-    marginBottom: 40
+    marginBottom: 40,
   },
   buttonText: {
-    color: "#fff",
+    color: "#62AEF4",
     textAlign: "center",
     fontSize: 16,
   },

@@ -7,7 +7,7 @@ import React from "react";
 import ChangeButton from "../../../components/ChangeButton";
 
 const handlePress = (): void => {
-  router.push("/home/question/nottori");
+  router.push("/home/question1/nottori");
 };
 
 export default function App() {

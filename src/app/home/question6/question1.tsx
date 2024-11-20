@@ -6,6 +6,10 @@ import { View, Text, StyleSheet } from "react-native";
 import ChangeButton from "../../../components/ChangeButton";
 import { AntDesign } from "@expo/vector-icons";
 
+const handlepress = () : void => {
+  router.push("home/question/question2mailaddress")
+}
+
 const Question1 = () => {
   return (
       <View style={styles.container}>
@@ -23,7 +27,7 @@ const Question1 = () => {
           継続してプライム会員特典をお楽しみいただきたい場合は、｢Amazonプライム会員情報の管理｣ページににて｢会員資格を帰属する｣をクリックしてください。
         </Text>
 
-        <Text style={styles.button}>会員情報の管理ページで確認</Text>
+        <Text style={styles.button} onPress={handlepress}>会員情報の管理ページで確認</Text>
 
         <Text style={styles.alert}>
           なお、72時間以内にご確認がない場合、誠に申し訳ございません、お客様の安全のため、アカウントの利用制限をさせていただきますので、あらかじめご了承ください。

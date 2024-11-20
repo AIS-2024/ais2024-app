@@ -11,7 +11,7 @@ const quiz1 = () => {
   const router = useRouter();
 
   const handlePress = () => {
-    router.push("/app/login");
+    router.push("/home/question/spot");
   };
   return (
     <ScrollView style={styles.container}>
