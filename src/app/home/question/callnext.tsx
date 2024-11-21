@@ -1,10 +1,15 @@
 import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, Linking } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import { router } from "expo-router";
+
+const handlePress = (): void => {
+  router.push("/home/question/callnext2");
+};
 
 export default function CallNextScreen() {
   return (
-    <View style={styles.container}>
+    <><View style={styles.container}>
       {/* 警告メッセージ */}
       <View style={styles.warningContainer}>
         <Text style={styles.warningText}>
@@ -38,11 +43,15 @@ export default function CallNextScreen() {
         ご不明な点がございましたら、カスタマーサービスへお問い合わせください。
       </Text>
 
-      {/* フッターの注意アイコン */}
-      <View style={styles.footerIconContainer}>
-        <Icon name="exclamation-circle" size={40} color="white" />
-      </View>
-    </View>
+
+       {/* 移動ボタン */}
+    </View><View style={styles.actionContainer}>
+        <TouchableOpacity style={styles.declineButton} onPress={handlePress}>
+          <Icon name="exclamation-circle" size={28} color="white" />
+          <Text style={styles.actionText}>違和感</Text>
+        </TouchableOpacity>
+      </View></>
+
   );
 }
 
@@ -111,4 +120,30 @@ const styles = StyleSheet.create({
     borderRadius: 25,
     padding: 10,
   },
+
+  //ボタンの追加//
+
+actionContainer: {
+  flexDirection: 'row',
+  justifyContent: 'space-around',
+  width: '150%',
+  marginTop: 30,
+  bottom: 150,
+},
+declineButton: {
+  alignItems: 'center',
+  justifyContent: 'center',
+  width: 70,
+  height: 70,
+  borderRadius: 35,
+  backgroundColor: '#D9534F', // 赤
+},
+
+actionText: {
+  fontSize: 14,
+  color: 'white',
+  marginTop: 8,
+},
+//タッチャブル//
+
 });
