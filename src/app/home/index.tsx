@@ -27,6 +27,10 @@ const handlepress = () : void => {
   router.push("home/question/goji")
 }
 
+const handlepress2 = () : void => {
+  router.push("home/question/call")
+}
+
 const Home = () => {
   return (
    
@@ -50,7 +54,7 @@ const Home = () => {
             />
         </TouchableOpacity>
 
-        <TouchableOpacity>
+        <TouchableOpacity onPress={handlepress2}>
           <Image
             source={{uri: 'https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/64/09/09/6409090d-8811-e92f-2ebf-37f842b72e98/AppIcon-0-0-1x_U007emarketing-0-10-0-85-220.png/340x340bb.webp'}}
             style={styles.callIcon}
