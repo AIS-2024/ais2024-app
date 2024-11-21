@@ -27,6 +27,10 @@ const handlepress4 = (): void => {
   router.push("home/collection");
 };
 
+const handlepress5 = (): void => {
+  router.push("home/question/rightspot");
+};
+
 const Home = () => {
   return (
     <ImageBackground
@@ -37,6 +41,15 @@ const Home = () => {
     >
       <View style={styles.iconContainer}>
         <TouchableOpacity onPress={handlepress1}>
+          <Image
+            source={{
+              uri: "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/d0/95/24/d0952470-b2fe-f628-1e30-0c4a444aadb3/AppIcon-0-0-1x_U007emarketing-0-10-0-85-220.png/340x340bb.webp",
+            }}
+            style={styles.mailIcon}
+          />
+        </TouchableOpacity>
+
+        <TouchableOpacity onPress={handlepress5}>
           <Image
             source={{
               uri: "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/d0/95/24/d0952470-b2fe-f628-1e30-0c4a444aadb3/AppIcon-0-0-1x_U007emarketing-0-10-0-85-220.png/340x340bb.webp",
@@ -95,41 +108,23 @@ const styles = StyleSheet.create({
   iconContainer: {
     top: 50,
     flexDirection: "row",
-    justifyContent: "flex-start",
+    flexWrap: "wrap", // 折り返しを有効化
+    justifyContent: "space-between",// 各行で均等に配置
     alignItems: "flex-start",
-    width: "89%",
+    width: "80%",
   },
   mailIcon: {
     width: 65,
     height: 65,
     borderRadius: 15,
+    marginBottom: 15, // 下に余白を追加
   },
   Icon: {
     width: 65,
     height: 65,
     borderRadius: 15,
-    marginLeft: 35,
+    marginBottom: 15, // 下に余白を追加
   },
 });
 
 export default Home;
-// /** @format */
-
-// import { Link } from "expo-router";
-// import { Text } from "react-native";
-
-// const Home = () => {
-//   return (
-//     <>
-//       <Text>Homeページ</Text>
-//       <Link href="home/question/goji">問題ページ1</Link>
-//       <Link href="home/question/nottori">問題ページ2</Link>
-//       <Link href="home/question/question1call">問題ページ3</Link>
-//       <Link href="home/question/question2mailaddress">問題ページ4</Link>
-//       <Link href="home/question/quiz1">問題ページ5</Link>
-//       <Link href="home/question/quiz2">問題ページ6</Link>
-//     </>
-//   );
-// };
-
-// export default Home;

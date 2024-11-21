@@ -130,6 +130,9 @@ const styles = StyleSheet.create({
     alignSelf: "center",
 
   },
+  navButton: {
+    alignItems: 'center',
+  },
 })
 
 export default Question2
