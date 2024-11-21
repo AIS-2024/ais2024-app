@@ -1,6 +1,11 @@
 import React from 'react';
 import { SafeAreaView, View, Text, StyleSheet, Image, ScrollView, TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import { router } from "expo-router";
+
+const handlePress = (): void => {
+  router.push("/home/question/spot");
+};
 
 export default function App() {
   return (
@@ -42,7 +47,7 @@ export default function App() {
         {/*ボタンの追加*/}
    
         <View style={styles.actionContainer}>    
-         <TouchableOpacity style={styles.declineButton}>
+         <TouchableOpacity style={styles.declineButton} onPress={handlePress}>
           <Icon name="exclamation-circle" size={28} color="white" />
           <Text style={styles.actionText}>違和感</Text>
          </TouchableOpacity>

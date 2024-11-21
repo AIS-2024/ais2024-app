@@ -1,6 +1,11 @@
 import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import { router } from "expo-router";
+
+const handlePress = (): void => {
+  router.push("/home/question/callnext");
+};
 
 export default function CallScreen() {
   return (
@@ -26,7 +31,7 @@ export default function CallScreen() {
           <Icon name="phone" size={28} color="white" />
           <Text style={styles.actionText}>拒否</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.answerButton}>
+        <TouchableOpacity style={styles.answerButton} onPress={handlePress}>
           <Icon name="phone" size={28} color="white" />
           <Text style={styles.actionText}>応答</Text>
         </TouchableOpacity>
