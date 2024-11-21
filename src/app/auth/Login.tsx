@@ -7,12 +7,12 @@ const Login = () => {
     const [password, setPassword] = useState('');
     const router = useRouter();
 
-    const handlePress1 = () => {
-        router.push('/question/app');
-    };
-    const handlePress2 = () => {
-        router.push('/question/home');
-    };
+    const handlePress1 = () :void=> {
+      router.push('/src/app/home/Home');
+  };
+  const handlePress2 = () :void => {
+      router.push("/app/index");
+  };
 
     return (
         <ScrollView style={styles.container}>
