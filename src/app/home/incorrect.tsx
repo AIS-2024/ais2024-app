@@ -13,10 +13,10 @@ const incorrect = () => {
     return (
       <ScrollView style={styles.all}>
         <View>
-            <View style = {styles.correctContent}>
+            <View>
                 <Text style={styles.correct}>不正解...</Text>
             </View>
-            <View style = {styles.explainContent}>
+            <View>
                 
                 <View style = {styles.backButton}>
                     <Text style = {styles.back}>もう一度挑戦する</Text>
