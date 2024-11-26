@@ -15,7 +15,7 @@ const Question2 = () => {
         <View style={styles.headerContainer}>
             <Text style={styles.header}>【重要】Amazon株式会社からの緊急のご連絡</Text>
 
-            <Text style={styles.title}>amazon-co.jp</Text>
+            <Text style={styles.title}>amazn.co.jp</Text>
             <Text style={styles.underline}>___________________________________________</Text>
         </View>
 

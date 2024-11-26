@@ -9,7 +9,35 @@ import CollectionTop from "../../../components/CollectionTop";
 import BackButton from "../../../components/BackButton";
 
 const handlepress1 = () : void => {
-  router.push("/home/collection/collectionDetail/url")
+  router.push("/home/collection/collectionDetail/mailaddress")
+}
+
+const handlepress2 = () : void => {
+  router.push("/home/collection/collectionDetail/telephoneNumber")
+}
+
+const handlepress3 = () : void => {
+  router.push("/home/collection/collectionDetail/explanation3")
+}
+
+const handlepress4 = () : void => {
+  router.push("/home/collection/collectionDetail/explanation4")
+}
+
+const handlepress5 = () : void => {
+  router.push("/home/collection/collectionDetail/explanation5")
+}
+
+const handlepress6 = () : void => {
+  router.push("/home/collection/collectionDetail/explanation6")
+}
+
+const handlepress7 = () : void => {
+  router.push("/home/collection/collectionDetail/explanation7")
+}
+
+const handlepress8 = () : void => {
+  router.push("/home/collection/collectionDetail/explanation8")
 }
 
 const Collection = () => {
@@ -20,40 +48,37 @@ const Collection = () => {
         <CollectionTop />
     
         <TouchableOpacity onPress={handlepress1} style={styles.detailButton}>
-          <Text style={styles.buttonText}>URL</Text>
+          <Text style={styles.buttonText}>メールアドレス</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity onPress={handlepress1} style={styles.detailButton}>
-          <Text style={styles.buttonText}>支払い方法</Text>
+        <TouchableOpacity onPress={handlepress2} style={styles.detailButton}>
+          <Text style={styles.buttonText}>電話番号</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity onPress={handlepress1} style={styles.detailButton}>
-          <Text style={styles.buttonText}></Text>
+        <TouchableOpacity onPress={handlepress3} style={styles.detailButton}>
+          <Text style={styles.buttonText}>解説3</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity onPress={handlepress1} style={styles.detailButton}>
-          <Text style={styles.buttonText}></Text>
+        <TouchableOpacity onPress={handlepress4} style={styles.detailButton}>
+          <Text style={styles.buttonText}>解説4</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity onPress={handlepress1} style={styles.detailButton}>
-          <Text style={styles.buttonText}></Text>
+        <TouchableOpacity onPress={handlepress5} style={styles.detailButton}>
+          <Text style={styles.buttonText}>解説5</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity onPress={handlepress1} style={styles.detailButton}>
-          <Text style={styles.buttonText}></Text>
+        <TouchableOpacity onPress={handlepress6} style={styles.detailButton}>
+          <Text style={styles.buttonText}>解説6</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity onPress={handlepress1} style={styles.detailButton}>
-          <Text style={styles.buttonText}></Text>
+        <TouchableOpacity onPress={handlepress7} style={styles.detailButton}>
+          <Text style={styles.buttonText}>解説7</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity onPress={handlepress1} style={styles.detailButton}>
-          <Text style={styles.buttonText}></Text>
+        <TouchableOpacity onPress={handlepress8} style={styles.detailButton}>
+          <Text style={styles.buttonText}>解説8</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity onPress={handlepress1} style={styles.detailButton}>
-          <Text style={styles.buttonText}></Text>
-        </TouchableOpacity>
       </ScrollView>
 
       <BackButton />
