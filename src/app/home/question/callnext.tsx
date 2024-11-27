@@ -1,7 +1,8 @@
 import React from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, Linking } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, Linking, ScrollView } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { router } from "expo-router";
+import Address from '../../../components/Address';
 
 const handlePress = (): void => {
   router.push("/home/question/callnext2");
@@ -9,7 +10,8 @@ const handlePress = (): void => {
 
 export default function CallNextScreen() {
   return (
-    <><View style={styles.container}>
+    <ScrollView><View style={styles.container}>
+      <Address />
       {/* 警告メッセージ */}
       <View style={styles.warningContainer}>
         <Text style={styles.warningText}>
@@ -50,7 +52,8 @@ export default function CallNextScreen() {
           <Icon name="exclamation-circle" size={28} color="white" />
           <Text style={styles.actionText}>違和感</Text>
         </TouchableOpacity>
-      </View></>
+      </View>
+      </ScrollView>
 
   );
 }

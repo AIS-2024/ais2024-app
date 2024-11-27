@@ -5,6 +5,7 @@ import React from 'react';
 import { useRouter } from 'expo-router';
 import ChangeButton from "../../../components/ChangeButton";
 import { AntDesign } from "@expo/vector-icons";
+import Address from "../../../components/Address";
 
 const Quiz2 = () => {
     const router = useRouter();
@@ -16,14 +17,7 @@ const Quiz2 = () => {
     return (
         <ScrollView>
             <View style={styles.container}>
-                <View style={styles.header}>
-                    <View style={styles.headerContainer}>
-                        <View style={styles.icon}>
-                        <Text style={styles.iconLetter}>A</Text>
-                        </View>
-                        <Text style={styles.fromAmazon}>Amazon</Text>
-                    </View>
-                </View>
+                <Address />
                 <View style={styles.message1}>
                     <View style={styles.messageBox1}>
                         <View style={styles.message1Container}>

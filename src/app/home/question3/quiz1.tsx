@@ -7,6 +7,7 @@ import { registerRootComponent } from "expo";
 import { useRouter } from "expo-router";
 import ChangeButton from "../../../components/ChangeButton";
 import { AntDesign } from "@expo/vector-icons";
+import Address from "../../../components/Address";
 
 const quiz1 = () => {
   const router = useRouter();
@@ -16,6 +17,7 @@ const quiz1 = () => {
   };
   return (
     <ScrollView style={styles.container}>
+      <Address />
       <View>
         <View style={styles.mailTitleContent}>
           <Text style={styles.mailTitle}>

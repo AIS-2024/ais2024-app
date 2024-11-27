@@ -1,11 +1,12 @@
 /** @format */
 // 誤字の間違いあり //
 
-import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { router } from "expo-router";
 import { AntDesign } from "@expo/vector-icons";
 import React from "react";
 import ChangeButton from "../../../components/ChangeButton";
+import Address from "../../../components/Address";
 
 const handlePress = (): void => {
   router.push("/home/question1/nottori");
@@ -13,7 +14,8 @@ const handlePress = (): void => {
 
 export default function App() {
   return (
-    <View style={styles.container}>
+    <ScrollView style={styles.container}>
+      <Address />
       <View style={styles.header}>
         <Text style={styles.title}>
           おめでとう五座います！当選しました貴方は！
@@ -63,7 +65,7 @@ export default function App() {
       <ChangeButton>
         <AntDesign name='exclamation' size={40} />
       </ChangeButton>
-    </View>
+    </ScrollView>
   );
 }
 

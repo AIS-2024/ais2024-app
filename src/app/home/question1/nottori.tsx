@@ -12,6 +12,7 @@ import { router } from "expo-router";
 import { AntDesign } from "@expo/vector-icons";
 import React from "react";
 import ChangeButton from "../../../components/ChangeButton";
+import Address from "../../../components/Address";
 
 const handlePress = (): void => {
   router.push("/home/question6/question1");
@@ -20,6 +21,7 @@ const handlePress = (): void => {
 const Nottori = () => {
   return (
     <ScrollView style={styles.container}>
+      <Address />
       <View style={styles.header}>
         <Text style={styles.title}>
           Amazon.co.jpでのご注文{"\n"}
