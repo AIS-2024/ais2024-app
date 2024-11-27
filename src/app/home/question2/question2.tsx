@@ -1,3 +1,5 @@
+// フィッシングの例 //
+
 import { router } from "expo-router";
 import React from "react";
 import { Text, View, StyleSheet, ScrollView } from "react-native";
@@ -41,7 +43,7 @@ const Question2 = () => {
 
             <View style={styles.button}>
               <Text style={styles.buttonText} onPress={handlepress}>アカウント管理に移動</Text>
-            </View> 
+            </View>
 
 
         <View style={styles.footerContainer}>

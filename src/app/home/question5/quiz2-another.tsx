@@ -1,5 +1,5 @@
-// フィッシングの例 //
-// 回答は「本日中にご確認いただけない場合、法的な手続きをとることがあります。」脅しの文章//
+// フィッシングの別バージョン //
+// 回答はhttps://bit.ly/.. //
 import { View, Text, StyleSheet, ScrollView } from "react-native";
 import React from 'react';
 import { useRouter } from 'expo-router';
@@ -29,9 +29,13 @@ const Quiz2 = () => {
                         <View style={styles.message1Container}>
                             <View></View>
                             <View>
-                            <Text>支払いの問題でAmazonがロックされました。</Text>
+                            <Text>【重要】Amazonアカウントが一時的に停止されています{"\n"}
+                            あなたのアカウントは私たちの利用規約に違反しています。 Amazon.co.jpアカウントは一時的に停止されています。{"\n"}
+理由: お支払い情報を更新できませんでした{"\n"}
+再度アカウントを有効にするには、以下のリンクと手順を開いて、このアカウントがあなたのアカウントであることを確認してください。{"\n"}
+                            </Text>
                             <Text style={styles.link} onPress={handlePress}>https://bit.ly/..</Text>
-                            <Text>本日中にご確認いただけない場合、法的な手続きをとることがあります。</Text>
+                            <Text>Amazon.co.jp どうぞよろしくお願いいたします。</Text>
                             </View>
                         </View>
                     </View>

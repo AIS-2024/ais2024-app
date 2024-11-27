@@ -1,4 +1,5 @@
 /** @format */
+// 正しい例 //
 
 import { router } from "expo-router";
 import React from "react";
@@ -57,7 +58,7 @@ const styles = StyleSheet.create({
   container: {
     padding: 25,
     backgroundColor: "#ffffff",
-   
+
   },
   main: {
     marginBottom: 20,
