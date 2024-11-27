@@ -18,7 +18,7 @@ export default function App() {
       <Address />
       <View style={styles.header}>
         <Text style={styles.title}>
-          おめでとう五座います！当選しました貴方は！
+          おめでとうございます！貴方は当選しました！
         </Text>
       </View>
 

@@ -1,8 +1,11 @@
+// フィッシングの例 //
+
 import { router } from "expo-router";
 import React from "react";
 import { Text, View, StyleSheet, ScrollView } from "react-native";
 import ChangeButton from "../../../components/ChangeButton";
 import { AntDesign } from "@expo/vector-icons";
+import Address from "../../../components/Address";
 
 const handlepress = () : void => {
   router.push("home/question3/quiz1")
@@ -11,7 +14,7 @@ const handlepress = () : void => {
 const Question2 = () => {
     return (
         <ScrollView contentContainerStyle={styles.container}>
-
+          <Address />
         <View style={styles.headerContainer}>
             <Text style={styles.header}>【重要】Amazon株式会社からの緊急のご連絡</Text>
 
@@ -41,7 +44,7 @@ const Question2 = () => {
 
             <View style={styles.button}>
               <Text style={styles.buttonText} onPress={handlepress}>アカウント管理に移動</Text>
-            </View> 
+            </View>
 
 
         <View style={styles.footerContainer}>

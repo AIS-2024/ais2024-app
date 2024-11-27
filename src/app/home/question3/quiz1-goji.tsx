@@ -32,7 +32,7 @@ const quiz1 = () => {
               <Text style={styles.iconLetter}>A</Text>
             </View>
             <View>
-              <Text style={styles.fromAmazon}>Amazon</Text>
+              <Text style={styles.fromAmazon}>Arnazon</Text>
               <Text style={styles.to}>宛先:山田太郎</Text>
             </View>
           </View>

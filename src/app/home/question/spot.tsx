@@ -1,20 +1,13 @@
 import React from 'react';
 import { SafeAreaView, View, Text, StyleSheet, Image, ScrollView, TouchableOpacity } from 'react-native';
+import Address from '../../../components/Address';
 
 export default function App() {
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView>
         {/* 差出人情報 */}
-        <View style={styles.header}>
-          <View style={styles.avatar}>
-            <Text style={styles.avatarText}>A</Text>
-          </View>
-          <View style={styles.senderInfo}>
-            <Text style={styles.senderText}>差出人：Amazon.co.jp</Text>
-            <Text style={styles.recipientText}>宛先：〇〇</Text>
-          </View>
-        </View>
+        <Address />
 
         <View style={styles.separator} />
 

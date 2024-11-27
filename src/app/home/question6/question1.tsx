@@ -1,10 +1,12 @@
 /** @format */
+// 正しい例 //
 
 import { router } from "expo-router";
 import React from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet, ScrollView } from "react-native";
 import ChangeButton from "../../../components/ChangeButton";
 import { AntDesign } from "@expo/vector-icons";
+import Address from "../../../components/Address";
 
 const handlepress = () : void => {
   router.push("home/question/question2mailaddress")
@@ -12,7 +14,8 @@ const handlepress = () : void => {
 
 const Question1 = () => {
   return (
-      <View style={styles.container}>
+      <ScrollView style={styles.container}>
+        <Address />
         <Text style={styles.main}>
           クレジットカード情報の更新、追加などにつきまして、以下の手順をご確認ください。アカウントサービスからAmazon情報を管理するページにアクセスして、更新してください。
         </Text>
@@ -49,7 +52,7 @@ const Question1 = () => {
       <ChangeButton>
         <AntDesign name='exclamation' size={40} />
       </ChangeButton>
-    </View>
+    </ScrollView>
   );
 };
 
@@ -57,7 +60,7 @@ const styles = StyleSheet.create({
   container: {
     padding: 25,
     backgroundColor: "#ffffff",
-   
+
   },
   main: {
     marginBottom: 20,

@@ -2,6 +2,7 @@ import React from 'react';
 import { SafeAreaView, View, Text, StyleSheet, Image, ScrollView, TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { router } from "expo-router";
+import Address from '../../../components/Address';
 
 const handlePress = (): void => {
   router.push("/home/question/spot");
@@ -12,15 +13,7 @@ export default function App() {
     <SafeAreaView style={styles.container}>
       <ScrollView>
         {/* 差出人情報 */}
-        <View style={styles.header}>
-          <View style={styles.avatar}>
-            <Text style={styles.avatarText}>A</Text>
-          </View>
-          <View style={styles.senderInfo}>
-            <Text style={styles.senderText}>差出人：amazon.co.jp</Text>
-            <Text style={styles.recipientText}>宛先：〇〇</Text>
-          </View>
-        </View>
+        <Address />
 
         <View style={styles.separator} />
 
@@ -45,8 +38,8 @@ export default function App() {
         </Text>
 
         {/*ボタンの追加*/}
-   
-        <View style={styles.actionContainer}>    
+
+        <View style={styles.actionContainer}>
          <TouchableOpacity style={styles.declineButton} onPress={handlePress}>
           <Icon name="exclamation-circle" size={28} color="white" />
           <Text style={styles.actionText}>違和感</Text>
@@ -83,35 +76,6 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#fff',
     paddingHorizontal: 16,
-  },
-  header: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    marginVertical: 10,
-  },
-  avatar: {
-    width: 50,
-    height: 50,
-    borderRadius: 25,
-    backgroundColor: '#ddd',
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginRight: 10,
-  },
-  avatarText: {
-    fontSize: 24,
-    fontWeight: 'bold',
-  },
-  senderInfo: {
-    flexDirection: 'column',
-  },
-  senderText: {
-    fontSize: 16,
-    fontWeight: 'bold',
-  },
-  recipientText: {
-    fontSize: 14,
-    color: '#555',
   },
   separator: {
     height: 1,

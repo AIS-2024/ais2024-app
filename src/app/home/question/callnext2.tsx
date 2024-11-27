@@ -1,13 +1,15 @@
 import React from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, Linking } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, Linking, ScrollView } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { router } from "expo-router";
+import Address from '../../../components/Address';
 const handlePress = (): void => {
     router.push("/home/question/callnext");
   };
 export default function CallNextScreen() {
   return (
-    <><View style={styles.container}>
+    <ScrollView><View style={styles.container}>
+      <Address />
           {/* 警告メッセージ */}
           <View style={styles.warningContainer}>
           <TouchableOpacity style={styles.navButton}>
@@ -43,17 +45,17 @@ export default function CallNextScreen() {
               ご不明な点がございましたら、カスタマーサービスへお問い合わせください。
           </Text>
 
-     
+
           {/* 移動ボタン */}
       </View><View style={styles.actionContainer}>
               <TouchableOpacity style={styles.declineButton} onPress={handlePress}>
                   <Icon name="exclamation-circle" size={28} color="white" />
                   <Text style={styles.actionText}>戻る</Text>
               </TouchableOpacity>
-          </View></>
+          </View></ScrollView>
 
-    
-    
+
+
   );
 }
 
@@ -138,7 +140,7 @@ const styles = StyleSheet.create({
     borderRadius: 35,
     backgroundColor: '#5CB85C', // 赤
   },
-  
+
   actionText: {
     fontSize: 14,
     color: 'white',
