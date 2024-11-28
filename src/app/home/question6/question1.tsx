@@ -9,7 +9,7 @@ import { AntDesign } from "@expo/vector-icons";
 import Address from "../../../components/Address";
 
 const handlepress = () : void => {
-  router.push("home/question/question2mailaddress")
+  router.push("home/question6/question1call")
 }
 
 const Question1 = () => {

@@ -9,7 +9,7 @@ import ChangeButton from "../../../components/ChangeButton";
 import Address from "../../../components/Address";
 
 const handlePress = (): void => {
-  router.push("/home/question1/nottori");
+  router.push("/home/question8/goji");
 };
 
 export default function App() {

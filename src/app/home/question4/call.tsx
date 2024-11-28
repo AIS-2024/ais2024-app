@@ -4,7 +4,7 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import { router } from "expo-router";
 
 const handlePress = (): void => {
-  router.push("/home/question/callnext");
+  router.push("/home/question4/callnext");
 };
 
 export default function CallScreen() {

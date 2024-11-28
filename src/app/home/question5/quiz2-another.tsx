@@ -11,7 +11,7 @@ const Quiz2 = () => {
     const router = useRouter();
 
     const handlePress = () => {
-        router.push('/home/question/spot');
+        router.push('/home/question5/quiz2');
     };
 
     return (

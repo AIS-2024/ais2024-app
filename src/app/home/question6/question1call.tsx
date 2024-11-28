@@ -4,15 +4,17 @@ import { router } from "expo-router";
 import React from "react";
 import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import { GestureHandlerRootView, ScrollView } from "react-native-gesture-handler";
+import Address from "../../../components/Address";
 
 const handlepress = () : void => {
-  router.push("home/question2/question2")
+  router.push("home/question6/question1")
 }
 
 const Question1 = () => {
   return (
     <GestureHandlerRootView>
       <ScrollView style={styles.container}>
+      <Address />
         <Text style={styles.main}>
           クレジットカード情報の更新、追加などにつきまして、以下の手順をご確認ください。アカウントサービスからAmazon情報を管理するページにアクセスして、更新してください。
         </Text>

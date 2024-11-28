@@ -2,13 +2,13 @@
 
 import { router } from "expo-router";
 import React from "react";
-import { Text, View, StyleSheet, ScrollView } from "react-native";
+import { Text, View, StyleSheet, ScrollView, TouchableOpacity } from "react-native";
 import ChangeButton from "../../../components/ChangeButton";
 import { AntDesign } from "@expo/vector-icons";
 import Address from "../../../components/Address";
 
 const handlepress = () : void => {
-  router.push("home/question3/quiz1")
+  router.push("home/question2/question2mailaddress")
 }
 
 const Question2 = () => {
@@ -42,9 +42,9 @@ const Question2 = () => {
 
             <Text style={styles.warning}>お客様のアカウントに再度有効化していただけるようになります。次のリンクをクリックして指示に従ってください。</Text>
 
-            <View style={styles.button}>
-              <Text style={styles.buttonText} onPress={handlepress}>アカウント管理に移動</Text>
-            </View>
+            <TouchableOpacity style={styles.button} onPress={handlepress}>
+              <Text style={styles.buttonText}>アカウント管理に移動</Text>
+            </TouchableOpacity> 
 
 
         <View style={styles.footerContainer}>

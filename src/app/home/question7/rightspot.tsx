@@ -5,7 +5,7 @@ import { router } from "expo-router";
 import Address from '../../../components/Address';
 
 const handlePress = (): void => {
-  router.push("/home/question/spot");
+  router.push("/home/question7/spot");
 };
 
 export default function App() {

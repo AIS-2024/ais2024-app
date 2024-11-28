@@ -5,7 +5,7 @@ import { router } from "expo-router";
 import Address from '../../../components/Address';
 
 const handlePress = (): void => {
-  router.push("/home/question/callnext2");
+  router.push("/home/question4/callnext2");
 };
 
 export default function CallNextScreen() {
