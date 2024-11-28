@@ -1,6 +1,10 @@
-import { View, Text, StyleSheet, ScrollView, TextInput, Pressable } from "react-native";
+import { View, Text, StyleSheet, ScrollView, TextInput, ActivityIndicator, Pressable,Alert } from "react-native";
 import React, { useState } from 'react';
 import { useRouter, Link } from 'expo-router';
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { doc, setDoc } from "firebase/firestore";
+import { FirebaseError } from "firebase/app";
+import { auth,db } from "../../config";
 
 const SignUp = () => {
     const [name, setName] = useState('');
@@ -8,10 +12,50 @@ const SignUp = () => {
     const [password, setPassword] = useState('');
     const [age, setAge] = useState('');
     const [sex, setSex] = useState('');
+    const [loading, setLoading] = useState(false);
     const router = useRouter();
 
-    const handlePress1 = () :void=> {
-        router.push('../home');
+    const allFieldsFilled = name !== "" && mail !== "" && password !== "" && age !== "" && sex !== "";
+
+    const handlePress1 = async()=> {
+        if(!allFieldsFilled){
+            Alert.alert("入力エラー", "全てのフィールドに入力してください。")
+            return;
+        }
+        setLoading(true);
+        try {
+            const userCredential = await createUserWithEmailAndPassword(auth, mail, password);
+            const user = userCredential.user;
+            const userDocRef = doc(db, "userInfo", user.uid); // Firestore の "userInfo" コレクション
+            await setDoc(userDocRef, {
+                name: name,
+                age: parseInt(age, 10), // 年齢をint型に変換 (10進数として整数に変換する)
+                sex: sex
+            });
+            Alert.alert("登録成功", `登録が完了しました！ UID: ${user.uid}`);
+            router.push('../home');
+          } catch (error:unknown) {
+            if (error instanceof FirebaseError) {
+      switch (error.code) {
+        case "auth/email-already-in-use":
+          Alert.alert("エラー", "このメールアドレスはすでに使用されています。");
+          break;
+        case "auth/invalid-email":
+          Alert.alert("エラー", "メールアドレスの形式が無効です。");
+          break;
+        case "auth/weak-password":
+          Alert.alert("エラー", "パスワードが弱すぎます（最低6文字必要）。");
+          break;
+        default:
+          Alert.alert("エラー", "新規登録中にエラーが発生しました。");
+        }
+        }else {
+            Alert.alert("エラー","未知のエラーが発生しました。");
+          }
+        } finally {
+        setLoading(false); // ローディング終了
+        }
+        
     };
     const handlePress2 = () :void => {
         router.back();
@@ -65,8 +109,12 @@ const SignUp = () => {
                     />
                 </View>
                 <View style={styles.button}>
-                    <Pressable style={styles.registerButton} onPress={handlePress1}>
-                        <Text style={styles.buttonText}>登録</Text>
+                    <Pressable style={[styles.registerButton, !allFieldsFilled && styles.disabledButton]} onPress={handlePress1} disabled={loading || !allFieldsFilled}>
+                        {loading ? (
+                            <ActivityIndicator size="small" color="#ffffff" /> // サーキュラーインジケータを表示
+                        ) : (
+                            <Text style={styles.buttonText}>登録</Text>
+                        )}
                     </Pressable>
                     <Pressable style={styles.backButton} onPress={handlePress2}>
                     <Text style={styles.buttonText}>戻る</Text>
@@ -112,6 +160,9 @@ const styles = StyleSheet.create({
         borderRadius: 5,
         marginVertical: 10
     },
+    disabledButton: {
+        opacity: 0.5 // ボタンが無効な場合の色
+      },
     backButton: {
         alignItems: 'center',
         backgroundColor: '#ddd',
