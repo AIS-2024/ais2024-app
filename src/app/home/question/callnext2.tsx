@@ -18,30 +18,36 @@ export default function CallNextScreen() {
           </View>
 
           {/* アイコンと差出人情報 */}
-          <View style={styles.senderContainer}>
+          <View style={styles.senderContainer}>      
               <View style={styles.iconContainer}>
                   <Text style={styles.iconText}>A</Text>
               </View>
+              <TouchableOpacity style={styles.navButton}>
               <Text style={styles.senderName}>Amazon</Text>
+              </TouchableOpacity>
           </View>
 
           {/* メッセージ本文 */}
+          <TouchableOpacity style={styles.navButton}>
           <Text style={styles.messageText}>
               Amazonカスタマーサポートです。{"\n\n"}
               電話でご連絡した通り、あなたのAmazonのアカウントで不正な行為が確認されたためアカウントを凍結しました。{"\n\n"}
               アカウントを引き続き利用するために下のリンクよりアカウントにログインしてください。
           </Text>
+          </TouchableOpacity>
 
           {/* ログインリンク */}
-          <TouchableOpacity onPress={() => Linking.openURL('https://www.amazon.co.jp')} style={styles.loginLinkContainer}>
+          <TouchableOpacity  style={styles.loginLinkContainer}>
               <Text style={styles.loginLink}>ログイン</Text>
           </TouchableOpacity>
 
           {/* 注意テキスト */}
+          <TouchableOpacity style={styles.navButton}>
           <Text style={styles.noticeText}>
               ご入力いただいた情報は、厳重に保管し、プライバシーの保護に努めております。
               ご不明な点がございましたら、カスタマーサービスへお問い合わせください。
           </Text>
+          </TouchableOpacity>
 
      
           {/* 移動ボタン */}
@@ -72,6 +78,7 @@ const styles = StyleSheet.create({
   warningText: {
     color: '#721C24',
     fontSize: 14,
+    textDecorationLine: 'underline',
   },
   senderContainer: {
     flexDirection: 'row',
@@ -96,11 +103,13 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: 'bold',
     color: '#333',
+    textDecorationLine: 'underline',
   },
   messageText: {
     fontSize: 14,
     color: '#333',
     marginBottom: 15,
+    textDecorationLine: 'underline',
   },
   loginLinkContainer: {
     marginBottom: 15,
@@ -108,11 +117,13 @@ const styles = StyleSheet.create({
   loginLink: {
     color: '#007BFF',
     fontSize: 16,
+    textDecorationLine: 'underline',
   },
   noticeText: {
     fontSize: 12,
     color: '#333',
     marginTop: 20,
+    textDecorationLine: 'underline',
   },
   footerIconContainer: {
     position: 'absolute',
@@ -148,6 +159,13 @@ const styles = StyleSheet.create({
   navButton: {
     alignItems: 'center',
     textDecorationLine: 'underline',
+    color: '#0000ff',
+  },
+
+    //タッチャブルText//
+  navButtonText: {
+    textDecorationLine: 'underline',
+    color: '#000000',
   },
 
 });
