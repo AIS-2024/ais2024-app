@@ -27,13 +27,15 @@ const SignUp = () => {
             const userCredential = await createUserWithEmailAndPassword(auth, mail, password);
             const user = userCredential.user;
             const userDocRef = doc(db, "userInfo", user.uid); // Firestore の "userInfo" コレクション
+            Alert.alert("登録成功", `登録が完了しました！`);
+            router.replace("/home/home");
             await setDoc(userDocRef, {
                 name: name,
                 age: parseInt(age, 10), // 年齢をint型に変換 (10進数として整数に変換する)
                 sex: sex
             });
-            Alert.alert("登録成功", `登録が完了しました！ UID: ${user.uid}`);
-            router.push('../home');
+            
+            
           } catch (error:unknown) {
             if (error instanceof FirebaseError) {
       switch (error.code) {

@@ -1,10 +1,20 @@
 /** @format */
 
 import React from "react";
-import { Link, Redirect } from "expo-router";
+import { onAuthStateChanged } from "firebase/auth";
+import { Link, Redirect,router } from "expo-router";
 import { Text } from "react-native";
+import { auth } from "../config";
+import { useEffect } from "react";
 
 const Index = () => {
+  useEffect(()=>{
+    onAuthStateChanged(auth,(user)=>{
+        if(user!==null){
+            router.replace("/home/home")
+        }
+    })
+},[])
   return (
     <>
       <Text>Indexページ</Text>

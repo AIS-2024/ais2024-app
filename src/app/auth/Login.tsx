@@ -1,14 +1,34 @@
-import { View, Text, StyleSheet, ScrollView, TextInput, Pressable } from "react-native";
+import { View, Text, StyleSheet, ScrollView, TextInput, Pressable, Alert, ActivityIndicator } from "react-native";
 import React, { useState } from 'react';
 import { useRouter } from 'expo-router';
+import { FirebaseError } from "firebase/app";
+import {signInWithEmailAndPassword}from "firebase/auth";
+import { auth,db } from "../../config";
 
 const Login = () => {
     const [mail, setMail] = useState('');
     const [password, setPassword] = useState('');
+    const [loading, setLoading] = useState(false);
     const router = useRouter();
 
-    const handlePress1 = () :void=> {
-        router.push('../home');
+    const allFieldsFilled = mail !== "" && password !== "";
+
+    const handlePress1 = async()=> {
+        setLoading(true);
+        try {
+            const userCredential = await signInWithEmailAndPassword(auth,mail, password);
+            const user = userCredential.user;
+        Alert.alert("ログイン成功", "ログインしました！");
+        router.replace("/home/home")
+        } catch (error:unknown) {
+            if (error instanceof FirebaseError){
+                Alert.alert("エラー", error.code);
+            }else {
+                Alert.alert("エラー","未知のエラーが発生しました。");
+            }
+        }finally {
+            setLoading(false); // ローディング終了
+            }
   };
   const handlePress2 = () :void => {
         router.back();
@@ -38,8 +58,12 @@ const Login = () => {
                     />
                 </View>
                 <View style={styles.button}>
-                    <Pressable style={styles.loginButton} onPress={handlePress1}>
-                        <Text style={styles.buttonText}>ログイン</Text>
+                    <Pressable style={[styles.loginButton, !allFieldsFilled && styles.disabledButton]} onPress={handlePress1} disabled={loading || !allFieldsFilled}>
+                    {loading ? (
+                            <ActivityIndicator size="small" color="#ffffff" /> // サーキュラーインジケータを表示
+                        ) : (
+                            <Text style={styles.buttonText}>ログイン</Text>
+                        )}
                     </Pressable>
                     <Pressable style={styles.backButton} onPress={handlePress2}>
                         <Text style={styles.buttonText}>戻る</Text>
@@ -84,6 +108,9 @@ const styles = StyleSheet.create({
         paddingHorizontal: 20,
         borderRadius: 5,
         marginVertical: 10
+    },
+    disabledButton: {
+        opacity: 0.5 // ボタンが無効な場合の色
     },
     backButton: {
         alignItems: 'center',
