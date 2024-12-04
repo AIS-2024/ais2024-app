@@ -4,22 +4,32 @@ import React from "react";
 import { Link, Redirect, router } from "expo-router";
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
-const handlepress1 = () : void => {
-  router.push("./auth/SignUp")
-}
+const handlepress1 = (): void => {
+  router.push("./auth/SignUp");
+};
 
-const handlepress2 = () : void => {
-  router.push("./auth/Login")
-}
+const handlepress2 = (): void => {
+  router.push("./auth/Login");
+};
+import { onAuthStateChanged } from "firebase/auth";
+import { auth } from "../config";
+import { useEffect } from "react";
 
 const Index = () => {
+  useEffect(() => {
+    onAuthStateChanged(auth, (user) => {
+      if (user !== null) {
+        router.replace("/home/home");
+      }
+    });
+  }, []);
   return (
     <View style={styles.container}>
       <TouchableOpacity style={styles.button} onPress={handlepress1}>
         <Text style={styles.buttonText}>新規登録</Text>
       </TouchableOpacity>
 
-      <TouchableOpacity style={styles.button} onPress={handlepress2} >
+      <TouchableOpacity style={styles.button} onPress={handlepress2}>
         <Text style={styles.buttonText}>ログイン</Text>
       </TouchableOpacity>
     </View>
@@ -30,7 +40,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: "center",
-    justifyContent:"center"
+    justifyContent: "center",
   },
   button: {
     padding: 10,
@@ -39,13 +49,13 @@ const styles = StyleSheet.create({
     backgroundColor: "#3F54C7",
     alignItems: "center",
     justifyContent: "center",
-    marginBottom: 10
+    marginBottom: 10,
   },
   buttonText: {
     color: "#ffffff",
     fontWeight: "bold",
     fontSize: 20,
-  }
-})
+  },
+});
 
 export default Index;
