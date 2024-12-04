@@ -52,15 +52,6 @@ const Home = () => {
           />
         </TouchableOpacity>
 
-        <TouchableOpacity onPress={handlepress5}>
-          <Image
-            source={{
-              uri: "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/d0/95/24/d0952470-b2fe-f628-1e30-0c4a444aadb3/AppIcon-0-0-1x_U007emarketing-0-10-0-85-220.png/340x340bb.webp",
-            }}
-            style={styles.mailIcon}
-          />
-        </TouchableOpacity>
-
         <TouchableOpacity onPress={handlepress2}>
           <Image
             source={{
