@@ -2,7 +2,11 @@
 
 import React from "react";
 import { Link, Redirect, router } from "expo-router";
+import { useEffect } from "react";
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
+
+import { onAuthStateChanged } from "firebase/auth";
+import { auth } from "../config";
 
 const handlepress1 = (): void => {
   router.push("./auth/SignUp");
@@ -11,9 +15,6 @@ const handlepress1 = (): void => {
 const handlepress2 = (): void => {
   router.push("./auth/Login");
 };
-import { onAuthStateChanged } from "firebase/auth";
-import { auth } from "../config";
-import { useEffect } from "react";
 
 const Index = () => {
   useEffect(() => {

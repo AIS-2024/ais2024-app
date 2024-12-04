@@ -35,7 +35,7 @@ export default function CallNextScreen() {
       </Text>
 
       {/* ログインリンク */}
-      <TouchableOpacity onPress={() => Linking.openURL('https://www.amazon.co.jp')} style={styles.loginLinkContainer}>
+      <TouchableOpacity  style={styles.loginLinkContainer}>
         <Text style={styles.loginLink}>ログイン</Text>
       </TouchableOpacity>
 
@@ -73,6 +73,7 @@ const styles = StyleSheet.create({
   warningText: {
     color: '#721C24',
     fontSize: 14,
+    
   },
   senderContainer: {
     flexDirection: 'row',

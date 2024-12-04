@@ -10,12 +10,12 @@ import {
 } from "react-native";
 import React from "react";
 import { useEffect } from "react";
-import { router,useNavigation } from "expo-router";
-import LogOutButton from '../../components/LogOutButton';
+import { router, useNavigation } from "expo-router";
+import LogOutButton from "../../components/LogOutButton";
 import { auth } from "../../config";
 
 const handlepress1 = (): void => {
-  router.push("home/question8/goji");
+  router.push("home/mailSelect");
 };
 
 const handlepress2 = (): void => {
@@ -23,7 +23,7 @@ const handlepress2 = (): void => {
 };
 
 const handlepress3 = (): void => {
-  router.push("home/question/call");
+  router.push("home/question4/call");
 };
 
 const handlepress4 = (): void => {
@@ -31,11 +31,10 @@ const handlepress4 = (): void => {
 };
 
 const handlepress5 = (): void => {
-  router.push("home/question/rightspot");
+  router.push("home/question7/rightspot");
 };
 
 const Home = () => {
-  
   return (
     <ImageBackground
       source={{
@@ -113,7 +112,7 @@ const styles = StyleSheet.create({
     top: 50,
     flexDirection: "row",
     flexWrap: "wrap", // 折り返しを有効化
-    justifyContent: "space-between",// 各行で均等に配置
+    justifyContent: "space-between", // 各行で均等に配置
     alignItems: "flex-start",
     width: "80%",
   },
