@@ -18,14 +18,14 @@ const Explanation3: React.FC = () => {
 
   useEffect(() => {
     const fetchExplanation = async () => {
-      const docRef = doc(db, "user", "PhfeMeIDsjlM8cCze5SP");
+      const docRef = doc(db, "user", "explanation3");
       const docSnap = await getDoc(docRef);
 
       if (docSnap.exists()) {
         const data = docSnap.data();
-        setExplanation([{ Explanation: data.解説文3の1 }]);
-        setExplanation2([{ Explanation: data.解説文3の2 }]);
-        setTitle(data.タイトル3); // タイトルを取得して保存
+        setExplanation([{ Explanation: data.解説文1 }]);
+        setExplanation2([{ Explanation: data.解説文2 }]);
+        setTitle(data.タイトル); // タイトルを取得して保存
       } else {
         console.log("ドキュメントが見つかりません");
       }

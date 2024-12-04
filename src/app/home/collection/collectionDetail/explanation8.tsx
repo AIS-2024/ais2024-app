@@ -12,21 +12,21 @@ import { db } from "../../../../config";
 import { collection, doc, getDoc, onSnapshot, orderBy, query } from "firebase/firestore";
 import { Explanation } from "../../../types/explanation";
 
-const Explanation8: React.FC = () => {
+const Explanation4: React.FC = () => {
   const [explanation, setExplanation] = useState<Explanation[]>([]);
   const [explanation2, setExplanation2] = useState<Explanation[]>([]);
   const [title, setTitle] = useState<string>("");
 
   useEffect(() => {
     const fetchExplanation = async () => {
-      const docRef = doc(db, "user", "DPodpzPcBj7E0u5wkXAj");
+      const docRef = doc(db, "user", "explanation8");
       const docSnap = await getDoc(docRef);
 
       if (docSnap.exists()) {
         const data = docSnap.data();
-        setExplanation([{ Explanation: data.解説文8の1 }]);
-        setExplanation2([{ Explanation: data.解説文8の2 }]);
-        setTitle(data.タイトル8); // タイトルを取得して保存
+        setExplanation([{ Explanation: data.解説文1 }]);
+        setExplanation2([{ Explanation: data.解説文2 }]);
+        setTitle(data.タイトル); // タイトルを取得して保存
       } else {
         console.log("ドキュメントが見つかりません");
       }
@@ -92,4 +92,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default Explanation8;
+export default Explanation4;

@@ -19,14 +19,14 @@ const Mailaddress: React.FC = () => {
 
   useEffect(() => {
     const fetchExplanation = async () => {
-      const docRef = doc(db, "user", "65sTkzyuk0eU9tGKjQwF");
+      const docRef = doc(db, "user", "explanation1");
       const docSnap = await getDoc(docRef);
 
       if (docSnap.exists()) {
         const data = docSnap.data();
-        setExplanation([{ Explanation: data.解説文1の1 }]);
-        setExplanation2([{ Explanation: data.解説文1の2 }]);
-        setTitle(data.タイトル1); // タイトルを取得して保存
+        setExplanation([{ Explanation: data.解説文1 }]);
+        setExplanation2([{ Explanation: data.解説文2 }]);
+        setTitle(data.タイトル); // タイトルを取得して保存
       } else {
         console.log("ドキュメントが見つかりません");
       }

@@ -19,14 +19,14 @@ const TelephoneNumber: React.FC = () => {
 
   useEffect(() => {
     const fetchExplanation = async () => {
-      const docRef = doc(db, "user", "Fm3XPWMVy3aWzeZlodYB");
+      const docRef = doc(db, "user", "explanation2");
       const docSnap = await getDoc(docRef);
 
       if (docSnap.exists()) {
         const data = docSnap.data();
-        setExplanation([{ Explanation: data.解説文2の1 }]);
-        setExplanation2([{ Explanation: data.解説文2の2 }]);
-        setTitle(data.タイトル2); // タイトルを取得して保存
+        setExplanation([{ Explanation: data.解説文1 }]);
+        setExplanation2([{ Explanation: data.解説文2 }]);
+        setTitle(data.タイトル); // タイトルを取得して保存
       } else {
         console.log("ドキュメントが見つかりません");
       }

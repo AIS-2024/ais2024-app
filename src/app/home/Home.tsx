@@ -80,16 +80,6 @@ const Home = () => {
         </TouchableOpacity>
       </View>
 
-      {/* <View style={styles.iconBottomContainer}>
-        <Image
-          source={{uri: 'https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/63/08/f1/6308f11b-2ab3-94c5-6640-d0f578365e52/AppIcon-0-0-1x_U007emarketing-0-10-0-85-220.png/340x340bb.webp'}}
-          style={styles.safariIcon}
-        />
-        <Image
-          source={{uri: 'https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/d3/04/9c/d3049c85-1b6b-df5c-ed76-73e8d2fd098e/AppIcon-0-0-1x_U007emarketing-0-10-0-85-220.png/340x340bb.webp'}}
-          style={styles.musicIcon}
-        />
-      </View> */}
     </ImageBackground>
   );
 };
