@@ -7,6 +7,7 @@ import { AntDesign } from "@expo/vector-icons";
 import React from "react";
 import ChangeButton from "../../../components/ChangeButton";
 import Address from "../../../components/Address";
+import Footer from "../Footer";
 
 const handlePress = (): void => {
   router.push("/home/question8/goji-ans");
@@ -61,6 +62,7 @@ export default function App() {
           {"\n"}
           商品の発送準備が完了したら、お知らせいたします。
         </Text>
+        <Footer />
       </View>
       <ChangeButton onPress={handlePress}>
         <AntDesign name='exclamation' size={40} />

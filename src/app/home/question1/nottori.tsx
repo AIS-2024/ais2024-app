@@ -13,6 +13,7 @@ import { AntDesign } from "@expo/vector-icons";
 import React from "react";
 import ChangeButton from "../../../components/ChangeButton";
 import Address from "../../../components/Address";
+import Footer from "../Footer";
 
 const handlePress = (): void => {
   router.push("/home/question6/question1");
@@ -76,6 +77,7 @@ const Nottori = () => {
             <Text style={styles.textRight}>￥{"\n"}98,300</Text>
           </View>
         </View>
+        <Footer />
       </View>
       <ChangeButton>
         <AntDesign name='exclamation' size={40} />

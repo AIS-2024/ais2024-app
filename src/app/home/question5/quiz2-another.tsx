@@ -17,7 +17,6 @@ const Quiz2 = () => {
     return (
         <ScrollView>
             <View style={styles.container}>
-                <Address />
                 <View style={styles.message1}>
                     <View style={styles.messageBox1}>
                         <View style={styles.message1Container}>
@@ -28,7 +27,7 @@ const Quiz2 = () => {
 理由: お支払い情報を更新できませんでした{"\n"}
 再度アカウントを有効にするには、以下のリンクと手順を開いて、このアカウントがあなたのアカウントであることを確認してください。{"\n"}
                             </Text>
-                            <Text style={styles.link} onPress={handlePress}>https://bit.ly/..</Text>
+                            <Text style={styles.link}>https://bit.ly/..</Text>
                             <Text>Amazon.co.jp どうぞよろしくお願いいたします。</Text>
                             </View>
                         </View>

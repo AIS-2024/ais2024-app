@@ -17,14 +17,13 @@ const Quiz2 = () => {
     return (
         <ScrollView>
             <View style={styles.container}>
-                <Address />
                 <View style={styles.message1}>
                     <View style={styles.messageBox1}>
                         <View style={styles.message1Container}>
                             <View></View>
                             <View>
                             <Text>支払いの問題でAmazonがロックされました。</Text>
-                            <Text style={styles.link} onPress={handlePress}>https://bit.ly/..</Text>
+                            <Text style={styles.link}>https://bit.ly/..</Text>
                             <Text>本日中にご確認いただけない場合、法的な手続きをとることがあります。</Text>
                             </View>
                         </View>
