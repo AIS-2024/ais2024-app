@@ -19,7 +19,7 @@ const handlepress1 = (): void => {
 };
 
 const handlepress2 = (): void => {
-  router.push("home/question5/quiz2");
+  router.push("home/smsSelect");
 };
 
 const handlepress3 = (): void => {
@@ -28,10 +28,6 @@ const handlepress3 = (): void => {
 
 const handlepress4 = (): void => {
   router.push("home/collection");
-};
-
-const handlepress5 = (): void => {
-  router.push("home/question7/rightspot");
 };
 
 const Home = () => {

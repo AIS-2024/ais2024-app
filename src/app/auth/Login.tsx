@@ -19,7 +19,7 @@ const Login = () => {
             const userCredential = await signInWithEmailAndPassword(auth,mail, password);
             const user = userCredential.user;
         Alert.alert("ログイン成功", "ログインしました！");
-        router.replace("/home/home")
+        router.replace("/home/Home")
         } catch (error:unknown) {
             if (error instanceof FirebaseError){
                 Alert.alert("エラー", error.code);

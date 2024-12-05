@@ -1,6 +1,7 @@
 import React from 'react';
 import { SafeAreaView, View, Text, StyleSheet, Image, ScrollView, TouchableOpacity } from 'react-native';
 import Address from '../../../components/Address';
+import Footer from '../Footer';
 
 export default function App() {
   return (
@@ -30,25 +31,7 @@ export default function App() {
         <Text style={styles.description}>
           プロモーションコード 300PICKUP をレジで使用すると、割引が適用されます。
         </Text>
-
-        {/* 底部のアイコンナビゲーション */}
-        <View style={styles.navBar}>
-          <TouchableOpacity style={styles.navButton}>
-            <Text style={styles.navButtonText}>報告</Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.navButton}>
-            <Text style={styles.navButtonText}>移動</Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.navButton}>
-            <Text style={styles.navButtonText}>返信・転送</Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.navButton}>
-            <Text style={styles.navButtonText}>削除</Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.navButton}>
-            <Text style={styles.navButtonText}>その他</Text>
-          </TouchableOpacity>
-        </View>
+        <Footer />
       </ScrollView>
     </SafeAreaView>
   );
@@ -110,19 +93,5 @@ const styles = StyleSheet.create({
     lineHeight: 22,
     color: '#555',
     marginBottom: 10,
-  },
-  navBar: {
-    flexDirection: 'row',
-    justifyContent: 'space-around',
-    paddingVertical: 10,
-    borderTopWidth: 1,
-    borderTopColor: '#ccc',
-  },
-  navButton: {
-    alignItems: 'center',
-  },
-  navButtonText: {
-    fontSize: 14,
-    color: '#007AFF',
-  },
+  }
 });
