@@ -1,7 +1,9 @@
 import {initializeApp}from'firebase/app'
-import {initializeAuth,getReactNativePersistence}from'firebase/auth'
+//@ts-ignore
+import { getReactNativePersistence } from '@firebase/auth/dist/rn/index';
+import {initializeAuth}from'firebase/auth'
 import {getFirestore}from'firebase/firestore'
-import  ReactNativeAsyncStorage  from '@react-native-async-storage/async-storage'
+import ReactNativeAsyncStorage from '@react-native-async-storage/async-storage';
 
 const firebaseConfig = {
     apiKey:process.env.EXPO_PUBLIC_FB_API_KEY,

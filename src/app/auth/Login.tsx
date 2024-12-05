@@ -8,7 +8,7 @@ const Login = () => {
     const router = useRouter();
 
     const handlePress1 = () :void=> {
-        router.push('../home');
+        router.push('../home/Home');
   };
   const handlePress2 = () :void => {
         router.back();

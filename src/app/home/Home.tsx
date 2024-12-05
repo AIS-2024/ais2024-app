@@ -28,7 +28,7 @@ import React from "react";
 import { router } from "expo-router";
 
 const handlepress = () : void => {
-  router.push("home/question1/nottori")
+  router.push("home/question8/goji")
 }
 const handlePressOfMessageIcon=():void=>{
   router.push("home/question2/question2")
@@ -39,7 +39,7 @@ const handlePressOfCollection=():void=>{
 
 const Home = () => {
   return (
-   
+
     <ImageBackground
       source={{ uri: 'https://www.letemsvetemapplem.eu/wp-content/uploads/2023/06/iOS-17-tapety-2.png' }} // 背景画像のURLを指定
       style={styles.background}
@@ -92,10 +92,10 @@ const styles = StyleSheet.create({
   },
   iconContainer: {
     top: 50,
-    flexDirection: 'row',  
-    justifyContent: 'flex-start', 
-    alignItems: 'flex-start', 
-    width: '90%', 
+    flexDirection: 'row',
+    justifyContent: 'flex-start',
+    alignItems: 'flex-start',
+    width: '90%',
   },
   mailIcon: {
     width: 65,
@@ -116,10 +116,10 @@ const styles = StyleSheet.create({
   },
   iconBottomContainer:{
     position: 'absolute',
-    flexDirection: 'row',  
-    justifyContent: 'center', 
-    alignItems: 'center', 
-    width: '90%', 
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: '90%',
     bottom: 15,
     backgroundColor: 'rgba(64, 64, 64, 0.6)',
     borderRadius: 30,

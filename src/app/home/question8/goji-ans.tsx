@@ -1,70 +1,75 @@
 /** @format */
-// 誤字の間違いあり //
+// 回答画面 //
 
 import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { router } from "expo-router";
 import { AntDesign } from "@expo/vector-icons";
 import React from "react";
-import ChangeButton from "../../../components/ChangeButton";
+import AnswerButton from "../../../components/AnswerButton";
 import Address from "../../../components/Address";
 
 const handlePress = (): void => {
-  router.push("/home/question8/goji-ans");
+  router.push("/home/question1/nottori");
+};
+const handlePressHome = (): void => {
+  router.push("/home/Home");
 };
 
 export default function App() {
   return (
     <ScrollView style={styles.container}>
-      <Address />
-      <View style={styles.header}>
-        <Text style={styles.title}>
+      <TouchableOpacity onPress={handlePressHome}><Address /></TouchableOpacity>
+      <TouchableOpacity style={styles.header}>
+        <Text style={styles.title} onPress={handlePress}>
           おめでとう五座います！当選しました貴方は！
         </Text>
-      </View>
+      </TouchableOpacity>
 
-      <View style={styles.infoLink}>
+      <TouchableOpacity style={styles.infoLink} onPress={handlePressHome}>
         <Text style={styles.linkText}>注文履歴</Text>
         <Text>｜</Text>
         <Text style={styles.linkText}>アカウントサービス</Text>
         <Text>｜</Text>
         <Text style={styles.linkText}>Amazon.co.jp</Text>
-      </View>
+      </TouchableOpacity>
 
-      <Text style={{ textAlign: "right" }}>ご注文の確認</Text>
+      <TouchableOpacity onPress={handlePressHome}><Text style={{ textAlign: "right" }}>ご注文の確認</Text></TouchableOpacity>
 
-      <View style={styles.infoLink}>
+      <TouchableOpacity style={styles.infoLink} onPress={handlePressHome}>
         <Text>注文番号：</Text>
         <Text style={styles.linkText}>508-8864920-6546310</Text>
-      </View>
+      </TouchableOpacity>
 
       <View style={styles.mail}>
-        <Text>username様</Text>
-        <Text style={styles.mainText}>招待者に選ばれました。</Text>
-        <Text>
+      <TouchableOpacity onPress={handlePressHome}><Text>username様</Text></TouchableOpacity>
+      <TouchableOpacity onPress={handlePressHome}><Text style={styles.mainText}>招待者に選ばれました。</Text></TouchableOpacity>
+      <TouchableOpacity onPress={handlePressHome}><Text>
           招待リクエストをお送りいただき、ありがとうございます。お客様は、招待販売の招待者にえらばれました。当選した商品をご購入いただけます。
           {"\n"}
           {"\n"}
           本招待メールによる注文の有効期限は、本招待メールが
-        </Text>
-        <Text style={styles.linkText}>Amazon.co.jp</Text>
-        <Text>から発信されてから72時間以内です。</Text>
+        </Text></TouchableOpacity>
+        <TouchableOpacity onPress={handlePressHome}><Text style={styles.linkText}>Amazon.co.jp</Text></TouchableOpacity>
+        <TouchableOpacity onPress={handlePressHome}><Text>から発信されてから72時間以内です。</Text></TouchableOpacity>
 
         <View style={styles.button}>
-          <TouchableOpacity style={styles.buttonText}>
+          <TouchableOpacity style={styles.buttonText} onPress={handlePressHome}>
             <Text style={styles.buttonText}>商品を見る</Text>
           </TouchableOpacity>
         </View>
 
+        <TouchableOpacity onPress={handlePressHome}>
         <Text>
           商品を購入するには、「商品を見る」ボタンをクリックして商品ページへアクセスし、商品を注文してください、
           {"\n"}
           {"\n"}
           商品の発送準備が完了したら、お知らせいたします。
         </Text>
+        </TouchableOpacity>
       </View>
-      <ChangeButton onPress={handlePress}>
-        <AntDesign name='exclamation' size={40} />
-      </ChangeButton>
+      <AnswerButton>
+        <AntDesign name='check' size={40} onPress={handlePress}/>
+      </AnswerButton>
     </ScrollView>
   );
 }
