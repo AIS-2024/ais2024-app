@@ -26,17 +26,6 @@ const quiz1 = () => {
         </View>
       </View>
       <View>
-        <View>
-          <View style={styles.fromContent}>
-            <View style={styles.iconContent}>
-              <Text style={styles.iconLetter}>A</Text>
-            </View>
-            <View>
-              <Text style={styles.fromAmazon}>Amazon</Text>
-              <Text style={styles.to}>宛先:山田太郎</Text>
-            </View>
-          </View>
-        </View>
         <View style={styles.divider} />
         <View>
           <Image
