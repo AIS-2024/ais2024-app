@@ -52,7 +52,7 @@ const Question2 = () => {
         </View>
 
         </View>
-        <ChangeButton>
+        <ChangeButton onPress={handlepress}>
           <AntDesign name='exclamation' size={40} />
         </ChangeButton>
         </ScrollView>

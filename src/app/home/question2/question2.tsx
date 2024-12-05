@@ -25,9 +25,9 @@ const Question2 = () => {
 
         <View style={styles.mailContainer}>
             <Text style={styles.sectionHeader}>【重要】カスタマセンターからのご案内</Text>
-
-            <Text>あなたのAmazonアカウント：○○○@sample.jp、異常なログインが見つかり、配送先住所が変更されました！</Text>
-
+            <TouchableOpacity style={styles.navButton}>
+            <Text style={styles.textunderline}>あなたのAmazonアカウント：○○○@sample.jp、異常なログインが見つかり、配送先住所が変更されました！</Text>
+            </TouchableOpacity>
         <View style={styles.address}>
             <Text>ログイン日時：2024-10-05, 4:23:31</Text>
             <Text>IPアドレス：[000.0.0.00]</Text>
@@ -39,9 +39,9 @@ const Question2 = () => {
 
             <Text>--お客様のアカウントのパスワードを無効にいたしました</Text>
             <Text>--不正アクセスによって行われた変更につきましては、無効にいたしました</Text>
-
+            <TouchableOpacity style={styles.navButton}>
             <Text style={styles.warning}>お客様のアカウントに再度有効化していただけるようになります。次のリンクをクリックして指示に従ってください。</Text>
-
+            </TouchableOpacity>
             <TouchableOpacity style={styles.button} onPress={handlepress}>
               <Text style={styles.buttonText}>アカウント管理に移動</Text>
             </TouchableOpacity> 
@@ -54,7 +54,7 @@ const Question2 = () => {
         </View>
 
         </View>
-        <ChangeButton>
+        <ChangeButton  onPress={handlepress}>
           <AntDesign name='exclamation' size={40} />
         </ChangeButton>
         </ScrollView>
@@ -110,7 +110,8 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   warning:{
-    marginBottom: 15
+    marginBottom: 15,
+    textDecorationLine: 'underline',
   },
   button: {
     padding: 10,
@@ -133,6 +134,18 @@ const styles = StyleSheet.create({
     alignSelf: "center",
 
   },
+
+    //タッチャブル//
+  navButton: {
+    alignItems: 'center',
+    textDecorationLine: 'underline',
+    color: '#0000ff',
+  },
+  //underline//
+  textunderline:{
+    textDecorationLine: 'underline',
+
+  }
 })
 
 export default Question2

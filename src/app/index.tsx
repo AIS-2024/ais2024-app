@@ -20,7 +20,7 @@ const Index = () => {
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
       if (user !== null) {
-        router.replace("/home/home");
+        router.replace("/home/Home");
       }
     });
   }, []);
