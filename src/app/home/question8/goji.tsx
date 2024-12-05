@@ -9,7 +9,7 @@ import ChangeButton from "../../../components/ChangeButton";
 import Address from "../../../components/Address";
 
 const handlePress = (): void => {
-  router.push("/home/question8/goji-right");
+  router.push("/home/question8/goji-ans");
 };
 
 export default function App() {
@@ -50,7 +50,7 @@ export default function App() {
         <Text>から発信されてから72時間以内です。</Text>
 
         <View style={styles.button}>
-          <TouchableOpacity style={styles.buttonText} onPress={handlePress}>
+          <TouchableOpacity style={styles.buttonText}>
             <Text style={styles.buttonText}>商品を見る</Text>
           </TouchableOpacity>
         </View>
@@ -62,7 +62,7 @@ export default function App() {
           商品の発送準備が完了したら、お知らせいたします。
         </Text>
       </View>
-      <ChangeButton>
+      <ChangeButton onPress={handlePress}>
         <AntDesign name='exclamation' size={40} />
       </ChangeButton>
     </ScrollView>
