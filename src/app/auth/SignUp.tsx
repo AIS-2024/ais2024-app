@@ -29,29 +29,17 @@ const SignUp = () => {
             const userDocRef = doc(db, "userInfo", user.uid); // Firestore の "userInfo" コレクション
             Alert.alert("登録成功", `登録が完了しました！`);
             router.replace("/home/home");
+            const explanations = [
+                false, false, false, false, false, false, false, false,
+            ];
             await setDoc(userDocRef, {
                 name: name,
                 age: parseInt(age, 10), // 年齢をint型に変換 (10進数として整数に変換する)
-                sex: sex
+                sex: sex,
+                explanations: explanations
             });
             
-            const explanations = [
-                { isCorrect: false },
-                { isCorrect: false },
-                { isCorrect: false },
-                { isCorrect: false },
-                { isCorrect: false },
-                { isCorrect: false },
-                { isCorrect: false },
-                { isCorrect: false },
-            ];
-    
-            // サブコレクションに解説文を追加
-            for (let i = 0; i < explanations.length; i++) {
-                const explanation = explanations[i];
-                const explanationDocRef = doc(userDocRef, "explanations", `explanation${i + 1}`);
-                await setDoc(explanationDocRef, explanation);
-            }
+
             
           } catch (error:unknown) {
             if (error instanceof FirebaseError) {

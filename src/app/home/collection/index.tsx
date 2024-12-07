@@ -1,78 +1,76 @@
-import { Link, router } from "expo-router";
+import { router } from "expo-router";
 import React, { useEffect, useState } from "react";
-import { Text, TouchableOpacity, View } from "react-native";
+import { Text, TouchableOpacity, View, StyleSheet } from "react-native";
 import { GestureHandlerRootView, ScrollView } from "react-native-gesture-handler";
-import { StyleSheet } from "react-native";
 import CollectionTop from "../../../components/CollectionTop";
 import BackButton from "../../../components/BackButton";
-import { collection, getDocs } from "firebase/firestore"; // Firestore関連のインポート
+import { doc, getDoc } from "firebase/firestore";
 import { auth, db } from "../../../config";
 
 const Collection = () => {
-  const [loading, setLoading] = useState(true); // ローディング状態
-  const [explanations, setExplanations] = useState<{
-    id: string;
-    isCorrect: boolean;
-  }[]>([]); // explanationsの型定義
+  const [loading, setLoading] = useState(true);
+  const [explanations, setExplanations] = useState<boolean[]>([]);
+  const [titles, setTitles] = useState<string[]>([]);
 
-  const [explanations2, setExplanations2] = useState<{
-    id: string;
-    タイトル: string;
-  }[]>([]); // explanations2の型定義
+  const data = [
+    { title: "乗っ取り" },
+    { title: "メールアドレス" },
+    { title: "誤字" },
+    { title: "タイトル4" },
+    { title: "タイトル5" },
+    { title: "電話番号" },
+    { title: "タイトル7" },
+    { title: "タイトル8" },
+  ];
 
-  // Firestoreからデータを取得する関数
   const fetchExplanations = async () => {
     setLoading(true);
+    console.log("explanations:", explanations);
     try {
-      // 現在のユーザーIDを取得
       const userId = auth.currentUser?.uid;
       if (!userId) {
         console.error("ユーザーが認証されていません");
         return;
       }
 
-      // Firestoreから「explanations」データを取得
-      const explanationsRef = collection(db, "userInfo", userId, "explanations"); // userInfo/{uid}/explanations サブコレクション
-      const querySnapshot = await getDocs(explanationsRef);
+      const userInfoRef = doc(db, "userInfo", userId);
+      const userInfoSnapshot = await getDoc(userInfoRef);
 
-      // Firestoreから「user」データを取得
-      const explanationsRef2 = collection(db, "user");
-      const querySnapshot2 = await getDocs(explanationsRef2);
+      if (userInfoSnapshot.exists()) {
+        const userInfoData = userInfoSnapshot.data();
+        setExplanations((userInfoData.explanations || []).slice(0, data.length));
+            } else {
+        console.error("userInfoドキュメントが見つかりません");
+      }
 
-      // explanationsのデータを取得
-      const data = querySnapshot.docs.map((doc) => {
-        const docData = doc.data() as { isCorrect: boolean }; // 型の明示
-        return {
-          id: doc.id,
-          isCorrect: docData.isCorrect,
-        };
+      const titlePromises = Array.from({ length: 8 }, async (_, index) => {
+        const explanationRef = doc(db, "user", `explanation${index + 1}`);
+        const explanationSnapshot = await getDoc(explanationRef);
+        if (explanationSnapshot.exists()) {
+          const explanationData = explanationSnapshot.data();
+          return explanationData.タイトル || "タイトルなし";
+        }
+        return "タイトルなし";
       });
 
-      // explanations2のデータを取得
-      const data2 = querySnapshot2.docs.map((doc) => {
-        const docData2 = doc.data() as { タイトル: string }; // 型の明示
-        return {
-          id: doc.id,
-          タイトル: docData2.タイトル,
-        };
-      });
-
-      setExplanations(data); // explanationsのデータを状態にセット
-      setExplanations2(data2); // explanations2のデータを状態にセット
+      const fetchedTitles = await Promise.all(titlePromises);
+      setTitles(fetchedTitles);
     } catch (error) {
       console.error("データの取得に失敗しました:", error);
     } finally {
-      setLoading(false); // ローディング終了
+      setLoading(false);
     }
   };
 
-  // コンポーネントがマウントされたときにデータを取得
   useEffect(() => {
     fetchExplanations();
   }, []);
 
   const handlePress = (id: string): void => {
-    router.push(`/home/collection/collectionDetail/${id}`);
+    router.push({
+      pathname: `/home/collection/collectionDetail/${id}`,
+      params: { id },
+    });
   };
 
   return (
@@ -83,30 +81,28 @@ const Collection = () => {
         {loading ? (
           <Text>Loading...</Text>
         ) : (
-          explanations.map((explanation) => {
-            // explanations2から対応するタイトルを取得
-            const matchedTitle = explanations2.find((item) => item.id === explanation.id)?.タイトル;
+          explanations.map((value, index) => {
+            const matchedTitle = data[index]?.title || "タイトルなし";
 
             return (
               <TouchableOpacity
-                key={explanation.id}
-                onPress={() => explanation.isCorrect ? handlePress(explanation.id) : undefined} // isCorrectがtrueのときのみ遷移
+                key={index}
+                onPress={() => value && handlePress((index + 1).toString())}
                 style={[
                   styles.detailButton,
-                  !explanation.isCorrect && styles.disabledButton, // isCorrectがfalseの場合、無効スタイルを適用
+                  !value && styles.disabledButton,
                 ]}
-                disabled={!explanation.isCorrect} // isCorrectがtrueのときだけ有効
+                disabled={!value}
               >
                 <Text style={styles.buttonText}>
-                  {explanation.isCorrect ? matchedTitle || "タイトルなし" : "？？？"}
+                  {value ? matchedTitle : "？？？"}
                 </Text>
               </TouchableOpacity>
             );
           })
         )}
+        <BackButton />
       </ScrollView>
-
-      <BackButton />
     </GestureHandlerRootView>
   );
 };
@@ -118,7 +114,6 @@ const styles = StyleSheet.create({
     paddingBottom: 80,
     alignItems: "center",
   },
-
   detailButton: {
     backgroundColor: "#D9D9D9",
     width: "80%",

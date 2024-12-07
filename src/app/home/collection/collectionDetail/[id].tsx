@@ -1,0 +1,84 @@
+import { useLocalSearchParams } from 'expo-router';
+import React from 'react';
+import { Text, View, StyleSheet } from 'react-native';
+import { GestureHandlerRootView, ScrollView } from 'react-native-gesture-handler';
+import CollectionTop from '../../../../components/CollectionTop';
+
+const data = [
+  { title: "乗っ取り", text: "偽サイトに誘導しクレジットカード情報など個人情報を収集することなどが目的です。 注文情報がメールにあるならAmazonの公式サイトにアクセスし注文履歴を確認してください。アカウントの更新手続きに関しても必ずメールからではなく公式サイトから更新してください。" ,text2: "詐欺の特徴:不正なログインを検出したためアカウントを停止しました、など緊急性の高い内容のメールを送り偽サイトに誘導する文がある　等" },
+  { title: "メールアドレス", text: "詐欺メールは正規のメールアドレスを偽ったアドレスを使用することがあります。Amazonからのメールは、通常「Amazon.com」や「Amazon.co.jp」など、正確で公式なドメイン名が使われています。しかし、詐欺メールの場合、非常に似ているが微妙に違うアドレスが使われることがあります。", text2: "詐欺の特徴：文字の一部が欠けている、文字の順番が逆になっている 、追加のスペースや文字が含まれている　等" },
+  { title: "誤字", text: "不自然な日本語が使われたメールや、誤字脱字のあるメールは海外から送られてきたメールの可能性があります。", text2: "「おめでとう五座います！」「貴方当選しました」 など間違った変換、てにをはの抜け、不自然な語順　等" },
+  { title: "タイトル4", text: "テキスト4", text2: "" },
+  { title: "タイトル5", text: "テキスト5", text2: "" },
+  { title: "電話番号", text: "最近、大手サービスを名乗る詐欺電話が増えており、その中には070や080から始まる携帯番号であるケースもあります。これらの番号は、詐欺師が悪用することが多いため、特に注意が必要です。", text2: "詐欺の特徴：070や080から始まる携帯番号からはじまる不審な携帯番号　等" },
+  { title: "タイトル7", text: "テキスト7", text2: "" },
+  { title: "タイトル8", text: "テキスト8", text2: "" },
+];
+
+const CollectionDetail = () => {
+  const { id } = useLocalSearchParams();
+  const item = typeof id === 'string' ? data[parseInt(id) - 1] : null;
+
+  if (!item) {
+    return (
+      <View style={styles.container}>
+        <Text style={styles.errorText}>データが見つかりませんでした。</Text>
+      </View>
+    );
+  }
+
+  return (
+    <GestureHandlerRootView>
+        <ScrollView contentContainerStyle={styles.container}>
+            <CollectionTop />
+
+            <View style={styles.explanationContainer}>
+                <Text style={styles.title}>{item.title}</Text>
+                <Text style={styles.subTitle}>解説</Text>
+                <Text style={styles.text}>{item.text}</Text>
+                <Text style={styles.text}>{item.text2}</Text>
+            </View>
+        </ScrollView>
+    </GestureHandlerRootView>
+  );
+};
+
+const styles = StyleSheet.create({
+    container: {
+      flexGrow: 1,
+      backgroundColor: "#ffffff",
+      paddingBottom: 80,
+      justifyContent: "flex-start",
+      },
+    explanationContainer: {
+      alignItems: "flex-start",
+      paddingLeft: 30,
+      paddingTop: 30,
+      width: "95%",
+      },
+    title: {
+      fontWeight: "bold",
+      fontSize: 30,
+      textAlign: 'left',
+      paddingBottom: 30
+      },
+    subTitle: {
+      fontSize: 20,
+      textAlign: 'left',
+      width: "100%",
+      paddingBottom: 10
+      },
+    text: {
+      fontSize: 20,
+      textAlign: 'left',
+      paddingBottom: 30,
+      width: "100%",
+      lineHeight: 28,
+      },
+      errorText: {
+        fontSize: 18,
+        color: 'red',
+      }
+  });
+
+export default CollectionDetail;
