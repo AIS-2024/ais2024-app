@@ -1,7 +1,12 @@
+/** @format */
+
 import { router } from "expo-router";
 import React, { useEffect, useState } from "react";
 import { Text, TouchableOpacity, View, StyleSheet } from "react-native";
-import { GestureHandlerRootView, ScrollView } from "react-native-gesture-handler";
+import {
+  GestureHandlerRootView,
+  ScrollView,
+} from "react-native-gesture-handler";
 import CollectionTop from "../../../components/CollectionTop";
 import BackButton from "../../../components/BackButton";
 import { doc, getDoc } from "firebase/firestore";
@@ -38,8 +43,10 @@ const Collection = () => {
 
       if (userInfoSnapshot.exists()) {
         const userInfoData = userInfoSnapshot.data();
-        setExplanations((userInfoData.explanations || []).slice(0, data.length));
-            } else {
+        setExplanations(
+          (userInfoData.explanations || []).slice(0, data.length)
+        );
+      } else {
         console.error("userInfoドキュメントが見つかりません");
       }
 
@@ -69,7 +76,6 @@ const Collection = () => {
   const handlePress = (id: string): void => {
     router.push({
       pathname: `/home/collection/collectionDetail/${id}`,
-      params: { id },
     });
   };
 
@@ -88,10 +94,7 @@ const Collection = () => {
               <TouchableOpacity
                 key={index}
                 onPress={() => value && handlePress((index + 1).toString())}
-                style={[
-                  styles.detailButton,
-                  !value && styles.disabledButton,
-                ]}
+                style={[styles.detailButton, !value && styles.disabledButton]}
                 disabled={!value}
               >
                 <Text style={styles.buttonText}>
