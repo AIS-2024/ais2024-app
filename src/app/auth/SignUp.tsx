@@ -43,7 +43,7 @@ const SignUp = () => {
       );
       const user = userCredential.user;
       const userDocRef = doc(db, "userInfo", user.uid); // Firestore の "userInfo" コレクション
-      Alert.alert("登録成功", `登録が完了しました！`);
+      
       const explanations = [
         false,
         false,
