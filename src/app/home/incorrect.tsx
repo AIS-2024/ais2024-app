@@ -1,68 +1,61 @@
-import { View, Text, StyleSheet, ScrollView, Image } from "react-native";
+import { View, Text, StyleSheet, ScrollView, TouchableOpacity } from "react-native";
 import React from "react";
-import { registerRootComponent } from "expo";
 import { useRouter } from "expo-router";
-import { AntDesign } from "@expo/vector-icons";
 
-const incorrect = () => {
-    const router = useRouter();
-  
-    const handlePress = () => {
-      router.push("/app/login");
-    };
-    return (
-      <ScrollView style={styles.all}>
-        <View>
-            <View>
-                <Text style={styles.correct}>不正解...</Text>
-            </View>
-            <View>
-                
-                <View style = {styles.backButton}>
-                    <Text style = {styles.back}>もう一度挑戦する</Text>
-                </View>
-            </View>
-            <View style = {styles.homeButton}>
-                    <Text style = {styles.home}>ホームに戻る</Text>
-            </View>
-        </View>
-      </ScrollView>
-    );
+const Incorrect = () => {
+  const router = useRouter();
+
+  const handleRetry = () => {
+    router.back();
   };
 
-  const styles = StyleSheet.create({
-     all: {
-        flex: 1,
-        backgroundColor: "#F9F7E8"
-    },
+  const handleHome = () => {
+    router.push("/home");
+  };
 
-    correct:{
-        alignSelf:'center',
-        paddingTop:50,
-        fontSize:96,
-        color:"#3F54C7"
-    },
-    backButton:{
-        backgroundColor:"#FF7B4B",
-        alignSelf:'center',
-        marginTop:40,
-        padding: 10,
-        marginBottom:20,
-        borderRadius: 50,
-    },
-    back:{
-        fontSize:24
-    },
-    homeButton:{
-        backgroundColor:"#FFB74B",
-        alignSelf:'center',
-        padding: 10,
-        marginBottom:20,
-        borderRadius: 50,
-    },
-    home:{
-        fontSize:24
-    }
-  })
+  return (
+    <ScrollView style={styles.all}>
+      <View>
+        <Text style={styles.correct}>不正解...</Text>
+        <TouchableOpacity style={styles.button} onPress={handleRetry}>
+          <Text style={styles.buttonText}>もう一度挑戦する</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={[styles.button, styles.homeButton]} onPress={handleHome}>
+          <Text style={styles.buttonText}>ホームに戻る</Text>
+        </TouchableOpacity>
+      </View>
+    </ScrollView>
+  );
+};
 
-  export default incorrect;
+const styles = StyleSheet.create({
+  all: {
+    flex: 1,
+    backgroundColor: "#F9F7E8",
+  },
+  correct: {
+    alignSelf: "center",
+    paddingTop: 50,
+    fontSize: 96,
+    color: "#3F54C7",
+  },
+  button: {
+    backgroundColor: "#FF7B4B",
+    alignSelf: "center",
+    marginTop: 40,
+    paddingVertical: 10,
+    paddingHorizontal: 20,
+    marginBottom: 20,
+    borderRadius: 50,
+  },
+  homeButton: {
+    backgroundColor: "#FFB74B",
+  },
+  buttonText: {
+    fontSize: 24,
+    color: "#FFFFFF",
+    textAlign: "center",
+  },
+});
+
+export default Incorrect;
