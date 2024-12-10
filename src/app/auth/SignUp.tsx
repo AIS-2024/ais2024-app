@@ -43,7 +43,7 @@ const SignUp = () => {
       );
       const user = userCredential.user;
       const userDocRef = doc(db, "userInfo", user.uid); // Firestore の "userInfo" コレクション
-      
+
       const explanations = [
         false,
         false,
@@ -62,6 +62,7 @@ const SignUp = () => {
         name: name,
         age: parseInt(age, 10), // 年齢をint型に変換 (10進数として整数に変換する)
         sex: sex,
+        mail: mail,
         explanations: explanations,
       });
     } catch (error: unknown) {

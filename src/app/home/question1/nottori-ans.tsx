@@ -1,5 +1,4 @@
 /** @format */
-// 他パターン無し 内容が詐欺なので //
 
 import {
   View,
@@ -9,16 +8,19 @@ import {
   TouchableOpacity,
 } from "react-native";
 import { router } from "expo-router";
-import { AntDesign } from "@expo/vector-icons";
 import React, { useEffect, useState } from "react";
-import ChangeButton from "../../../components/ChangeButton";
 import Address from "../../../components/Address";
 import Footer from "../Footer";
-import { auth, db } from "../../../config";
+import AnswerButton from "../../../components/AnswerButton";
 import { doc, getDoc } from "firebase/firestore";
+import { auth, db } from "../../../config";
 
 const handlePress = (): void => {
-  router.push("/home/question1/nottori-ans");
+  router.push("/home/correct");
+};
+
+const handlePress1 = (): void => {
+  router.push("/home/incorrect");
 };
 
 const Nottori = () => {
@@ -55,47 +57,57 @@ const Nottori = () => {
   }, []);
   return (
     <ScrollView style={styles.container}>
-      <Address />
-      <View style={styles.header}>
+      <TouchableOpacity onPress={handlePress1}>
+        <Address />
+      </TouchableOpacity>
+      <TouchableOpacity style={styles.header} onPress={handlePress1}>
         <Text style={styles.title}>
           Amazon.co.jpでのご注文{"\n"}
           508-8864920-6546310（1点）
         </Text>
-      </View>
-      <View style={styles.infoLink}>
+      </TouchableOpacity>
+      <TouchableOpacity style={styles.infoLink} onPress={handlePress1}>
         <Text style={styles.linkText}>注文履歴</Text>
         <Text>｜</Text>
         <Text style={styles.linkText}>アカウントサービス</Text>
         <Text>｜</Text>
         <Text style={styles.linkText}>Amazon.co.jp</Text>
-      </View>
-      <View style={styles.infoLink}>
+      </TouchableOpacity>
+      <TouchableOpacity style={styles.infoLink} onPress={handlePress1}>
         <Text>注文番号：</Text>
         <Text style={styles.linkText}>508-8864920-6546310</Text>
-      </View>
+      </TouchableOpacity>
 
       <View style={styles.mail}>
-        <Text>{username}様</Text>
-        <Text style={styles.mainBlack}>
-          誰かがあなたのAmazonアカウントを使用して別のモバイルデバイスからこの注文を購入しようとしました。Amazonのアカウントセキュリティポリシーに従い、Amazonアカウントを凍結しました。
-        </Text>
-        <Text style={styles.mainRed}>
-          ◆アカウントが盗まれる危険性があります。この注文を一度も購入したことが無い場合は、24時間以内に以下のリンクをクリックして、この注文をキャンセル、Amazonアカウントを復元してください
-        </Text>
+        <TouchableOpacity onPress={handlePress1}>
+          <Text>{username}様</Text>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={handlePress1}>
+          <Text style={styles.mainBlack}>
+            誰かがあなたのAmazonアカウントを使用して別のモバイルデバイスからこの注文を購入しようとしました。Amazonのアカウントセキュリティポリシーに従い、Amazonアカウントを凍結しました。
+          </Text>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={handlePress}>
+          <Text style={styles.mainRed}>
+            ◆アカウントが盗まれる危険性があります。この注文を一度も購入したことが無い場合は、24時間以内に以下のリンクをクリックして、この注文をキャンセル、Amazonアカウントを復元してください
+          </Text>
+        </TouchableOpacity>
 
         <View style={styles.order}>
           <View style={styles.orderInner}>
-            <Text style={styles.category}>お届け予定：</Text>
-            <Text style={styles.categoryText}>水曜日, 06/07{"\n"}</Text>
-            <Text style={styles.category}>{"\n"}配送オプション：</Text>
-            <Text style={styles.categoryText}>お急ぎ便</Text>
+            <TouchableOpacity onPress={handlePress1}>
+              <Text style={styles.category}>お届け予定：</Text>
+              <Text style={styles.categoryText}>水曜日, 06/07{"\n"}</Text>
+              <Text style={styles.category}>{"\n"}配送オプション：</Text>
+              <Text style={styles.categoryText}>お急ぎ便</Text>
+            </TouchableOpacity>
             <View style={styles.button}>
-              <TouchableOpacity style={styles.buttonText}>
+              <TouchableOpacity style={styles.buttonText} onPress={handlePress1}>
                 <Text style={styles.buttonText}>この注文をキャンセルする</Text>
               </TouchableOpacity>
             </View>
           </View>
-          <View style={styles.orderInner}>
+          <TouchableOpacity style={styles.orderInner} onPress={handlePress1}>
             <Text style={styles.category}>お届け先：</Text>
             <Text style={styles.categoryText}>
               username 様{"\n"}
@@ -108,13 +120,11 @@ const Nottori = () => {
             <Text>{"\n"}支払方法</Text>
             <Text>クレジットカード：</Text>
             <Text style={styles.textRight}>￥{"\n"}98,300</Text>
-          </View>
+          </TouchableOpacity>
         </View>
         <Footer />
       </View>
-      <ChangeButton onPress={handlePress}>
-        <AntDesign name='exclamation' size={40} />
-      </ChangeButton>
+      <AnswerButton label='間違い無し' onPress={handlePress1} />
     </ScrollView>
   );
 };
