@@ -1,15 +1,48 @@
 import { router } from "expo-router";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Text, View, StyleSheet, ScrollView, TouchableOpacity } from "react-native";
 import ChangeButton from "../../../components/ChangeButton";
 import { AntDesign } from "@expo/vector-icons";
 import Address from "../../../components/Address";
+import { auth, db } from "../../../config";
+import { doc, getDoc } from "firebase/firestore";
 
 const handlepress = () : void => {
   router.push("home/question2/question2")
 }
 
 const Question2 = () => {
+  const [useraddress, setUseraddress] = useState("");
+
+
+  const fetchUseraddress = async () => {
+    const user = auth.currentUser;
+    if (!user) {
+      console.warn("User not logged in.");
+      return null;
+    }
+
+    const userDoc = doc(db, "userInfo", user.uid);
+    try {
+      const docSnap = await getDoc(userDoc);
+      if (docSnap.exists()) {
+        return docSnap.data().mail;
+      } else {
+        console.warn("No such document!");
+      }
+    } catch (error) {
+      console.error("Error fetching user data:", error);
+    }
+    return null;
+  };
+
+  useEffect(() => {
+    const loadUseraddress = async () => {
+      const address = await fetchUseraddress();
+      setUseraddress(address || "user");
+    };
+    loadUseraddress();
+  }, []);
     return (
         <ScrollView contentContainerStyle={styles.container}>
           <Address />
@@ -24,7 +57,7 @@ const Question2 = () => {
         <View style={styles.mailContainer}>
             <Text style={styles.sectionHeader}>【重要】カスタマセンターからのご案内</Text>
 
-            <Text>あなたのAmazonアカウント：○○○@sample.jp、異常なログインが見つかり、配送先住所が変更されました！</Text>
+            <Text>あなたのAmazonアカウント：{useraddress}、異常なログインが見つかり、配送先住所が変更されました！</Text>
 
         <View style={styles.address}>
             <Text>ログイン日時：2024-10-05, 4:23:31</Text>
@@ -42,7 +75,7 @@ const Question2 = () => {
 
             <TouchableOpacity style={styles.button} onPress={handlepress}>
               <Text style={styles.buttonText}>アカウント管理に移動</Text>
-            </TouchableOpacity> 
+            </TouchableOpacity>
 
 
         <View style={styles.footerContainer}>

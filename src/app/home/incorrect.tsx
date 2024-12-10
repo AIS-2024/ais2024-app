@@ -10,7 +10,7 @@ const Incorrect = () => {
   };
 
   const handleHome = () => {
-    router.push("/home");
+    router.push("/home/home");
   };
 
   return (

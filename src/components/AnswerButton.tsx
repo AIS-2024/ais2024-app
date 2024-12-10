@@ -2,27 +2,27 @@ import React from 'react';
 import { Text, StyleSheet, TouchableOpacity, type ViewStyle } from "react-native"
 
 interface Props {
-    children: JSX.Element
+    label: string
     style?: ViewStyle
     onPress?: () => void
 }
 
-const ChangeButton = (props: Props) => {
-    const { children, style, onPress } = props
+const AnswerButton = (props: Props) => {
+    const { label, style, onPress } = props
     return (
-        <TouchableOpacity onPress={onPress} style={[styles.circleButton, style]}>
-            <Text style={styles.circleButtonLabel}>{children}</Text>
+        <TouchableOpacity onPress={onPress} style={[styles.answerButton, style]}>
+            <Text style={styles.answerButtonLabel}>{label}</Text>
         </TouchableOpacity>
     )
 }
 
 const styles = StyleSheet.create({
-    circleButton: {
-        width: 64,
+    answerButton: {
+        width: 200,
         height: 64,
         borderRadius: 32,
         borderWidth: 2,
-        borderColor: '#fff',
+        borderColor: '#000',
         backgroundColor: '#2DFF70',
         justifyContent: 'center',
         alignItems: 'center',
@@ -35,11 +35,11 @@ const styles = StyleSheet.create({
         shadowOffset: { width: 0, height: 8},
         elevation: 8
     },
-    circleButtonLabel: {
-        color: '#fff',
-        fontSize: 40,
+    answerButtonLabel: {
+        color: '#000',
+        fontSize: 30,
         lineHeight: 48
     }
 })
 
-export default ChangeButton
+export default AnswerButton

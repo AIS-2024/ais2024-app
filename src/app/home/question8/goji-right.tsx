@@ -4,15 +4,48 @@
 import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { router } from "expo-router";
 import { AntDesign } from "@expo/vector-icons";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import ChangeButton from "../../../components/ChangeButton";
 import Address from "../../../components/Address";
+import { auth, db } from "../../../config";
+import { doc, getDoc } from "firebase/firestore";
 
 const handlePress = (): void => {
   router.push("/home/question8/goji");
 };
 
 export default function App() {
+  const [username, setUsername] = useState("");
+
+
+  const fetchUsername = async () => {
+    const user = auth.currentUser;
+    if (!user) {
+      console.warn("User not logged in.");
+      return null;
+    }
+
+    const userDoc = doc(db, "userInfo", user.uid);
+    try {
+      const docSnap = await getDoc(userDoc);
+      if (docSnap.exists()) {
+        return docSnap.data().name;
+      } else {
+        console.warn("No such document!");
+      }
+    } catch (error) {
+      console.error("Error fetching user data:", error);
+    }
+    return null;
+  };
+
+  useEffect(() => {
+    const loadUsername = async () => {
+      const name = await fetchUsername();
+      setUsername(name || "user");
+    };
+    loadUsername();
+  }, []);
   return (
     <ScrollView style={styles.container}>
       <Address />
@@ -38,7 +71,7 @@ export default function App() {
       </View>
 
       <View style={styles.mail}>
-        <Text>username様</Text>
+        <Text>{username}様</Text>
         <Text style={styles.mainText}>招待者に選ばれました。</Text>
         <Text>
           招待リクエストをお送りいただき、ありがとうございます。お客様は、招待販売の招待者にえらばれました。当選した商品をご購入いただけます。
