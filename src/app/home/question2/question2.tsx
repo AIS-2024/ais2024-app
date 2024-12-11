@@ -6,9 +6,14 @@ import { Text, View, StyleSheet, ScrollView, TouchableOpacity } from "react-nati
 import ChangeButton from "../../../components/ChangeButton";
 import { AntDesign } from "@expo/vector-icons";
 import Address from "../../../components/Address";
+import AnswerButton from "../../../components/AnswerButton";
 
 const handlepress = () : void => {
-  router.push("home/question2/question2mailaddress")
+  router.push("/home/incorrect")
+}
+
+const handlepresscorect = () : void => {
+  router.push("/home/correct")
 }
 
 const Question2 = () => {
@@ -25,7 +30,7 @@ const Question2 = () => {
 
         <View style={styles.mailContainer}>
             <Text style={styles.sectionHeader}>【重要】カスタマセンターからのご案内</Text>
-            <TouchableOpacity style={styles.navButton}>
+            <TouchableOpacity onPress={handlepresscorect}style={styles.navButton}>
             <Text style={styles.textunderline}>あなたのAmazonアカウント：○○○@sample.jp、異常なログインが見つかり、配送先住所が変更されました！</Text>
             </TouchableOpacity>
         <View style={styles.address}>
@@ -54,9 +59,10 @@ const Question2 = () => {
         </View>
 
         </View>
-        <ChangeButton  onPress={handlepress}>
-          <AntDesign name='exclamation' size={40} />
-        </ChangeButton>
+        <AnswerButton label='間違い無し' onPress={handlepress} />
+        {/* <AnswerButton  onPress={handlepress}>
+          <AntDesign name='check' size={40} />
+        </AnswerButton> */}
         </ScrollView>
     )
 }
