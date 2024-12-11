@@ -9,7 +9,7 @@ import { AntDesign } from "@expo/vector-icons";
 import Address from "../../../components/Address";
 
 const handlepress = () : void => {
-  router.push("home/question6/question1call")
+  router.push("home/question6/question1-ans")
 }
 
 const Question1 = () => {
@@ -30,7 +30,7 @@ const Question1 = () => {
           継続してプライム会員特典をお楽しみいただきたい場合は、｢Amazonプライム会員情報の管理｣ページににて｢会員資格を帰属する｣をクリックしてください。
         </Text>
 
-        <Text style={styles.button} onPress={handlepress}>会員情報の管理ページで確認</Text>
+        <Text style={styles.button}>会員情報の管理ページで確認</Text>
 
         <Text style={styles.alert}>
           なお、72時間以内にご確認がない場合、誠に申し訳ございません、お客様の安全のため、アカウントの利用制限をさせていただきますので、あらかじめご了承ください。
@@ -49,7 +49,7 @@ const Question1 = () => {
         </Text>
 
       <Text style={styles.footer}>Amazon.co.jp　カスタマーサービス</Text>
-      <ChangeButton>
+      <ChangeButton onPress={handlepress}>
         <AntDesign name='exclamation' size={40} />
       </ChangeButton>
     </ScrollView>

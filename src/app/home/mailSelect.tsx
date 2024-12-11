@@ -10,7 +10,7 @@ const handlePress2 = () : void => {
     router.push("/home/question1/nottori")
 }
 const handlePress3 = () : void => {
-    router.push("/home/question2/question2mailaddress")
+    router.push("/home/question2/amazn")
 }
 const handlePress4 = () : void => {
     router.push("/home/question3/quiz1")

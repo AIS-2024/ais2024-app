@@ -5,13 +5,12 @@ import React from 'react';
 import { useRouter } from 'expo-router';
 import ChangeButton from "../../../components/ChangeButton";
 import { AntDesign } from "@expo/vector-icons";
-import Address from "../../../components/Address";
 
 const Quiz2 = () => {
     const router = useRouter();
 
     const handlePress = () => {
-        router.push('/home/question5/quiz2');
+        router.push('/home/question5/quiz2-another-ans');
     };
 
     return (
@@ -22,10 +21,12 @@ const Quiz2 = () => {
                         <View style={styles.message1Container}>
                             <View></View>
                             <View>
-                            <Text>【重要】Amazonアカウントが一時的に停止されています{"\n"}
-                            あなたのアカウントは私たちの利用規約に違反しています。 Amazon.co.jpアカウントは一時的に停止されています。{"\n"}
+                            <Text>【重要】Amazonアカウントが一時的に停止されています{"\n"}{"\n"}
+                            あなたのアカウントは私たちの利用規約に違反しています。 Amazon.co.jp{"\n"}
+                            アカウントは一時的に停止されています。{"\n"}
 理由: お支払い情報を更新できませんでした{"\n"}
-再度アカウントを有効にするには、以下のリンクと手順を開いて、このアカウントがあなたのアカウントであることを確認してください。{"\n"}
+再度アカウントを有効にするには、以下のリンクと手順を開いて、{"\n"}
+このアカウントがあなたのアカウントであることを確認してください。{"\n"}
                             </Text>
                             <Text style={styles.link}>https://bit.ly/..</Text>
                             <Text>Amazon.co.jp どうぞよろしくお願いいたします。</Text>
@@ -34,7 +35,7 @@ const Quiz2 = () => {
                     </View>
                 </View>
             </View>
-            <ChangeButton>
+            <ChangeButton onPress={handlePress}>
                 <AntDesign name='exclamation' size={40} />
             </ChangeButton>
         </ScrollView>
