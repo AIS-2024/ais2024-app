@@ -1,14 +1,16 @@
 import { router } from "expo-router";
 import React, { useEffect, useState } from "react";
 import { Text, View, StyleSheet, ScrollView, TouchableOpacity } from "react-native";
-import ChangeButton from "../../../components/ChangeButton";
-import { AntDesign } from "@expo/vector-icons";
 import Address from "../../../components/Address";
 import { auth, db } from "../../../config";
 import { doc, getDoc } from "firebase/firestore";
+import AnswerButton from "../../../components/AnswerButton";
 
-const handlepress = () : void => {
-  router.push("home/question2/question2")
+const handlepressCorrect = () : void => {
+  router.push("home/correct")
+}
+const handlepressIncorrect = () : void => {
+  router.push("home/incorrect")
 }
 
 const Question2 = () => {
@@ -45,49 +47,62 @@ const Question2 = () => {
   }, []);
     return (
         <ScrollView contentContainerStyle={styles.container}>
-          <Address />
-        <View style={styles.headerContainer}>
-            <Text style={styles.header}>【重要】Amazon株式会社からの緊急のご連絡</Text>
+          <TouchableOpacity onPress={handlepressIncorrect}>
+            <Address />
+          </TouchableOpacity>
 
-            <Text style={styles.title}>amazn.co.jp</Text>
+          <View style={styles.headerContainer}>
+            <TouchableOpacity onPress={handlepressIncorrect}>
+              <Text style={styles.header}>【重要】Amazon株式会社からの緊急のご連絡</Text>
+            </TouchableOpacity>
+
+            <TouchableOpacity onPress={handlepressCorrect}>
+              <Text style={styles.title}>amazn.co.jp</Text>
+            </TouchableOpacity>
             <Text style={styles.underline}>___________________________________________</Text>
         </View>
 
 
         <View style={styles.mailContainer}>
+          <TouchableOpacity>
             <Text style={styles.sectionHeader}>【重要】カスタマセンターからのご案内</Text>
 
             <Text>あなたのAmazonアカウント：{useraddress}、異常なログインが見つかり、配送先住所が変更されました！</Text>
+          </TouchableOpacity>
 
-        <View style={styles.address}>
+          <TouchableOpacity style={styles.address} onPress={handlepressIncorrect}>
             <Text>ログイン日時：2024-10-05, 4:23:31</Text>
             <Text>IPアドレス：[000.0.0.00]</Text>
             <Text>装備：iphone8 IOS 18.0.1</Text>
             <Text>場所：水戸市</Text>
-        </View>
+          </TouchableOpacity>
 
+          <TouchableOpacity onPress={handlepressIncorrect}>
             <Text>つきましては、お客様の情報を保護するために次の措置を講じました</Text>
 
             <Text>--お客様のアカウントのパスワードを無効にいたしました</Text>
             <Text>--不正アクセスによって行われた変更につきましては、無効にいたしました</Text>
+          </TouchableOpacity>
 
+          <TouchableOpacity onPress={handlepressIncorrect}>
             <Text style={styles.warning}>お客様のアカウントに再度有効化していただけるようになります。次のリンクをクリックして指示に従ってください。</Text>
+          </TouchableOpacity>
 
-            <TouchableOpacity style={styles.button} onPress={handlepress}>
-              <Text style={styles.buttonText}>アカウント管理に移動</Text>
-            </TouchableOpacity>
+          <TouchableOpacity style={styles.button} onPress={handlepressIncorrect}>
+            <Text style={styles.buttonText}>アカウント管理に移動</Text>
+          </TouchableOpacity>
 
 
-        <View style={styles.footerContainer}>
+          <TouchableOpacity style={styles.footerContainer} onPress={handlepressIncorrect}>
             <Text style={styles.underline}>___________________________________________</Text>
             <Text>Copyright ⓒ 2020 Amazon Inc. All rights reserved</Text>
             <Text>発行元：Amazon株式会社</Text>
-        </View>
+          </TouchableOpacity>
 
         </View>
-        <ChangeButton onPress={handlepress}>
-          <AntDesign name='exclamation' size={40} />
-        </ChangeButton>
+
+        <AnswerButton label='間違い無し' onPress={handlepressIncorrect} />
+
         </ScrollView>
     )
 }

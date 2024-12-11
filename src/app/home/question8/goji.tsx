@@ -7,7 +7,7 @@ import { AntDesign } from "@expo/vector-icons";
 import React, { useEffect, useState } from "react";
 import ChangeButton from "../../../components/ChangeButton";
 import Address from "../../../components/Address";
-import Footer from "../Footer";
+import Footer from "../../../components/Footer";
 import { auth, db } from "../../../config";
 import { doc, getDoc } from "firebase/firestore";
 

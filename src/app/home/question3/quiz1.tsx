@@ -3,7 +3,6 @@
 
 import { View, Text, StyleSheet, ScrollView, Image } from "react-native";
 import React from "react";
-import { registerRootComponent } from "expo";
 import { useRouter } from "expo-router";
 import ChangeButton from "../../../components/ChangeButton";
 import { AntDesign } from "@expo/vector-icons";
@@ -13,7 +12,7 @@ const quiz1 = () => {
   const router = useRouter();
 
   const handlePress = () => {
-    router.push("/home/question3/quiz1-goji");
+    router.push("/home/question3/quiz1-ans");
   };
   return (
     <ScrollView style={styles.container}>
@@ -53,7 +52,7 @@ const quiz1 = () => {
           <View>
             <Text style={styles.mailLink}>
               ----------------------------------------{"\n"}
-              <Text style={styles.link} onPress={handlePress}>
+              <Text style={styles.link}>
                 情報更新ページ
               </Text>
               {"\n"}
@@ -76,7 +75,7 @@ const quiz1 = () => {
         </View>
       </View>
       <ChangeButton>
-        <AntDesign name='exclamation' size={40} />
+        <AntDesign name='exclamation' size={40} onPress={handlePress} />
       </ChangeButton>
     </ScrollView>
   );

@@ -1,7 +1,7 @@
 import React from 'react';
 import { SafeAreaView, View, Text, StyleSheet, Image, ScrollView, TouchableOpacity } from 'react-native';
 import Address from '../../../components/Address';
-import Footer from '../Footer';
+import Footer from '../../../components/Footer';
 
 export default function App() {
   return (

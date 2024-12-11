@@ -1,37 +1,41 @@
 // フィッシングの例 //
 // 回答は「本日中にご確認いただけない場合、法的な手続きをとることがあります。」脅しの文章//
-import { View, Text, StyleSheet, ScrollView } from "react-native";
+import { View, Text, StyleSheet, ScrollView, TouchableOpacity } from "react-native";
 import React from 'react';
 import { useRouter } from 'expo-router';
-import ChangeButton from "../../../components/ChangeButton";
-import { AntDesign } from "@expo/vector-icons";
+import AnswerButton from "../../../components/AnswerButton";
 
 const Quiz2 = () => {
     const router = useRouter();
 
-    const handlePress = () => {
-        router.push('/home/question5/quiz2-ans');
-    };
-
+    const handlepressCorrect = () => {
+        router.push("/home/correct");
+      };
+    const handlepressIncorrect = () => {
+        router.push("/home/incorrect");
+      };
     return (
         <ScrollView>
             <View style={styles.container}>
                 <View style={styles.message1}>
                     <View style={styles.messageBox1}>
                         <View style={styles.message1Container}>
-                            <View></View>
                             <View>
-                            <Text>支払いの問題でAmazonがロックされました。</Text>
-                            <Text style={styles.link}>https://www.amazon.co.jp/</Text>
-                            <Text>本日中にご確認いただけない場合、法的な手続きをとることがあります。</Text>
+                                <TouchableOpacity onPress={handlepressIncorrect}>
+                                    <Text>支払いの問題でAmazonがロックされました。</Text>
+                                </TouchableOpacity>
+                                <TouchableOpacity onPress={handlepressIncorrect}>
+                                    <Text style={styles.link}>https://www.amazon.co.jp/</Text>
+                                </TouchableOpacity>
+                                <TouchableOpacity onPress={handlepressCorrect}>
+                                    <Text>本日中にご確認いただけない場合、法的な手続きをとることがあります。</Text>
+                                </TouchableOpacity>
                             </View>
                         </View>
                     </View>
                 </View>
             </View>
-            <ChangeButton onPress={handlePress}>
-                <AntDesign name='exclamation' size={40} />
-            </ChangeButton>
+            <AnswerButton label='間違い無し' onPress={handlepressIncorrect} />
         </ScrollView>
     );
 }

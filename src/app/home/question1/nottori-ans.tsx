@@ -10,7 +10,7 @@ import {
 import { router } from "expo-router";
 import React, { useEffect, useState } from "react";
 import Address from "../../../components/Address";
-import Footer from "../Footer";
+import Footer from "../../../components/Footer";
 import AnswerButton from "../../../components/AnswerButton";
 import { doc, getDoc } from "firebase/firestore";
 import { auth, db } from "../../../config";
