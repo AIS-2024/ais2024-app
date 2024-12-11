@@ -9,11 +9,11 @@ import Address from "../../../components/Address";
 import AnswerButton from "../../../components/AnswerButton";
 
 const handlepress = () : void => {
-  router.push("home/question2/question2mailaddress")
+  router.push("/home/incorrect")
 }
 
 const handlepresscorect = () : void => {
-  router.push("home/question2/corect")
+  router.push("/home/correct")
 }
 
 const Question2 = () => {
@@ -59,9 +59,10 @@ const Question2 = () => {
         </View>
 
         </View>
-        <AnswerButton  onPress={handlepress}>
+        <AnswerButton label='間違い無し' onPress={handlepress} />
+        {/* <AnswerButton  onPress={handlepress}>
           <AntDesign name='check' size={40} />
-        </AnswerButton>
+        </AnswerButton> */}
         </ScrollView>
     )
 }
