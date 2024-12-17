@@ -96,13 +96,27 @@ const Home = () => {
     });
   };
 
+  const resetTutorial = () => {
+    setStep(0); // ステップを初期化
+    setArrowPositionChange(false); // 矢印位置の状態もリセット
+    setModalVisible(true); // モーダルを再表示
+    showTooltip(); // 矢印の位置を再計算
+  };
+
   //矢印の位置をarrowPositionに設定
   const showTooltip = async () => {
     try {
+      const currentStep = steps[step];
+  
+      if (!currentStep?.target) {
+        console.warn("Target ref is undefined for step:", step);
+        return;
+      }
+  
       if (step === 0) {
         setArrowPosition({ top: -100, left: -100 });
       } else {
-        const position = await measureTarget(steps[step]?.target);
+        const position = await measureTarget(currentStep.target);
         setArrowPosition(position);
       }
     } catch (error) {
@@ -148,24 +162,29 @@ const Home = () => {
       style={styles.background}
     >
       <View style={styles.iconContainer}>
-        <TouchableOpacity ref={mailIconRef} onPress={handlepress1}>
-          <Image
-            source={{
-              uri: "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/d0/95/24/d0952470-b2fe-f628-1e30-0c4a444aadb3/AppIcon-0-0-1x_U007emarketing-0-10-0-85-220.png/340x340bb.webp",
-            }}
-            style={styles.mailIcon}
-          />
-        </TouchableOpacity>
-
-        <TouchableOpacity ref={smsIconRef} onPress={handlepress2}>
-          <Image
-            source={{
-              uri: "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/9d/84/0b/9d840b19-1f87-4e2a-c2ce-ab56d31839d7/AppIcon-0-0-1x_U007emarketing-0-10-0-85-220.png/340x340bb.webp",
-            }}
-            style={styles.Icon}
-          />
-        </TouchableOpacity>
-
+        <View style={{ alignItems: "center" }}>
+          <TouchableOpacity ref={mailIconRef} onPress={handlepress1}>
+            <Image
+              source={{
+                uri: "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/d0/95/24/d0952470-b2fe-f628-1e30-0c4a444aadb3/AppIcon-0-0-1x_U007emarketing-0-10-0-85-220.png/340x340bb.webp",
+              }}
+              style={styles.mailIcon}
+            />
+          </TouchableOpacity>
+          <Text style={styles.text}>メール問題</Text>
+        </View>
+        <View  style={{ alignItems: "center" }}>
+          <TouchableOpacity ref={smsIconRef} onPress={handlepress2}>
+            <Image
+              source={{
+                uri: "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/9d/84/0b/9d840b19-1f87-4e2a-c2ce-ab56d31839d7/AppIcon-0-0-1x_U007emarketing-0-10-0-85-220.png/340x340bb.webp",
+              }}
+              style={styles.Icon}
+            />
+          </TouchableOpacity>
+          <Text style={styles.text}>SMS問題</Text>
+        </View>
+        <View  style={{ alignItems: "center" }}>
         <TouchableOpacity ref={callIconRef} onPress={handlepress3}>
           <Image
             source={{
@@ -174,7 +193,9 @@ const Home = () => {
             style={styles.Icon}
           />
         </TouchableOpacity>
-
+        <Text style={styles.text}>電話問題</Text>
+        </View>
+        <View  style={{ alignItems: "center" }}>
         <TouchableOpacity ref={collectionIconRef} onPress={handlepress4}>
           <Image
             source={{
@@ -183,6 +204,9 @@ const Home = () => {
             style={styles.Icon}
           />
         </TouchableOpacity>
+        <Text style={styles.text}>ｺﾚｸｼｮﾝ</Text>
+        </View>
+      
         {/* チュートリアルモーダル */}
         <Modal
           visible={modalVisible}
@@ -220,6 +244,11 @@ const Home = () => {
           </View>
         </Modal>
       </View>
+      <View style={styles.resetButtonContainer}>
+      <TouchableOpacity style={styles.resetButton} onPress={resetTutorial}>
+  <Text style={styles.resetButtonText}>チュートリアル</Text>
+</TouchableOpacity>
+</View>
     </ImageBackground>
   );
 };
@@ -241,13 +270,19 @@ const styles = StyleSheet.create({
     width: 65,
     height: 65,
     borderRadius: 15,
-    marginBottom: 15, // 下に余白を追加
+    marginBottom: 5, // 下に余白を追加
+  },
+  text: {
+    alignItems: "flex-start",
+    justifyContent: "space-between",
+    color: "#ffffff"
+
   },
   Icon: {
     width: 65,
     height: 65,
     borderRadius: 15,
-    marginBottom: 15, // 下に余白を追加
+    marginBottom: 5, // 下に余白を追加
   },
   modalContainer: {
     flex: 1,
@@ -271,7 +306,6 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     zIndex: 10,
   },
-
   startTutorialButton: {
     marginTop: 20,
     padding: 10,
@@ -323,6 +357,25 @@ const styles = StyleSheet.create({
     color: "white",
     fontWeight: "bold",
   },
+  resetButtonContainer: {
+    right: 40,
+    bottom: 40,
+    position: "absolute"
+  },
+  resetButton: {
+    width: 65,
+    height: 65,
+    borderRadius: 15,
+    marginBottom: 5,
+    backgroundColor: "orange",
+    alignItems: "center",
+    justifyContent: "center"
+  },
+  resetButtonText: {
+    textAlign: "center",
+    fontWeight: "bold",
+    color: "000000" 
+  }
 });
 
 export default Home;

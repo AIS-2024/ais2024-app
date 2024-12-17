@@ -104,8 +104,9 @@ const Collection = () => {
             );
           })
         )}
-        <BackButton />
+
       </ScrollView>
+      <BackButton />
     </GestureHandlerRootView>
   );
 };
