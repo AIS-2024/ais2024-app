@@ -16,13 +16,14 @@ import { createUserWithEmailAndPassword } from "firebase/auth";
 import { doc, setDoc } from "firebase/firestore";
 import { FirebaseError } from "firebase/app";
 import { auth, db } from "../../config";
+import { Picker } from '@react-native-picker/picker';
 
 const SignUp = () => {
   const [name, setName] = useState("");
   const [mail, setMail] = useState("");
   const [password, setPassword] = useState("");
-  const [age, setAge] = useState("");
-  const [sex, setSex] = useState("");
+  const [age, setAge] = useState("回答しない");
+  const [sex, setSex] = useState("回答しない");
   const [loading, setLoading] = useState(false);
   const router = useRouter();
 
@@ -60,7 +61,7 @@ const SignUp = () => {
       });
       await setDoc(userDocRef, {
         name: name,
-        age: parseInt(age, 10), // 年齢をint型に変換 (10進数として整数に変換する)
+        age: age,
         sex: sex,
         mail: mail,
         explanations: explanations,
@@ -101,21 +102,36 @@ const SignUp = () => {
       </View>
       <View>
         <View style={styles.boxes}>
-          <Text>名前:</Text>
+          <View style={styles.title}>
+            <Text>名前　</Text>
+            <View style={styles.alert}>
+              <Text style={styles.alertText}>必須</Text>
+            </View>
+          </View>
           <TextInput
             style={styles.input}
             value={name}
             onChangeText={(newText) => setName(newText)}
             placeholder="名前を入力"
           />
-          <Text>メールアドレス:</Text>
+          <View style={styles.title}>
+            <Text>メールアドレス　</Text>
+            <View style={styles.alert}>
+              <Text style={styles.alertText}>必須</Text>
+            </View>
+          </View>
           <TextInput
             style={styles.input}
             value={mail}
             onChangeText={(newText) => setMail(newText)}
             placeholder="メールアドレスを入力"
           />
-          <Text>パスワード:</Text>
+          <View style={styles.title}>
+            <Text>パスワード　</Text>
+            <View style={styles.alert}>
+              <Text style={styles.alertText}>必須</Text>
+            </View>
+          </View>
           <TextInput
             style={styles.input}
             value={password}
@@ -123,21 +139,43 @@ const SignUp = () => {
             placeholder="パスワードを入力"
             secureTextEntry
           />
-          <Text>年齢:</Text>
-          <TextInput
-            style={styles.input}
-            value={age}
-            onChangeText={(newText) => setAge(newText)}
-            placeholder="年齢を入力"
-            keyboardType="numeric"
-          />
-          <Text>性別:</Text>
-          <TextInput
-            style={styles.input}
-            value={sex}
-            onChangeText={(newText) => setSex(newText)}
-            placeholder="性別を入力"
-          />
+          <View style={styles.title}>
+            <Text>年齢　</Text>
+            <View style={styles.alertFree}>
+              <Text style={styles.alertText}>任意</Text>
+            </View>
+          </View>
+          <Picker
+        selectedValue={age}
+        onValueChange={(itemValue) => setAge(itemValue)}
+        style={styles.picker}
+      >
+        <Picker.Item label="回答しない" value="回答しない" />
+        <Picker.Item label="10歳未満" value="10歳未満" />
+        <Picker.Item label="10代" value="10代" />
+        <Picker.Item label="20代" value="20代" />
+        <Picker.Item label="30代" value="30代" />
+        <Picker.Item label="40代" value="40代" />
+        <Picker.Item label="50代" value="50代" />
+        <Picker.Item label="60代" value="60代" />
+        <Picker.Item label="70代" value="70代" />
+        <Picker.Item label="80歳以上" value="80歳以上" />
+      </Picker>
+      <View style={styles.title}>
+          <Text>性別　</Text>
+          <View style={styles.alertFree}>
+              <Text style={styles.alertText}>任意</Text>
+            </View>
+          </View>
+          <Picker
+        selectedValue={sex}
+        onValueChange={(itemValue) => setSex(itemValue)}
+        style={styles.picker}
+      >
+        <Picker.Item label="回答しない" value="回答しない" />
+        <Picker.Item label="男性" value="男性" />
+        <Picker.Item label="女性" value="女性" />
+      </Picker>
         </View>
         <View style={styles.button}>
           <Pressable
@@ -203,7 +241,7 @@ const styles = StyleSheet.create({
   },
   backButton: {
     alignItems: "center",
-    backgroundColor: "#ddd",
+    backgroundColor: "#000000",
     padding: 10,
     paddingHorizontal: 20,
     borderRadius: 5,
@@ -217,6 +255,28 @@ const styles = StyleSheet.create({
     color: "#FFF",
     fontSize: 16,
   },
+  title:{
+    flexDirection: "row", // 横並びにする
+    width:"100%",
+    alignItems:"center"
+  },
+  alert:{
+    backgroundColor:"red",
+    borderRadius: 6,
+    paddingVertical: 2, // 上下の余白
+    paddingHorizontal: 4, // 左右の余白
+  },
+  alertFree:{
+    backgroundColor:"gray",
+    borderRadius: 6,
+    paddingVertical: 2, // 上下の余白
+    paddingHorizontal: 4, // 左右の余白
+  },
+  alertText:{
+    color:"#ffffff",
+    fontWeight: "bold",
+  },
+  picker: { height: 60, width: '100%' },
 });
 
 export default SignUp;
