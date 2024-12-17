@@ -2,6 +2,7 @@ import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { router } from "expo-router";
+import BackButton from '../../../components/BackButton';
 
 const handlePress = (): void => {
   router.push("/home/question4/callnext");
@@ -36,6 +37,8 @@ export default function CallScreen() {
           <Text style={styles.actionText}>応答</Text>
         </TouchableOpacity>
       </View>
+      <BackButton />
+
     </View>
   );
 }

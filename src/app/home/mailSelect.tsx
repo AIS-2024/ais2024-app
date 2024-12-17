@@ -2,6 +2,7 @@ import { router } from "expo-router"
 import React from "react"
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native"
 import { GestureHandlerRootView, ScrollView } from "react-native-gesture-handler"
+import BackButton from "../../components/BackButton"
 
 const handlePress1 = () : void => {
     router.push("/home/question8/goji")
@@ -74,6 +75,7 @@ const mailSelect = () => {
                 </TouchableOpacity>
 
             </ScrollView>
+            <BackButton />
         </GestureHandlerRootView>
 
 
