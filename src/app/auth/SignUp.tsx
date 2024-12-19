@@ -43,6 +43,7 @@ const SignUp = () => {
         password
       );
       const user = userCredential.user;
+      console.log("User ID:", user.uid);
       const userDocRef = doc(db, "userInfo", user.uid); // Firestore の "userInfo" コレクション
 
       const explanations = [

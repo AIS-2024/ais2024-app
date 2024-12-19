@@ -5,10 +5,10 @@ import { GestureHandlerRootView, ScrollView } from "react-native-gesture-handler
 import BackButton from "../../components/BackButton"
 
 const handlePress1 = () : void => {
-    router.push("/home/question8/goji")
+    router.push("/home/question1/nottori")
 }
 const handlePress2 = () : void => {
-    router.push("/home/question1/nottori")
+    router.push("/home/question8/goji")
 }
 const handlePress3 = () : void => {
     router.push("/home/question2/amazn")
@@ -34,15 +34,15 @@ const mailSelect = () => {
                 <TouchableOpacity onPress={handlePress1} style={styles.mailBorder}>
                     <View style={styles.mailContainer}>
                     <Text style={styles.from}>Amazon.co.jp</Text>
-                    <Text style={styles.mailTitle}>招待者に選ばれました。</Text>
-                    <Text style={styles.text} numberOfLines={2}>招待リクエストをお送りいただき、ありがとうございます。お客様は、招待販売の招待者にえらばれました。当選した商品をご購入いただけます。本招待メールによる注文の有効期限は、本招待メールがAmazon.co.jpから発信されてから72時間以内です。</Text>
+                    <Text style={styles.mailTitle}>Amazon.co.jpでのご注文</Text>
+                    <Text style={styles.text} numberOfLines={2}>誰かがあなたのAmazonアカウントを使用して別のモバイルデバイスからこの注文を購入しようとしました。Amazonのアカウントセキュリティポリシーに従い、Amazonアカウントを凍結しました。</Text>
                     </View>
                 </TouchableOpacity>
                 <TouchableOpacity onPress={handlePress2} style={styles.mailBorder}>
-                    <View style={styles.mailContainer}>
+                <View style={styles.mailContainer}>
                     <Text style={styles.from}>Amazon.co.jp</Text>
-                    <Text style={styles.mailTitle}>Amazon.co.jpでのご注文</Text>
-                    <Text style={styles.text} numberOfLines={2}>誰かがあなたのAmazonアカウントを使用して別のモバイルデバイスからこの注文を購入しようとしました。Amazonのアカウントセキュリティポリシーに従い、Amazonアカウントを凍結しました。</Text>
+                    <Text style={styles.mailTitle}>招待者に選ばれました。</Text>
+                    <Text style={styles.text} numberOfLines={2}>招待リクエストをお送りいただき、ありがとうございます。お客様は、招待販売の招待者にえらばれました。当選した商品をご購入いただけます。本招待メールによる注文の有効期限は、本招待メールがAmazon.co.jpから発信されてから72時間以内です。</Text>
                     </View>
                 </TouchableOpacity>
                 <TouchableOpacity onPress={handlePress3} style={styles.mailBorder}>

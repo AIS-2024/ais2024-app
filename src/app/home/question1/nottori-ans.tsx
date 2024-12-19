@@ -7,16 +7,18 @@ import {
   ScrollView,
   TouchableOpacity,
 } from "react-native";
-import { router } from "expo-router";
-import React, { useEffect, useState } from "react";
+import { useRouter } from "expo-router";
+import React, { useEffect, useReducer, useState } from "react";
 import Address from "../../../components/Address";
 import Footer from "../../../components/Footer";
 import AnswerButton from "../../../components/AnswerButton";
 import { doc, getDoc } from "firebase/firestore";
 import { auth, db } from "../../../config";
 
+const router = useRouter()
+
 const handlePress = (): void => {
-  router.push("/home/correct");
+  router.push("/home/correct?questionNumber=0"); // クエリパラメータを渡す
 };
 
 const handlePress1 = (): void => {

@@ -8,7 +8,7 @@ import Address from "../../../components/Address";
 import AnswerButton from "../../../components/AnswerButton";
 
 const handlepressCorrect = () => {
-  router.push("/home/correct");
+  router.push("/home/correct?questionNumber=5"); // クエリパラメータを渡す
 };
 const handlepressIncorrect = () => {
   router.push("/home/incorrect");

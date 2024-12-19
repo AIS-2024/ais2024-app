@@ -31,6 +31,7 @@ const Collection = () => {
   const fetchExplanations = async () => {
     setLoading(true);
     console.log("explanations:", explanations);
+    
     try {
       const userId = auth.currentUser?.uid;
       if (!userId) {
@@ -43,9 +44,11 @@ const Collection = () => {
 
       if (userInfoSnapshot.exists()) {
         const userInfoData = userInfoSnapshot.data();
+        console.log("userInfoData.explanations:", userInfoData.explanations);
         setExplanations(
-          (userInfoData.explanations || []).slice(0, data.length)
+          Object.values(userInfoData.explanations || {}).slice(0, data.length) as boolean[]
         );
+        
       } else {
         console.error("userInfoドキュメントが見つかりません");
       }

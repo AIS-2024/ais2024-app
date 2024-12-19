@@ -8,6 +8,7 @@ import AnswerButton from "../../../components/AnswerButton";
 
 const handlepressCorrect = () : void => {
   router.push("home/correct")
+  router.push("/home/correct?questionNumber=1"); // クエリパラメータを渡す
 }
 const handlepressIncorrect = () : void => {
   router.push("home/incorrect")

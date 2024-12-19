@@ -10,7 +10,7 @@ import { auth, db } from "../../../config";
 import { doc, getDoc } from "firebase/firestore";
 
 const handlePress = (): void => {
-  router.push("/home/correct");
+  router.push("/home/correct?questionNumber=2"); // クエリパラメータを渡す
 };
 const handlePressHome = (): void => {
   router.push("/home/incorrect");
