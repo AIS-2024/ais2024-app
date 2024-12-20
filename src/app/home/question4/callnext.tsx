@@ -3,6 +3,8 @@ import { View, Text, StyleSheet, TouchableOpacity, Linking, ScrollView } from 'r
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { router } from "expo-router";
 import Address from '../../../components/Address';
+import ChangeButton from "../../../components/ChangeButton";
+import { AntDesign } from '@expo/vector-icons';
 
 const handlePress = (): void => {
   router.push("/home/question4/callnext2");
@@ -46,15 +48,14 @@ export default function CallNextScreen() {
       </Text>
 
 
-       {/* 移動ボタン */}
-    </View><View style={styles.actionContainer}>
-        <TouchableOpacity style={styles.declineButton} onPress={handlePress}>
-          <Icon name="exclamation-circle" size={28} color="white" />
-          <Text style={styles.actionText}>違和感</Text>
-        </TouchableOpacity>
+
+      
+      <ChangeButton onPress={handlePress}>
+          <AntDesign name='exclamation' size={40} />
+        </ChangeButton>
       </View>
       </ScrollView>
-
+      
   );
 }
 
