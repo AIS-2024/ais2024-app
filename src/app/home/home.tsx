@@ -10,7 +10,6 @@ import {
   Alert,
   Button,
   Modal,
-  findNodeHandle,
   UIManager,
   InteractionManager,
 } from "react-native";
@@ -84,14 +83,13 @@ const Home = () => {
   //measureTargetでアイコンの位置を取得
   const measureTarget = async (targetRef: React.RefObject<View>) => {
     return new Promise<{ top: number; left: number }>((resolve, reject) => {
-      const handle = findNodeHandle(targetRef.current);
-
-      if (handle) {
-        UIManager.measure(handle, (x, y, width, height, pageX, pageY) => {
-          resolve({ top: pageY + height, left: pageX + width / 2 });
+      if (targetRef.current) {
+        // UIManager.measureInWindowを使用して位置を取得
+        targetRef.current.measureInWindow((x, y, width, height) => {
+          resolve({ top: y + height, left: x + width / 2 });
         });
       } else {
-        reject("Invalid target handle");
+        reject("Invalid targetRef");
       }
     });
   };

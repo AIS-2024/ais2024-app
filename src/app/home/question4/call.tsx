@@ -2,17 +2,20 @@ import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { router } from "expo-router";
-import BackButton from '../../../components/BackButton';
+import AnswerButton from "../../../components/AnswerButton";
+const handlepress = () : void => {
+  router.push("/home/incorrect")
+}
 
-const handlePress = (): void => {
-  router.push("/home/question4/callnext");
+const handlepresscorect = (): void => {
+  router.push("/home/correct");
 };
 
 export default function CallScreen() {
   return (
     <View style={styles.container}>
       {/* 相手の名前 */}
-      <Text style={styles.callerName}>Amazon</Text>
+      <Text style={styles.callerName}>+241 35313084</Text>
 
       {/* オプションボタン */}
       <View style={styles.optionContainer}>
@@ -20,7 +23,7 @@ export default function CallScreen() {
           <Icon name="bell-o" size={24} color="white" />
           <Text style={styles.optionText}>あとで通知</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.optionButton}>
+        <TouchableOpacity style={styles.optionButton} onPress={handlepress}>
           <Icon name="comment-o" size={24} color="white" />
           <Text style={styles.optionText}>メッセージを送信</Text>
         </TouchableOpacity>
@@ -28,17 +31,16 @@ export default function CallScreen() {
 
       {/* 通話操作ボタン */}
       <View style={styles.actionContainer}>
-        <TouchableOpacity style={styles.declineButton}>
+        <TouchableOpacity style={styles.declineButton} onPress={handlepress}>
           <Icon name="phone" size={28} color="white" />
           <Text style={styles.actionText}>拒否</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.answerButton} onPress={handlePress}>
+        <TouchableOpacity style={styles.answerButton} onPress={handlepress}>
           <Icon name="phone" size={28} color="white" />
           <Text style={styles.actionText}>応答</Text>
         </TouchableOpacity>
       </View>
-      <BackButton />
-
+      <AnswerButton label='何もしない' onPress={handlepresscorect} />
     </View>
   );
 }
