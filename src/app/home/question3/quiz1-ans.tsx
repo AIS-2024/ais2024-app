@@ -13,8 +13,7 @@ const quiz1 = () => {
   const router = useRouter();
 
   const handlepressCorrect = () => {
-    router.push("/home/correct");
-    router.push("/home/correct?questionNumber=2"); // クエリパラメータを渡す
+    router.push("/home/correct?questionNumber=8"); // クエリパラメータを渡す
   };
   const handlepressIncorrect = () => {
     router.push("/home/incorrect");

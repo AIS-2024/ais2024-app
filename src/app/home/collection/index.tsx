@@ -21,10 +21,10 @@ const Collection = () => {
     { title: "乗っ取り" },
     { title: "メールアドレス" },
     { title: "誤字" },
-    { title: "タイトル4" },
+    { title: "電話" },
     { title: "タイトル5" },
     { title: "電話番号" },
-    { title: "タイトル7" },
+    { title: "受け取りスポット" },
     { title: "タイトル8" },
   ];
 

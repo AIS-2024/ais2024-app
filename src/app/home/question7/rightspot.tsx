@@ -3,9 +3,11 @@ import { SafeAreaView, View, Text, StyleSheet, Image, ScrollView, TouchableOpaci
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { router } from "expo-router";
 import Address from '../../../components/Address';
+import ChangeButton from '../../../components/ChangeButton';
+import { AntDesign } from '@expo/vector-icons';
 
 const handlePress = (): void => {
-  router.push("/home/question7/spot");
+  router.push("/home/question7/rightspot-ans");
 };
 
 export default function App() {
@@ -39,15 +41,13 @@ export default function App() {
 
         {/*ボタンの追加*/}
 
-        <View style={styles.actionContainer}>
+        {/* <View style={styles.actionContainer}>
          <TouchableOpacity style={styles.declineButton} onPress={handlePress}>
           <Icon name="exclamation-circle" size={28} color="white" />
           <Text style={styles.actionText}>違和感</Text>
          </TouchableOpacity>
         </View>
-
-
-
+ */}
         {/* 底部のアイコンナビゲーション */}
         <View style={styles.navBar}>
           <TouchableOpacity style={styles.navButton}>
@@ -67,6 +67,9 @@ export default function App() {
           </TouchableOpacity>
         </View>
       </ScrollView>
+      <ChangeButton onPress={handlePress}>
+        <AntDesign name='exclamation' size={40} />
+      </ChangeButton>
     </SafeAreaView>
   );
 }

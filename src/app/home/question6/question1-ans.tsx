@@ -55,13 +55,13 @@ const Question1 = () => {
           </Text>
         </TouchableOpacity>
 
-        <TouchableOpacity onPress={handlepressIncorrect}>
+        <TouchableOpacity onPress={handlepressCorrect}>
           <Text style={styles.inquiry}>
             アカウントに登録のEメールアドレスにアクセスできない場合
           </Text>
 
           <Text style={styles.inquiry}>
-            お問い合わせ：Amazonカスタマーサービス。
+            お問い合わせ：Amazonカスタマーサービス。<Text style={styles.link}>(070-1234-5678)</Text>
           </Text>
 
           <Text style={styles.main}>
@@ -70,7 +70,7 @@ const Question1 = () => {
         </TouchableOpacity>
 
       <TouchableOpacity onPress={handlepressIncorrect}><Text style={styles.footer}>Amazon.co.jp　カスタマーサービス</Text></TouchableOpacity>
-      <AnswerButton label='間違い無し' onPress={handlepressCorrect} />
+      <AnswerButton label='間違い無し' onPress={handlepressIncorrect} />
     </ScrollView>
   );
 };
