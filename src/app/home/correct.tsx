@@ -114,7 +114,7 @@ const styles = StyleSheet.create({
     alignSelf: "center",
     backgroundColor: "#ffffff",
     width: "90%", // 画面幅に応じて調整
-    maxHeight: 500,
+    maxHeight: 475,
     borderRadius: 10,
     padding: 20,
     shadowColor: "#000",
@@ -130,7 +130,7 @@ const styles = StyleSheet.create({
   },
   explainScroll: {
     flexGrow: 0,
-    maxHeight: 350,
+    maxHeight: 300,
   },
   explainLetter: {
     fontSize: 20,
