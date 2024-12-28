@@ -7,7 +7,6 @@ import { doc, getDoc } from "firebase/firestore";
 import AnswerButton from "../../../components/AnswerButton";
 
 const handlepressCorrect = () : void => {
-  router.push("home/correct")
   router.push("/home/correct?questionNumber=1"); // クエリパラメータを渡す
 }
 const handlepressIncorrect = () : void => {
@@ -15,6 +14,38 @@ const handlepressIncorrect = () : void => {
 }
 
 const Question2 = () => {
+  const [username, setUsername] = useState("");
+
+
+  const fetchUsername = async () => {
+    const user = auth.currentUser;
+    if (!user) {
+      console.warn("User not logged in.");
+      return null;
+    }
+
+    const userDoc = doc(db, "userInfo", user.uid);
+    try {
+      const docSnap = await getDoc(userDoc);
+      if (docSnap.exists()) {
+        return docSnap.data().name;
+      } else {
+        console.warn("No such document!");
+      }
+    } catch (error) {
+      console.error("Error fetching user data:", error);
+    }
+    return null;
+  };
+
+  useEffect(() => {
+    const loadUsername = async () => {
+      const name = await fetchUsername();
+      setUsername(name || "user");
+    };
+    loadUsername();
+  }, []);
+
   const [useraddress, setUseraddress] = useState("");
 
 
@@ -48,20 +79,28 @@ const Question2 = () => {
   }, []);
     return (
         <ScrollView contentContainerStyle={styles.container}>
-          <TouchableOpacity onPress={handlepressIncorrect}>
-            <Address />
+          <TouchableOpacity onPress={handlepressCorrect} style={styles.headerContainer}>
+        <View style={styles.header}>
+          <View style={styles.avatar}>
+            <Text style={styles.avatarText}>A</Text>
+          </View>
+          <View style={styles.senderInfo}>
+            <Text style={styles.senderText}>差出人：amazn.co.jp</Text>
+            <Text style={styles.recipientText}>宛先：{username}</Text>
+          </View>
+        </View>
           </TouchableOpacity>
 
-          <View style={styles.headerContainer}>
+          {/* <View style={styles.headerContainer}>
             <TouchableOpacity onPress={handlepressIncorrect}>
               <Text style={styles.header}>【重要】Amazon株式会社からの緊急のご連絡</Text>
             </TouchableOpacity>
 
             <TouchableOpacity onPress={handlepressCorrect}>
               <Text style={styles.title}>amazn.co.jp</Text>
-            </TouchableOpacity>
+            </TouchableOpacity> */}
             <Text style={styles.underline}>___________________________________________</Text>
-        </View>
+        {/* </View> */}
 
 
         <View style={styles.mailContainer}>
@@ -119,13 +158,14 @@ const styles = StyleSheet.create({
   },
   headerContainer: {
     alignItems: "center",
-    marginBottom: 10,
-    paddingTop: 20
+    // marginBottom: 10,
+    // paddingTop: 20,
+    alignSelf: "flex-start"
   },
   header: {
-    fontSize: 12,
-    marginBottom: 10,
-    alignSelf: "flex-end"
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginVertical: 10,
   },
   title: {
     fontSize: 20,
@@ -183,6 +223,29 @@ const styles = StyleSheet.create({
   navButton: {
     alignItems: 'center',
   },
+  avatar: {
+    width: 50,
+    height: 50,
+    borderRadius: 25,
+    backgroundColor: '#ddd',
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginRight: 10,
+  },
+  avatarText: {
+    fontSize: 24,
+    fontWeight: 'bold',
+  },senderInfo: {
+    flexDirection: 'column',
+},
+senderText: {
+    fontSize: 16,
+    fontWeight: 'bold',
+},
+recipientText: {
+  fontSize: 14,
+  color: '#555',
+}
 })
 
 export default Question2

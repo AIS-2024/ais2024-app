@@ -8,7 +8,7 @@ const handlepress = () : void => {
 }
 
 const handlepresscorect = (): void => {
-  router.push("/home/correct");
+  router.push("/home/correct?questionNumber=3");
 };
 
 export default function CallScreen() {
