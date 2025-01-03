@@ -1,8 +1,10 @@
 import { router } from "expo-router"
-import React from "react"
-import { StyleSheet, Text, TouchableOpacity, View } from "react-native"
+import React, { useEffect, useState } from "react"
+import { Button, Modal, StyleSheet, Text, TouchableOpacity, View } from "react-native"
 import { GestureHandlerRootView, ScrollView } from "react-native-gesture-handler"
 import BackButton from "../../components/BackButton"
+import AsyncStorage from "@react-native-async-storage/async-storage"
+import { auth } from "../../config"
 
 const handlePress1 = () : void => {
     router.push("/home/question1/nottori")
@@ -24,6 +26,21 @@ const handlePress6 = () : void => {
 }
 
 const mailSelect = () => {
+    const [modalVisible, setModalVisible] = useState(false); // モーダルの表示非表示を管理
+
+    useEffect(() => {
+        const checkFirstVisit = async () => {
+        const user=auth.currentUser;
+            if(user){
+                const hasVisited = await AsyncStorage.getItem(user.uid);
+          if (!hasVisited) {
+            // 初回訪問の場合、モーダルを表示
+            setModalVisible(true);
+            await AsyncStorage.setItem(user.uid, 'true');
+          }}
+        };
+        checkFirstVisit();
+      }, []);
     return (
         <GestureHandlerRootView>
             <ScrollView contentContainerStyle={styles.container}>
@@ -73,7 +90,22 @@ const mailSelect = () => {
                     <Text style={styles.text} numberOfLines={2}>クレジットカード情報の更新、追加などにつきまして、以下の手順をご確認ください。アカウントサービスからAmazon情報を管理するページにアクセスして、更新してください。</Text>
                     </View>
                 </TouchableOpacity>
-
+                <Modal
+                    visible={modalVisible}
+                    transparent={true}
+                    animationType="fade"
+                    onRequestClose={() => setModalVisible(false)}
+                >
+                    <View style={styles.modalOverlay}>
+                        <View style={styles.dialog}>
+                            <Text style={styles.dialogText}>問題選択画面について</Text>
+                            <Text style={styles.dialogText}>一覧からいずれかのメール（問題）をタップして選択します。</Text>
+                            <TouchableOpacity style={styles.closeButton} onPress={() => setModalVisible(false)}>
+                                <Text style={styles.closeButtonText}>閉じる</Text>
+                            </TouchableOpacity>
+                        </View>
+                    </View>
+                </Modal>
             </ScrollView>
             <BackButton />
         </GestureHandlerRootView>
@@ -134,7 +166,32 @@ const styles = StyleSheet.create({
     text: {
     fontSize: 16,
     color: '#808080',
-    }
+    },
+    modalOverlay: {
+        flex: 1,
+        justifyContent: "flex-end",
+        backgroundColor: "rgba(0, 0, 0, 0.5)",
+      },
+    dialog: {
+        backgroundColor: "white",
+        padding: 20,
+        borderTopLeftRadius: 20,
+        borderTopRightRadius: 20,
+        alignItems: "center",
+    },
+    dialogText: {
+        fontSize: 16,
+        marginBottom: 20,
+    },
+    closeButton: {
+        padding: 10,
+        backgroundColor: "blue",
+        borderRadius: 5,
+    },
+    closeButtonText: {
+        color: "white",
+        fontWeight: "bold",
+      },
 })
 
 export default mailSelect

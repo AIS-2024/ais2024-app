@@ -1,8 +1,10 @@
-import React from 'react';
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { View, Text, StyleSheet, TouchableOpacity, Modal } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { router } from "expo-router";
 import AnswerButton from "../../../components/AnswerButton";
+import { auth } from '../../../config';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 const handlepress = () : void => {
   router.push("/home/incorrect")
 }
@@ -12,6 +14,11 @@ const handlepresscorect = (): void => {
 };
 
 export default function CallScreen() {
+  const [modalVisible, setModalVisible] = useState(false); // モーダルの表示非表示を管理
+
+    useEffect(() => {
+            setModalVisible(true);
+      }, []);
   return (
     <View style={styles.container}>
       {/* 相手の名前 */}
@@ -41,6 +48,22 @@ export default function CallScreen() {
         </TouchableOpacity>
       </View>
       <AnswerButton label='何もしない' onPress={handlepresscorect} />
+      <Modal
+                          visible={modalVisible}
+                          transparent={true}
+                          animationType="fade"
+                          onRequestClose={() => setModalVisible(false)}
+                      >
+                          <View style={styles.modalOverlay}>
+                              <View style={styles.dialog}>
+                                  <Text style={styles.dialogText}>電話問題について</Text>
+                                  <Text style={styles.dialogText}>電話がかかってきています。対応を選択してください。</Text>
+                                  <TouchableOpacity style={styles.closeButton} onPress={() => setModalVisible(false)}>
+                                      <Text style={styles.closeButtonText}>閉じる</Text>
+                                  </TouchableOpacity>
+                              </View>
+                          </View>
+                      </Modal>
     </View>
   );
 }
@@ -97,5 +120,30 @@ const styles = StyleSheet.create({
     fontSize: 14,
     color: 'white',
     marginTop: 8,
+  },
+  modalOverlay: {
+    flex: 1,
+    justifyContent: "flex-end",
+    backgroundColor: "rgba(0, 0, 0, 0.5)",
+  },
+dialog: {
+    backgroundColor: "white",
+    padding: 20,
+    borderTopLeftRadius: 20,
+    borderTopRightRadius: 20,
+    alignItems: "center",
+},
+dialogText: {
+    fontSize: 16,
+    marginBottom: 20,
+},
+closeButton: {
+    padding: 10,
+    backgroundColor: "blue",
+    borderRadius: 5,
+},
+closeButtonText: {
+    color: "white",
+    fontWeight: "bold",
   },
 });

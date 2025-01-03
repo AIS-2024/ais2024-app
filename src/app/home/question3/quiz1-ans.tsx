@@ -1,13 +1,15 @@
 /** @format */
 // 正しい例 //
 
-import { View, Text, StyleSheet, ScrollView, Image, TouchableOpacity } from "react-native";
-import React from "react";
+import { View, Text, StyleSheet, ScrollView, Image, TouchableOpacity, Modal } from "react-native";
+import React, { useEffect, useRef, useState } from "react";
 import { useRouter } from "expo-router";
 import ChangeButton from "../../../components/ChangeButton";
 import { AntDesign } from "@expo/vector-icons";
 import Address from "../../../components/Address";
 import AnswerButton from "../../../components/AnswerButton";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { auth } from "../../../config";
 
 const quiz1 = () => {
   const router = useRouter();
@@ -19,8 +21,72 @@ const quiz1 = () => {
     router.push("/home/incorrect");
   };
 
+  const [step, setStep] = useState(0);
+  const [modalVisible, setModalVisible] = useState(false); // モーダルの表示非表示を管理
+  const [arrowPosition, setArrowPosition] = useState({ top: 0, left: 0 });
+
+    
+const buttonRef = useRef<View>(null);
+const steps = [
+  {
+    title: "解答について",
+    description: "画面に表示されているメールには詐欺メールに書かれているような表現が含まれている可能性があります。\n怪しいと感じる表現が含まれる部分をタップして解答してください。\n特に怪しいと感じる部分がなければ右下の「間違い無し」ボタンを押してください。問題がないメールの場合もあります。",
+    target: buttonRef,
+  }
+]
+useEffect(() => {
+  const timeout = setTimeout(() => {
+  const checkFirstVisit = async () => {
+  const user=auth.currentUser;
+      if(user){
+          const key=`hasVisitedAnswer_${user.uid}`
+          const hasVisited = await AsyncStorage.getItem(key);
+    if (!hasVisited) {
+      // 初回訪問の場合、モーダルを表示
+      setModalVisible(true);
+      showTooltip();
+      await AsyncStorage.setItem(key, 'true');
+    }}
+  };
+  checkFirstVisit();
+}, 200);
+
+return () => clearTimeout(timeout); // クリーンアップ
+}, []);
+
+//measureTargetでアイコンの位置を取得
+  const measureTarget = async (targetRef: React.RefObject<View>) => {
+    return new Promise<{ top: number; left: number }>((resolve, reject) => {
+      if (targetRef.current) {
+        // UIManager.measureInWindowを使用して位置を取得
+        targetRef.current.measureInWindow((x, y, width, height) => {
+          resolve({ top: y, left: x + width / 2 });
+        });
+      } else {
+        reject("Invalid targetRef");
+      }
+    });
+  };
+
+  //矢印の位置をarrowPositionに設定
+  const showTooltip = async () => {
+    try {
+      const currentStep = steps[step];
+  
+      if (!currentStep?.target) {
+        console.warn("Target ref is undefined for step:", step);
+        return;
+      }
+        const position = await measureTarget(currentStep.target);
+        setArrowPosition(position);
+    } catch (error) {
+      console.error("Error measuring target:", error);
+    }
+  };
+
   return (
-    <ScrollView style={styles.container}>
+    <View style={styles.container}>
+    <ScrollView>
       <TouchableOpacity onPress={handlepressIncorrect}>
         <Address />
       </TouchableOpacity>
@@ -83,8 +149,38 @@ const quiz1 = () => {
             </TouchableOpacity>
           </View>
         </View>
-      <AnswerButton label='間違い無し' onPress={handlepressCorrect} />
+      
     </ScrollView>
+    <AnswerButton ref={buttonRef} label='間違い無し' onPress={handlepressCorrect} />
+    <Modal
+                                      visible={modalVisible}
+                                      transparent={true}
+                                      animationType="fade"
+                                      onRequestClose={() => setModalVisible(false)}
+                                    >
+                                      <View style={styles.modalOverlay}>
+                                        {/* 矢印 */}
+                                          <View
+                                            style={[
+                                              styles.arrow,
+                                              {
+                                                top: arrowPosition.top-45, // 矢印の位置（ターゲットボタンの下部に合わせる）
+                                                left: arrowPosition.left - 15, // 矢印の中央をターゲットに合わせる
+                                              },
+                                            ]}
+                                          />
+                                        
+                                        {/* ダイアログ */}
+                                        <View style={styles.dialog}>
+                                          <Text style={styles.dialogText}>{steps[step]?.title}</Text>
+                                          <Text style={styles.dialogText}>{steps[step]?.description}</Text>
+                                          <TouchableOpacity style={styles.closeButton} onPress={()=>setModalVisible(false)}>
+                                              <Text style={styles.closeButtonText}>閉じる</Text>
+                                          </TouchableOpacity>
+                                        </View>
+                                      </View>
+                                    </Modal>
+    </View>
   );
 };
 
@@ -154,6 +250,45 @@ const styles = StyleSheet.create({
   },
   link: {
     color: "#438FC6",
+  },
+  modalOverlay: {
+    flex: 1,
+    justifyContent: "center",
+    backgroundColor: "rgba(0, 0, 0, 0.5)",
+    padding:20
+  },
+  dialog: {
+    backgroundColor: "white",
+    padding: 20,
+    borderTopLeftRadius: 20,
+    borderBottomLeftRadius:20,
+    borderBottomRightRadius:20,
+    borderTopRightRadius: 20,
+    alignItems: "center",
+  },
+  dialogText: {
+    fontSize: 16,
+    marginBottom: 20,
+  },
+  closeButton: {
+    padding: 10,
+    backgroundColor: "blue",
+    borderRadius: 5,
+  },
+  closeButtonText: {
+    color: "white",
+    fontWeight: "bold",
+  },
+  arrow: {
+    position: "absolute",
+    width: 0,
+    height: 0,
+    borderLeftWidth: 15,
+    borderRightWidth: 15,
+    borderTopWidth:40,
+    borderLeftColor: "transparent",
+    borderRightColor: "transparent",
+    borderTopColor: "white",
   },
 });
 
