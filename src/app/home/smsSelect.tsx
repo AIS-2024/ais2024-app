@@ -1,8 +1,10 @@
 import { router } from "expo-router"
-import React from "react"
-import { StyleSheet, Text, TouchableOpacity, View } from "react-native"
+import React, { useEffect, useState } from "react"
+import { Modal, StyleSheet, Text, TouchableOpacity, View } from "react-native"
 import { GestureHandlerRootView, ScrollView } from "react-native-gesture-handler"
 import BackButton from "../../components/BackButton"
+import { auth } from "../../config"
+import AsyncStorage from "@react-native-async-storage/async-storage"
 
 const handlePress1 = () : void => {
     router.push("/home/question5/quiz2")
@@ -12,6 +14,22 @@ const handlePress2 = () : void => {
 }
 
 const smsSelect = () => {
+    const [modalVisible, setModalVisible] = useState(false); // モーダルの表示非表示を管理
+
+    useEffect(() => {
+        const checkFirstVisit = async () => {
+        const user=auth.currentUser;
+            if(user){
+                const key=`hasVisitedSMS_${user.uid}`
+                const hasVisited = await AsyncStorage.getItem(key);
+          if (!hasVisited) {
+            // 初回訪問の場合、モーダルを表示
+            setModalVisible(true);
+            await AsyncStorage.setItem(key, 'true');
+          }}
+        };
+        checkFirstVisit();
+      }, []);
     return (
         <GestureHandlerRootView>
             <ScrollView contentContainerStyle={styles.container}>
@@ -33,6 +51,22 @@ const smsSelect = () => {
                     <Text style={styles.text} numberOfLines={2}>【重要】Amazonアカウントが一時的に停止されています</Text>
                     </View>
                 </TouchableOpacity>
+                <Modal
+                                    visible={modalVisible}
+                                    transparent={true}
+                                    animationType="fade"
+                                    onRequestClose={() => setModalVisible(false)}
+                                >
+                                    <View style={styles.modalOverlay}>
+                                        <View style={styles.dialog}>
+                                            <Text style={styles.dialogText}>問題選択画面について</Text>
+                                            <Text style={styles.dialogText}>一覧からいずれかのメール（問題）をタップして選択します。</Text>
+                                            <TouchableOpacity style={styles.closeButton} onPress={() => setModalVisible(false)}>
+                                                <Text style={styles.closeButtonText}>閉じる</Text>
+                                            </TouchableOpacity>
+                                        </View>
+                                    </View>
+                                </Modal>
                 </ScrollView>
                 <BackButton />
 
@@ -92,7 +126,32 @@ const styles = StyleSheet.create({
     text: {
     fontSize: 16,
     color: '#808080',
-    }
+    },
+    modalOverlay: {
+        flex: 1,
+        justifyContent: "flex-end",
+        backgroundColor: "rgba(0, 0, 0, 0.5)",
+      },
+    dialog: {
+        backgroundColor: "white",
+        padding: 20,
+        borderTopLeftRadius: 20,
+        borderTopRightRadius: 20,
+        alignItems: "center",
+    },
+    dialogText: {
+        fontSize: 16,
+        marginBottom: 20,
+    },
+    closeButton: {
+        padding: 10,
+        backgroundColor: "blue",
+        borderRadius: 5,
+    },
+    closeButtonText: {
+        color: "white",
+        fontWeight: "bold",
+      },
 })
 
 export default smsSelect

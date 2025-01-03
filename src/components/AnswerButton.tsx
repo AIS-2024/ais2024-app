@@ -1,20 +1,20 @@
-import React from 'react';
-import { Text, StyleSheet, TouchableOpacity, type ViewStyle } from "react-native"
+import React, { forwardRef } from 'react';
+import { Text, StyleSheet, TouchableOpacity, type ViewStyle, TouchableOpacityProps } from "react-native"
 
-interface Props {
+interface Props extends TouchableOpacityProps{
     label: string
     style?: ViewStyle
     onPress?: () => void
 }
 
-const AnswerButton = (props: Props) => {
-    const { label, style, onPress } = props
-    return (
-        <TouchableOpacity onPress={onPress} style={[styles.answerButton, style]}>
-            <Text style={styles.answerButtonLabel}>{label}</Text>
-        </TouchableOpacity>
-    )
-}
+const AnswerButton = forwardRef<React.ElementRef<typeof TouchableOpacity>, Props>(
+    ({ label, style, onPress }, ref) => {
+            return (
+                <TouchableOpacity ref={ref} onPress={onPress} style={[styles.answerButton, style]}>
+                    <Text style={styles.answerButtonLabel}>{label}</Text>
+                </TouchableOpacity>
+            )}
+)
 
 const styles = StyleSheet.create({
     answerButton: {
