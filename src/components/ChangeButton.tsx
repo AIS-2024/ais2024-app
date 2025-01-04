@@ -1,20 +1,20 @@
-import React from 'react';
-import { Text, StyleSheet, TouchableOpacity, type ViewStyle } from "react-native"
+import React, { forwardRef } from 'react';
+import { Text, StyleSheet, TouchableOpacity, type ViewStyle, TouchableOpacityProps } from "react-native"
 
-interface Props {
+interface Props extends TouchableOpacityProps{
     children: JSX.Element
     style?: ViewStyle
     onPress?: () => void
 }
 
-const ChangeButton = (props: Props) => {
-    const { children, style, onPress } = props
-    return (
-        <TouchableOpacity onPress={onPress} style={[styles.circleButton, style]}>
-            <Text style={styles.circleButtonLabel}>{children}</Text>
-        </TouchableOpacity>
-    )
-}
+const ChangeButton = forwardRef<React.ElementRef<typeof TouchableOpacity>, Props> (
+    ({ children,style,onPress }, ref) => {
+        return (
+            <TouchableOpacity ref={ref}onPress={onPress} style={[styles.circleButton, style]}>
+                <Text style={styles.circleButtonLabel}>{children}</Text>
+            </TouchableOpacity>
+        )}
+) 
 
 const styles = StyleSheet.create({
     circleButton: {
@@ -42,4 +42,4 @@ const styles = StyleSheet.create({
     }
 })
 
-export default ChangeButton
+export default ChangeButton;

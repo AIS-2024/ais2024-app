@@ -42,7 +42,7 @@ const Question1 = () => {
         </Text>
 
         <Text style={styles.inquiry}>
-          お問い合わせ:Amazonカスタマーサービス<Text style={styles.link}>(070-1234-5678)</Text>
+          お問い合わせ:Amazonカスタマーサービス
         </Text>
 
         <Text style={styles.main}>
