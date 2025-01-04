@@ -16,8 +16,6 @@ import {
 import React, { useLayoutEffect, useRef, useState } from "react";
 import { useEffect } from "react";
 import { router, useNavigation } from "expo-router";
-import LogOutButton from "../../components/LogOutButton";
-import { auth } from "../../config";
 import { useLocalSearchParams } from "expo-router/build/hooks";
 
 const handlepress1 = (): void => {
@@ -29,7 +27,7 @@ const handlepress2 = (): void => {
 };
 
 const handlepress3 = (): void => {
-  router.push("home/question4/call");
+  router.push("home/callbefore");
 };
 
 const handlepress4 = (): void => {

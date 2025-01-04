@@ -141,7 +141,7 @@ export default function App() {
       </ScrollView>
       <TouchableOpacity onPress={handlepressIncorrect}>
       </TouchableOpacity>
-      <FooterButton ref={ } label="まちがいなし" onPress={handlepressCorrect} />
+      <FooterButton label="まちがいなし" onPress={handlepressCorrect} />
       <Modal
         visible={modalVisible}
         transparent={true}

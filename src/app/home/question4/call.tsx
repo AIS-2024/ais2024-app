@@ -5,6 +5,8 @@ import { router } from "expo-router";
 import AnswerButton from "../../../components/AnswerButton";
 import { auth } from '../../../config';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import FooterButton from '../../../components/FooterButton';
+
 const handlepress = (): void => {
   router.push("/home/incorrect")
 }
@@ -47,8 +49,8 @@ export default function CallScreen() {
           <Text style={styles.actionText}>応答</Text>
         </TouchableOpacity>
       </View>
-      <AnswerButton label='何もしない' onPress={handlepresscorect} />
-      <Modal
+      <FooterButton label='何もしない' onPress={handlepresscorect} />
+      {/* <Modal
         visible={modalVisible}
         transparent={true}
         animationType="fade"
@@ -63,7 +65,7 @@ export default function CallScreen() {
             </TouchableOpacity>
           </View>
         </View>
-      </Modal>
+      </Modal> */}
     </View>
   );
 }
@@ -78,7 +80,7 @@ const styles = StyleSheet.create({
   callerName: {
     fontSize: 28,
     color: 'white',
-    marginBottom: 80,
+    marginBottom: 170,
   },
   optionContainer: {
     flexDirection: 'row',
