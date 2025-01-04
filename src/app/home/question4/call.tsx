@@ -3,12 +3,14 @@ import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { router } from "expo-router";
 import AnswerButton from "../../../components/AnswerButton";
-const handlepress = () : void => {
+
+const handlepress = (): void => {
   router.push("/home/incorrect")
 }
 
 const handlepresscorect = (): void => {
-  router.push("/home/correct");
+  router.push("/home/correct?questionNumber=4");
+
 };
 
 export default function CallScreen() {
