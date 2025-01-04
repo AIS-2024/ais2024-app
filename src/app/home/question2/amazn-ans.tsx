@@ -6,11 +6,12 @@ import { auth, db } from "../../../config";
 import { doc, getDoc } from "firebase/firestore";
 import AnswerButton from "../../../components/AnswerButton";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import FooterButton from "../../../components/FooterButton";
 
-const handlepressCorrect = () : void => {
+const handlepressCorrect = (): void => {
   router.push("/home/correct?questionNumber=1"); // クエリパラメータを渡す
 }
-const handlepressIncorrect = () : void => {
+const handlepressIncorrect = (): void => {
   router.push("home/incorrect")
 }
 
@@ -20,36 +21,37 @@ const Question2 = () => {
   const [modalVisible, setModalVisible] = useState(false); // モーダルの表示非表示を管理
   const [arrowPosition, setArrowPosition] = useState({ top: 0, left: 0 });
 
-    
-const buttonRef = useRef<View>(null);
-const steps = [
-  {
-    title: "解答について",
-    description: "画面に表示されているメールには詐欺メールに書かれているような表現が含まれている可能性があります。\n怪しいと感じる表現が含まれる部分をタップして解答してください。\n特に怪しいと感じる部分がなければ右下の「間違い無し」ボタンを押してください。問題がないメールの場合もあります。",
-    target: buttonRef,
-  }
-]
-useEffect(() => {
-  const timeout = setTimeout(() => {
-  const checkFirstVisit = async () => {
-  const user=auth.currentUser;
-      if(user){
-          const key=`hasVisitedAnswer_${user.uid}`
+
+  const buttonRef = useRef<View>(null);
+  const steps = [
+    {
+      title: "解答について",
+      description: "画面に表示されているメールには詐欺メールに書かれているような表現が含まれている可能性があります。\n怪しいと感じる表現が含まれる部分をタップして解答してください。\n特に怪しいと感じる部分がなければ右下の「間違い無し」ボタンを押してください。問題がないメールの場合もあります。",
+      target: buttonRef,
+    }
+  ]
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      const checkFirstVisit = async () => {
+        const user = auth.currentUser;
+        if (user) {
+          const key = `hasVisitedAnswer_${user.uid}`
           const hasVisited = await AsyncStorage.getItem(key);
-    if (!hasVisited) {
-      // 初回訪問の場合、モーダルを表示
-      setModalVisible(true);
-      showTooltip();
-      await AsyncStorage.setItem(key, 'true');
-    }}
-  };
-  checkFirstVisit();
-}, 200);
+          if (!hasVisited) {
+            // 初回訪問の場合、モーダルを表示
+            setModalVisible(true);
+            showTooltip();
+            await AsyncStorage.setItem(key, 'true');
+          }
+        }
+      };
+      checkFirstVisit();
+    }, 200);
 
-return () => clearTimeout(timeout); // クリーンアップ
-}, []);
+    return () => clearTimeout(timeout); // クリーンアップ
+  }, []);
 
-//measureTargetでアイコンの位置を取得
+  //measureTargetでアイコンの位置を取得
   const measureTarget = async (targetRef: React.RefObject<View>) => {
     return new Promise<{ top: number; left: number }>((resolve, reject) => {
       if (targetRef.current) {
@@ -67,13 +69,13 @@ return () => clearTimeout(timeout); // クリーンアップ
   const showTooltip = async () => {
     try {
       const currentStep = steps[step];
-  
+
       if (!currentStep?.target) {
         console.warn("Target ref is undefined for step:", step);
         return;
       }
-        const position = await measureTarget(currentStep.target);
-        setArrowPosition(position);
+      const position = await measureTarget(currentStep.target);
+      setArrowPosition(position);
     } catch (error) {
       console.error("Error measuring target:", error);
     }
@@ -139,22 +141,22 @@ return () => clearTimeout(timeout); // クリーンアップ
     };
     loadUseraddress();
   }, []);
-    return (
-      <View style={styles.container}>
-        <ScrollView>
-          <TouchableOpacity onPress={handlepressCorrect} style={styles.headerContainer}>
-        <View style={styles.header}>
-          <View style={styles.avatar}>
-            <Text style={styles.avatarText}>A</Text>
+  return (
+    <View style={styles.container}>
+      <ScrollView>
+        <TouchableOpacity onPress={handlepressCorrect} style={styles.headerContainer}>
+          <View style={styles.header}>
+            <View style={styles.avatar}>
+              <Text style={styles.avatarText}>A</Text>
+            </View>
+            <View style={styles.senderInfo}>
+              <Text style={styles.senderText}>差出人：amazn.co.jp</Text>
+              <Text style={styles.recipientText}>宛先：{username}</Text>
+            </View>
           </View>
-          <View style={styles.senderInfo}>
-            <Text style={styles.senderText}>差出人：amazn.co.jp</Text>
-            <Text style={styles.recipientText}>宛先：{username}</Text>
-          </View>
-        </View>
-          </TouchableOpacity>
+        </TouchableOpacity>
 
-          {/* <View style={styles.headerContainer}>
+        {/* <View style={styles.headerContainer}>
             <TouchableOpacity onPress={handlepressIncorrect}>
               <Text style={styles.header}>【重要】Amazon株式会社からの緊急のご連絡</Text>
             </TouchableOpacity>
@@ -162,7 +164,7 @@ return () => clearTimeout(timeout); // クリーンアップ
             <TouchableOpacity onPress={handlepressCorrect}>
               <Text style={styles.title}>amazn.co.jp</Text>
             </TouchableOpacity> */}
-            <Text style={styles.underline}>___________________________________________</Text>
+        <Text style={styles.underline}>___________________________________________</Text>
         {/* </View> */}
 
 
@@ -203,38 +205,38 @@ return () => clearTimeout(timeout); // クリーンアップ
           </TouchableOpacity>
 
         </View>
-        </ScrollView>
-        <AnswerButton ref={buttonRef} label='間違い無し' onPress={handlepressIncorrect} />
-        <Modal
-                                  visible={modalVisible}
-                                  transparent={true}
-                                  animationType="fade"
-                                  onRequestClose={() => setModalVisible(false)}
-                                >
-                                  <View style={styles.modalOverlay}>
-                                    {/* 矢印 */}
-                                      <View
-                                        style={[
-                                          styles.arrow,
-                                          {
-                                            top: arrowPosition.top-45, // 矢印の位置（ターゲットボタンの下部に合わせる）
-                                            left: arrowPosition.left - 15, // 矢印の中央をターゲットに合わせる
-                                          },
-                                        ]}
-                                      />
-                                    
-                                    {/* ダイアログ */}
-                                    <View style={styles.dialog}>
-                                      <Text style={styles.dialogText}>{steps[step]?.title}</Text>
-                                      <Text style={styles.dialogText}>{steps[step]?.description}</Text>
-                                      <TouchableOpacity style={styles.closeButton} onPress={()=>setModalVisible(false)}>
-                                          <Text style={styles.closeButtonText}>閉じる</Text>
-                                      </TouchableOpacity>
-                                    </View>
-                                  </View>
-                                </Modal>
+      </ScrollView>
+      <FooterButton label="まちがいなし" onPress={handlepressIncorrect} />
+      <Modal
+        visible={modalVisible}
+        transparent={true}
+        animationType="fade"
+        onRequestClose={() => setModalVisible(false)}
+      >
+        <View style={styles.modalOverlay}>
+          {/* 矢印 */}
+          <View
+            style={[
+              styles.arrow,
+              {
+                top: arrowPosition.top - 45, // 矢印の位置（ターゲットボタンの下部に合わせる）
+                left: arrowPosition.left - 15, // 矢印の中央をターゲットに合わせる
+              },
+            ]}
+          />
+
+          {/* ダイアログ */}
+          <View style={styles.dialog}>
+            <Text style={styles.dialogText}>{steps[step]?.title}</Text>
+            <Text style={styles.dialogText}>{steps[step]?.description}</Text>
+            <TouchableOpacity style={styles.closeButton} onPress={() => setModalVisible(false)}>
+              <Text style={styles.closeButtonText}>閉じる</Text>
+            </TouchableOpacity>
+          </View>
         </View>
-    )
+      </Modal>
+    </View>
+  )
 }
 
 const styles = StyleSheet.create({
@@ -273,7 +275,7 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: "bold",
     marginBottom: 10,
-    alignSelf:"center"
+    alignSelf: "center"
   },
   address: {
     marginTop: 15,
@@ -286,7 +288,7 @@ const styles = StyleSheet.create({
   group: {
     marginBottom: 10,
   },
-  warning:{
+  warning: {
     marginBottom: 15
   },
   button: {
@@ -297,7 +299,7 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     alignItems: "center",
     alignSelf: "center",
-    marginTop:40,
+    marginTop: 40,
     marginBottom: 40,
   },
   buttonText: {
@@ -325,56 +327,56 @@ const styles = StyleSheet.create({
   avatarText: {
     fontSize: 24,
     fontWeight: 'bold',
-  },senderInfo: {
+  }, senderInfo: {
     flexDirection: 'column',
-},
-senderText: {
+  },
+  senderText: {
     fontSize: 16,
     fontWeight: 'bold',
-},
-recipientText: {
-  fontSize: 14,
-  color: '#555',
-},
-modalOverlay: {
-  flex: 1,
-  justifyContent: "center",
-  backgroundColor: "rgba(0, 0, 0, 0.5)",
-  padding:20
-},
-dialog: {
-  backgroundColor: "white",
-  padding: 20,
-  borderTopLeftRadius: 20,
-  borderBottomLeftRadius:20,
-  borderBottomRightRadius:20,
-  borderTopRightRadius: 20,
-  alignItems: "center",
-},
-dialogText: {
-  fontSize: 16,
-  marginBottom: 20,
-},
-closeButton: {
-  padding: 10,
-  backgroundColor: "blue",
-  borderRadius: 5,
-},
-closeButtonText: {
-  color: "white",
-  fontWeight: "bold",
-},
-arrow: {
-  position: "absolute",
-  width: 0,
-  height: 0,
-  borderLeftWidth: 15,
-  borderRightWidth: 15,
-  borderTopWidth:40,
-  borderLeftColor: "transparent",
-  borderRightColor: "transparent",
-  borderTopColor: "white",
-},
+  },
+  recipientText: {
+    fontSize: 14,
+    color: '#555',
+  },
+  modalOverlay: {
+    flex: 1,
+    justifyContent: "center",
+    backgroundColor: "rgba(0, 0, 0, 0.5)",
+    padding: 20
+  },
+  dialog: {
+    backgroundColor: "white",
+    padding: 20,
+    borderTopLeftRadius: 20,
+    borderBottomLeftRadius: 20,
+    borderBottomRightRadius: 20,
+    borderTopRightRadius: 20,
+    alignItems: "center",
+  },
+  dialogText: {
+    fontSize: 16,
+    marginBottom: 20,
+  },
+  closeButton: {
+    padding: 10,
+    backgroundColor: "blue",
+    borderRadius: 5,
+  },
+  closeButtonText: {
+    color: "white",
+    fontWeight: "bold",
+  },
+  arrow: {
+    position: "absolute",
+    width: 0,
+    height: 0,
+    borderLeftWidth: 15,
+    borderRightWidth: 15,
+    borderTopWidth: 40,
+    borderLeftColor: "transparent",
+    borderRightColor: "transparent",
+    borderTopColor: "white",
+  },
 })
 
 export default Question2

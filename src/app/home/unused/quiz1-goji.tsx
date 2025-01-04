@@ -8,6 +8,7 @@ import { useRouter } from "expo-router";
 import ChangeButton from "../../../components/ChangeButton";
 import { AntDesign } from "@expo/vector-icons";
 import Address from "../../../components/Address";
+import FooterButton from "../../../components/FooterButton";
 
 const quiz1 = () => {
   const router = useRouter();
@@ -86,9 +87,7 @@ const quiz1 = () => {
           </View>
         </View>
       </View>
-      <ChangeButton>
-        <AntDesign name='exclamation' size={40} />
-      </ChangeButton>
+      <FooterButton label="回答する" onPress={handlePress} />
     </ScrollView>
   );
 };

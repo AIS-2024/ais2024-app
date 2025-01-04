@@ -6,7 +6,7 @@ import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import { GestureHandlerRootView, ScrollView } from "react-native-gesture-handler";
 import Address from "../../../components/Address";
 
-const handlepress = () : void => {
+const handlepress = (): void => {
   router.push("home/question6/question1")
 }
 
@@ -14,15 +14,15 @@ const Question1 = () => {
   return (
     <GestureHandlerRootView>
       <ScrollView style={styles.container}>
-      <Address />
+        <Address />
         <Text style={styles.main}>
           クレジットカード情報の更新、追加などにつきまして、以下の手順をご確認ください。アカウントサービスからAmazon情報を管理するページにアクセスして、更新してください。
         </Text>
 
         <Text style={styles.main}>
           また、Amazonプライム期間が終了したら、お急ぎ便無料やプライム・ビデオ見放題　などのプライム会員特典のご利用ができなくなります。（主なプライム会員特典を確認するには{" "}
-        <Text style={styles.link}>こちら </Text>
-        をクリックしてください）。お早めにお手続きの程よろしくお願い致します
+          <Text style={styles.link}>こちら </Text>
+          をクリックしてください）。お早めにお手続きの程よろしくお願い致します
         </Text>
 
         <Text style={styles.main}>
@@ -61,7 +61,7 @@ const styles = StyleSheet.create({
   container: {
     padding: 25,
     backgroundColor: "#ffffff",
-   
+
   },
   main: {
     marginBottom: 20,

@@ -5,9 +5,10 @@ import { router } from "expo-router";
 import Address from '../../../components/Address';
 import ChangeButton from '../../../components/ChangeButton';
 import { AntDesign } from '@expo/vector-icons';
-import < FooterButton label = "まちがいなし" onPress = { handlePress1 } /> from '../../../components/AnswerButton';
+import AnswerButton from '../../../components/AnswerButton';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { auth } from '../../../config';
+import FooterButton from '../../../components/FooterButton';
 
 const handlepressIncorrect = (): void => {
   router.push("/home/incorrect");
@@ -139,8 +140,8 @@ export default function App() {
         </View>
       </ScrollView>
       <TouchableOpacity onPress={handlepressIncorrect}>
-      <<FooterButton label="まちがいなし" onPress={handlePress1} />ref={buttonRef} label='間違い無し' onPress={handlepressCorrect} />
       </TouchableOpacity>
+      <FooterButton ref={ } label="まちがいなし" onPress={handlepressCorrect} />
       <Modal
         visible={modalVisible}
         transparent={true}
