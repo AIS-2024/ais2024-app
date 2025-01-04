@@ -31,6 +31,7 @@ const styles = StyleSheet.create({
         zIndex: 10,
     },
     text: {
+        fontWeight: "bold",
         fontSize: 12,
         lineHeight: 24,
         color: '#000000'
