@@ -85,8 +85,7 @@ const Collection = () => {
   return (
     <GestureHandlerRootView>
       <ScrollView contentContainerStyle={styles.container}>
-        <CollectionTop />
-
+        {/* <CollectionTop /> */}
         {loading ? (
           <Text>Loading...</Text>
         ) : (
@@ -116,7 +115,7 @@ const Collection = () => {
 const styles = StyleSheet.create({
   container: {
     flexGrow: 1,
-    backgroundColor: "#ffffff",
+    backgroundColor: "#fbf8ff",
     paddingBottom: 80,
     alignItems: "center",
   },
@@ -135,7 +134,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
   },
   disabledButton: {
-    backgroundColor: "#B0B0B0",
+    backgroundColor: "#e3e1eb",
   },
 });
 

@@ -24,17 +24,18 @@ const LogOutButton = () => {
 
 const styles = StyleSheet.create({
     logoutButton: {
-        marginRight: 10, // ヘッダー右端からの余白
-        padding: 5,
-        borderRadius: 5,
-        backgroundColor: 'orange',
+        paddingVertical: 5,
+        paddingHorizontal: 10,
+        marginBottom: 5,
+        borderRadius: 20,
+        backgroundColor: '#4f64d7',
         zIndex: 10,
     },
     text: {
         fontWeight: "bold",
         fontSize: 12,
         lineHeight: 24,
-        color: '#000000'
+        color: '#ffffff'
     }
 })
 

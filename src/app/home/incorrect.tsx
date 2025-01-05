@@ -16,8 +16,7 @@ const Incorrect = () => {
   return (
     <ScrollView style={styles.all}>
       <View>
-        <Text style={styles.correct}>この選択は危険かも...</Text>
-        {/* 惜しいです！もう一度試してみましょう！,少し考え直してみましょう！詐欺を見逃してしまいました！詐欺に引っかかってしまうかも！ */}
+        <Text style={styles.correct}>不正解...</Text>
         <TouchableOpacity style={styles.button} onPress={handleRetry}>
           <Text style={styles.buttonText}>もう一度挑戦する</Text>
         </TouchableOpacity>
@@ -32,16 +31,16 @@ const Incorrect = () => {
 const styles = StyleSheet.create({
   all: {
     flex: 1,
-    backgroundColor: "#F9F7E8",
+    backgroundColor: "#fbf8ff",
   },
   correct: {
     alignSelf: "center",
     paddingTop: 50,
     fontSize: 96,
-    color: "#3F54C7",
+    color: "#454653",
   },
   button: {
-    backgroundColor: "#FF7B4B",
+    backgroundColor: "#4f64d7",
     alignSelf: "center",
     marginTop: 40,
     paddingVertical: 10,
@@ -50,7 +49,7 @@ const styles = StyleSheet.create({
     borderRadius: 50,
   },
   homeButton: {
-    backgroundColor: "#FFB74B",
+    backgroundColor: "#545b88",
   },
   buttonText: {
     fontSize: 24,

@@ -179,7 +179,6 @@ const Nottori = () => {
           </View>
           <Footer />
         </View>
-
       </ScrollView>
       <FooterButton ref={buttonRef} label="回答する" onPress={handlePress} />
       <Modal

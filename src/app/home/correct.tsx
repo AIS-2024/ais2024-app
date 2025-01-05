@@ -99,7 +99,7 @@ const Correct = () => {
 const styles = StyleSheet.create({
   all: {
     flex: 1,
-    backgroundColor: "#F9F7E8",
+    backgroundColor: "#fbf8ff",
   },
   correctContent: {
     paddingTop: 70,
@@ -125,7 +125,7 @@ const styles = StyleSheet.create({
   },
   explain: {
     fontSize: 40,
-    color: "#3F54C7",
+    color: "#4f64d7",
     marginBottom: 10,
   },
   explainScroll: {
@@ -137,7 +137,7 @@ const styles = StyleSheet.create({
     lineHeight: 28,
   },
   backButton: {
-    backgroundColor: "#FFB74B",
+    backgroundColor: "#263db1",
     alignSelf: "center",
     paddingVertical: 10,
     paddingHorizontal: 20,

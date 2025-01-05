@@ -8,9 +8,9 @@ const Layout = () => {
       screenOptions={({ route }) => ({
         headerRight: () => route.name.startsWith("home/") ? <LogOutButton /> : null,
         headerStyle: {
-          // ヘッダーの背景色などを設定
+          backgroundColor: "#263db1",
         },
-        headerTintColor: '#000000', // 戻るボタンやタイトルの色
+        headerTintColor: '#ffffff', // 戻るボタンやタイトルの色
         headerTitleStyle: {
           fontSize: 22,
           fontWeight: 'bold',
@@ -18,8 +18,8 @@ const Layout = () => {
       })}
     >
       <Stack.Screen name="index" options={{ title: "スタート", headerLeft: () => false }} />
-      <Stack.Screen name="auth/Login" options={{ title: "ログイン" }} />
-      <Stack.Screen name="auth/SignUp" options={{ title: "新規登録" }} />
+      <Stack.Screen name="auth/Login" options={{ title: "ログイン", headerLeft: () => false }} />
+      <Stack.Screen name="auth/SignUp" options={{ title: "新規登録", headerLeft: () => false }} />
       <Stack.Screen name="home/home" options={{ title: "ホーム", headerLeft: () => false }} />
       <Stack.Screen name="home/collection/index" options={{ title: "コレクション" }} />
       <Stack.Screen name="home/mailSelect" options={{ title: "メール問題選択" }} />

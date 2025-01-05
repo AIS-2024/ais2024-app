@@ -363,14 +363,14 @@ const styles = StyleSheet.create({
     height: 65,
     borderRadius: 15,
     marginBottom: 5,
-    backgroundColor: "orange",
+    backgroundColor: "#ced3ff",
     alignItems: "center",
     justifyContent: "center"
   },
   resetButtonText: {
     textAlign: "center",
     fontWeight: "bold",
-    color: "000000"
+    color: "#363d68"
   }
 });
 

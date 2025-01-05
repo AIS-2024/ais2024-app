@@ -35,16 +35,16 @@ const styles = StyleSheet.create({
         left: 0,
         right: 0,
         height: 80, // フッターの高さ
-        backgroundColor: '#f5f5f5', // フッターの背景色
+        backgroundColor: '#4f64d7', // フッターの背景色
         justifyContent: 'center',
         alignItems: 'center',
         paddingBottom: 16,
     },
     buttonContainer: {
+        paddingHorizontal: 10,
         width: 200,
         height: 64,
         borderRadius: 32,
-        // backgroundColor: '#2DFF70',
         justifyContent: 'center',
         alignItems: 'center',
         shadowColor: '#000',
@@ -57,7 +57,7 @@ const styles = StyleSheet.create({
         paddingHorizontal: 16, // ラベル部分のみ押せる範囲を調整
     },
     label: {
-        color: '#000',
+        color: '#ffffff',
         fontSize: 20,
         fontWeight: 'bold',
         textAlign: 'center',

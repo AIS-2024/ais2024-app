@@ -98,9 +98,9 @@ const SignUp = () => {
 
   return (
     <ScrollView style={styles.container}>
-      <View style={styles.header}>
+      {/* <View style={styles.header}>
         <Text style={styles.headerText}>新規登録</Text>
-      </View>
+      </View> */}
       <View>
         <View style={styles.boxes}>
           <View style={styles.title}>
@@ -147,36 +147,36 @@ const SignUp = () => {
             </View>
           </View>
           <Picker
-        selectedValue={age}
-        onValueChange={(itemValue) => setAge(itemValue)}
-        style={styles.picker}
-      >
-        <Picker.Item label="回答しない" value="回答しない" />
-        <Picker.Item label="10歳未満" value="10歳未満" />
-        <Picker.Item label="10代" value="10代" />
-        <Picker.Item label="20代" value="20代" />
-        <Picker.Item label="30代" value="30代" />
-        <Picker.Item label="40代" value="40代" />
-        <Picker.Item label="50代" value="50代" />
-        <Picker.Item label="60代" value="60代" />
-        <Picker.Item label="70代" value="70代" />
-        <Picker.Item label="80歳以上" value="80歳以上" />
-      </Picker>
-      <View style={styles.title}>
-          <Text>性別　</Text>
-          <View style={styles.alertFree}>
+            selectedValue={age}
+            onValueChange={(itemValue) => setAge(itemValue)}
+            style={styles.picker}
+          >
+            <Picker.Item label="回答しない" value="回答しない" />
+            <Picker.Item label="10歳未満" value="10歳未満" />
+            <Picker.Item label="10代" value="10代" />
+            <Picker.Item label="20代" value="20代" />
+            <Picker.Item label="30代" value="30代" />
+            <Picker.Item label="40代" value="40代" />
+            <Picker.Item label="50代" value="50代" />
+            <Picker.Item label="60代" value="60代" />
+            <Picker.Item label="70代" value="70代" />
+            <Picker.Item label="80歳以上" value="80歳以上" />
+          </Picker>
+          <View style={styles.title}>
+            <Text>性別　</Text>
+            <View style={styles.alertFree}>
               <Text style={styles.alertText}>任意</Text>
             </View>
           </View>
           <Picker
-        selectedValue={sex}
-        onValueChange={(itemValue) => setSex(itemValue)}
-        style={styles.picker}
-      >
-        <Picker.Item label="回答しない" value="回答しない" />
-        <Picker.Item label="男性" value="男性" />
-        <Picker.Item label="女性" value="女性" />
-      </Picker>
+            selectedValue={sex}
+            onValueChange={(itemValue) => setSex(itemValue)}
+            style={styles.picker}
+          >
+            <Picker.Item label="回答しない" value="回答しない" />
+            <Picker.Item label="男性" value="男性" />
+            <Picker.Item label="女性" value="女性" />
+          </Picker>
         </View>
         <View style={styles.button}>
           <Pressable
@@ -256,25 +256,25 @@ const styles = StyleSheet.create({
     color: "#FFF",
     fontSize: 16,
   },
-  title:{
+  title: {
     flexDirection: "row", // 横並びにする
-    width:"100%",
-    alignItems:"center"
+    width: "100%",
+    alignItems: "center"
   },
-  alert:{
-    backgroundColor:"red",
+  alert: {
+    backgroundColor: "red",
     borderRadius: 6,
     paddingVertical: 2, // 上下の余白
     paddingHorizontal: 4, // 左右の余白
   },
-  alertFree:{
-    backgroundColor:"gray",
+  alertFree: {
+    backgroundColor: "gray",
     borderRadius: 6,
     paddingVertical: 2, // 上下の余白
     paddingHorizontal: 4, // 左右の余白
   },
-  alertText:{
-    color:"#ffffff",
+  alertText: {
+    color: "#ffffff",
     fontWeight: "bold",
   },
   picker: { height: 60, width: '100%' },
