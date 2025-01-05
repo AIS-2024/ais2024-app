@@ -9,7 +9,7 @@ const Correct = () => {
   const router = useRouter();
   const searchParams = useLocalSearchParams();
   const [questionNumber, setQuestionNumber] = useState<number | null>(null);
-  
+
   const db = getFirestore(); // Firestore インスタンス
   const auth = getAuth(); // 認証インスタンス
 
@@ -32,25 +32,25 @@ const Correct = () => {
       try {
         // Firestoreのパスを指定（`userInfo`コレクション内のドキュメント）
         const userInfoRef = doc(db, "userInfo", user.uid); // userInfo コレクションの中のユーザーのドキュメントを参照
-  
+
         // 更新するフィールドを指定
         const explanationField = `explanations.${questionNumber}`; // explanationsの配列の特定のインデックスを指定
-  
+
         // 現在のデータを取得して、必要に応じて更新を行う
         const userDoc = await getDoc(userInfoRef);
         if (userDoc.exists()) {
           const currentData = userDoc.data();
           const currentExplanations = currentData.explanations || {}; // explanationsフィールドが存在しない場合に備え
-  
+
           // 更新する値をtrueに設定
           const updatedExplanations = {
             ...currentExplanations,
             [questionNumber]: true,
           };
-  
+
           // データをセットする
           await setDoc(userInfoRef, { explanations: updatedExplanations }, { merge: true });
-  
+
           console.log(`explanations.${questionNumber} updated to true`);
         } else {
           console.error("User document not found.");
@@ -73,9 +73,9 @@ const Correct = () => {
     <ScrollView style={styles.all}>
       <View>
         <View style={styles.correctContent}>
-          <Text style={styles.correct}>正解！</Text>
+          <Text style={styles.correct}>詐欺を見破った！</Text>
         </View>
-
+        {/* 素晴らしい判断です！,危険を回避した 安心、安全な選択です！*/}
         <View style={styles.explainContent}>
           <Text style={styles.explain}>解説</Text>
           <ScrollView style={styles.explainScroll}>

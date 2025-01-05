@@ -16,7 +16,8 @@ const Incorrect = () => {
   return (
     <ScrollView style={styles.all}>
       <View>
-        <Text style={styles.correct}>不正解...</Text>
+        <Text style={styles.correct}>この選択は危険かも...</Text>
+        {/* 惜しいです！もう一度試してみましょう！,少し考え直してみましょう！詐欺を見逃してしまいました！詐欺に引っかかってしまうかも！ */}
         <TouchableOpacity style={styles.button} onPress={handleRetry}>
           <Text style={styles.buttonText}>もう一度挑戦する</Text>
         </TouchableOpacity>
