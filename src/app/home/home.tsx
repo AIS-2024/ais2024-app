@@ -37,6 +37,10 @@ const handlepress4 = (): void => {
   router.push("home/collection");
 };
 
+const handlepress5 = (): void => {
+  router.push("home/hint");
+};
+
 const Home = () => {
   const searchParams = useLocalSearchParams();
   const isNewUser = searchParams.isNewUser === "true";
@@ -182,6 +186,7 @@ const Home = () => {
             }}
             style={styles.Icon}
           />
+
         </TouchableOpacity>
         {/* チュートリアルモーダル */}
         <Modal
@@ -219,6 +224,11 @@ const Home = () => {
             </View>
           </View>
         </Modal>
+        <TouchableOpacity style={styles.hint} onPress={handlepress5}>
+          <Text>
+            遊び方などはこちら！
+          </Text>
+        </TouchableOpacity>
       </View>
     </ImageBackground>
   );
@@ -323,6 +333,11 @@ const styles = StyleSheet.create({
     color: "white",
     fontWeight: "bold",
   },
+  hint: {
+    backgroundColor: "#fff",
+    margin: 10,
+    padding: 10
+  }
 });
 
 export default Home;
