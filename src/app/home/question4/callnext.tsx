@@ -5,6 +5,7 @@ import { router } from "expo-router";
 import Address from '../../../components/Address';
 import ChangeButton from "../../../components/ChangeButton";
 import { AntDesign } from '@expo/vector-icons';
+import FooterButton from '../../../components/FooterButton';
 
 const handlePress = (): void => {
   router.push("/home/question4/callnext2");
@@ -37,7 +38,7 @@ export default function CallNextScreen() {
       </Text>
 
       {/* ログインリンク */}
-      <TouchableOpacity  style={styles.loginLinkContainer}>
+      <TouchableOpacity style={styles.loginLinkContainer}>
         <Text style={styles.loginLink}>ログイン</Text>
       </TouchableOpacity>
 
@@ -47,15 +48,10 @@ export default function CallNextScreen() {
         ご不明な点がございましたら、カスタマーサービスへお問い合わせください。
       </Text>
 
+      <FooterButton label="回答する" onPress={handlePress} />
+    </View>
+    </ScrollView>
 
-
-      
-      <ChangeButton onPress={handlePress}>
-          <AntDesign name='exclamation' size={40} />
-        </ChangeButton>
-      </View>
-      </ScrollView>
-      
   );
 }
 
@@ -74,7 +70,7 @@ const styles = StyleSheet.create({
   warningText: {
     color: '#721C24',
     fontSize: 14,
-    
+
   },
   senderContainer: {
     flexDirection: 'row',
@@ -128,27 +124,27 @@ const styles = StyleSheet.create({
 
   //ボタンの追加//
 
-actionContainer: {
-  flexDirection: 'row',
-  justifyContent: 'space-around',
-  width: '150%',
-  marginTop: 30,
-  bottom: 150,
-},
-declineButton: {
-  alignItems: 'center',
-  justifyContent: 'center',
-  width: 70,
-  height: 70,
-  borderRadius: 35,
-  backgroundColor: '#D9534F', // 赤
-},
+  actionContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    width: '150%',
+    marginTop: 30,
+    bottom: 150,
+  },
+  declineButton: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    width: 70,
+    height: 70,
+    borderRadius: 35,
+    backgroundColor: '#D9534F', // 赤
+  },
 
-actionText: {
-  fontSize: 14,
-  color: 'white',
-  marginTop: 8,
-},
-//タッチャブル//
+  actionText: {
+    fontSize: 14,
+    color: 'white',
+    marginTop: 8,
+  },
+  //タッチャブル//
 
 });

@@ -6,10 +6,10 @@ import BackButton from "../../components/BackButton"
 import { auth } from "../../config"
 import AsyncStorage from "@react-native-async-storage/async-storage"
 
-const handlePress1 = () : void => {
+const handlePress1 = (): void => {
     router.push("/home/question5/quiz2")
 }
-const handlePress2 = () : void => {
+const handlePress2 = (): void => {
     router.push("/home/question5/quiz2-another")
 }
 
@@ -18,18 +18,19 @@ const smsSelect = () => {
 
     useEffect(() => {
         const checkFirstVisit = async () => {
-        const user=auth.currentUser;
-            if(user){
-                const key=`hasVisitedSMS_${user.uid}`
+            const user = auth.currentUser;
+            if (user) {
+                const key = `hasVisitedSMS_${user.uid}`
                 const hasVisited = await AsyncStorage.getItem(key);
-          if (!hasVisited) {
-            // 初回訪問の場合、モーダルを表示
-            setModalVisible(true);
-            await AsyncStorage.setItem(key, 'true');
-          }}
+                if (!hasVisited) {
+                    // 初回訪問の場合、モーダルを表示
+                    setModalVisible(true);
+                    await AsyncStorage.setItem(key, 'true');
+                }
+            }
         };
         checkFirstVisit();
-      }, []);
+    }, []);
     return (
         <GestureHandlerRootView>
             <ScrollView contentContainerStyle={styles.container}>
@@ -39,37 +40,35 @@ const smsSelect = () => {
 
                 <TouchableOpacity onPress={handlePress1} style={styles.mailBorder}>
                     <View style={styles.mailContainer}>
-                    <Text style={styles.from}>Amazon.co.jp</Text>
-                    <Text style={styles.mailTitle}>昨日</Text>
-                    <Text style={styles.text} numberOfLines={2}>支払いの問題でAmazonがロックされました。</Text>
+                        <Text style={styles.from}>Amazon.co.jp</Text>
+                        <Text style={styles.mailTitle}>昨日</Text>
+                        <Text style={styles.text} numberOfLines={2}>支払いの問題でAmazonがロックされました。</Text>
                     </View>
                 </TouchableOpacity>
                 <TouchableOpacity onPress={handlePress2} style={styles.mailBorder}>
                     <View style={styles.mailContainer}>
-                    <Text style={styles.from}>Amazon.co.jp</Text>
-                    <Text style={styles.mailTitle}>昨日</Text>
-                    <Text style={styles.text} numberOfLines={2}>【重要】Amazonアカウントが一時的に停止されています</Text>
+                        <Text style={styles.from}>Amazon.co.jp</Text>
+                        <Text style={styles.mailTitle}>昨日</Text>
+                        <Text style={styles.text} numberOfLines={2}>【重要】Amazonアカウントが一時的に停止されています</Text>
                     </View>
                 </TouchableOpacity>
                 <Modal
-                                    visible={modalVisible}
-                                    transparent={true}
-                                    animationType="fade"
-                                    onRequestClose={() => setModalVisible(false)}
-                                >
-                                    <View style={styles.modalOverlay}>
-                                        <View style={styles.dialog}>
-                                            <Text style={styles.dialogText}>問題選択画面について</Text>
-                                            <Text style={styles.dialogText}>一覧からいずれかのメール（問題）をタップして選択します。</Text>
-                                            <TouchableOpacity style={styles.closeButton} onPress={() => setModalVisible(false)}>
-                                                <Text style={styles.closeButtonText}>閉じる</Text>
-                                            </TouchableOpacity>
-                                        </View>
-                                    </View>
-                                </Modal>
-                </ScrollView>
-                <BackButton />
-
+                    visible={modalVisible}
+                    transparent={true}
+                    animationType="fade"
+                    onRequestClose={() => setModalVisible(false)}
+                >
+                    <View style={styles.modalOverlay}>
+                        <View style={styles.dialog}>
+                            <Text style={styles.dialogText}>問題選択画面について</Text>
+                            <Text style={styles.dialogText}>一覧からいずれかのメール（問題）をタップして選択します。</Text>
+                            <TouchableOpacity style={styles.closeButton} onPress={() => setModalVisible(false)}>
+                                <Text style={styles.closeButtonText}>閉じる</Text>
+                            </TouchableOpacity>
+                        </View>
+                    </View>
+                </Modal>
+            </ScrollView>
         </GestureHandlerRootView>
     )
 
@@ -99,7 +98,7 @@ const styles = StyleSheet.create({
         fontWeight: "bold",
         fontSize: 18
     },
-    mailTitle:{
+    mailTitle: {
         fontSize: 16,
     },
     mailBorder: {
@@ -124,14 +123,14 @@ const styles = StyleSheet.create({
         paddingBottom: 10
     },
     text: {
-    fontSize: 16,
-    color: '#808080',
+        fontSize: 16,
+        color: '#808080',
     },
     modalOverlay: {
         flex: 1,
         justifyContent: "flex-end",
         backgroundColor: "rgba(0, 0, 0, 0.5)",
-      },
+    },
     dialog: {
         backgroundColor: "white",
         padding: 20,
@@ -151,7 +150,7 @@ const styles = StyleSheet.create({
     closeButtonText: {
         color: "white",
         fontWeight: "bold",
-      },
+    },
 })
 
 export default smsSelect

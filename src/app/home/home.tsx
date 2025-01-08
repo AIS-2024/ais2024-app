@@ -16,8 +16,6 @@ import {
 import React, { useLayoutEffect, useRef, useState } from "react";
 import { useEffect } from "react";
 import { router, useNavigation } from "expo-router";
-import LogOutButton from "../../components/LogOutButton";
-import { auth } from "../../config";
 import { useLocalSearchParams } from "expo-router/build/hooks";
 
 const handlepress1 = (): void => {
@@ -29,7 +27,7 @@ const handlepress2 = (): void => {
 };
 
 const handlepress3 = (): void => {
-  router.push("home/question4/call");
+  router.push("home/question4/callbefore");
 };
 
 const handlepress4 = (): void => {
@@ -105,12 +103,12 @@ const Home = () => {
   const showTooltip = async () => {
     try {
       const currentStep = steps[step];
-  
+
       if (!currentStep?.target) {
         console.warn("Target ref is undefined for step:", step);
         return;
       }
-  
+
       if (step === 0) {
         setArrowPosition({ top: -100, left: -100 });
       } else {
@@ -171,7 +169,7 @@ const Home = () => {
           </TouchableOpacity>
           <Text style={styles.text}>メール問題</Text>
         </View>
-        <View  style={{ alignItems: "center" }}>
+        <View style={{ alignItems: "center" }}>
           <TouchableOpacity ref={smsIconRef} onPress={handlepress2}>
             <Image
               source={{
@@ -182,29 +180,29 @@ const Home = () => {
           </TouchableOpacity>
           <Text style={styles.text}>SMS問題</Text>
         </View>
-        <View  style={{ alignItems: "center" }}>
-        <TouchableOpacity ref={callIconRef} onPress={handlepress3}>
-          <Image
-            source={{
-              uri: "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/64/09/09/6409090d-8811-e92f-2ebf-37f842b72e98/AppIcon-0-0-1x_U007emarketing-0-10-0-85-220.png/340x340bb.webp",
-            }}
-            style={styles.Icon}
-          />
-        </TouchableOpacity>
-        <Text style={styles.text}>電話問題</Text>
+        <View style={{ alignItems: "center" }}>
+          <TouchableOpacity ref={callIconRef} onPress={handlepress3}>
+            <Image
+              source={{
+                uri: "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/64/09/09/6409090d-8811-e92f-2ebf-37f842b72e98/AppIcon-0-0-1x_U007emarketing-0-10-0-85-220.png/340x340bb.webp",
+              }}
+              style={styles.Icon}
+            />
+          </TouchableOpacity>
+          <Text style={styles.text}>電話問題</Text>
         </View>
-        <View  style={{ alignItems: "center" }}>
-        <TouchableOpacity ref={collectionIconRef} onPress={handlepress4}>
-          <Image
-            source={{
-              uri: "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/7d/d1/9e/7dd19ecc-fef9-bc7e-0a1d-10796501161e/AppIcon-0-0-1x_U007emarketing-0-10-0-85-220.png/434x0w.webp",
-            }}
-            style={styles.Icon}
-          />
-        </TouchableOpacity>
-        <Text style={styles.text}>ｺﾚｸｼｮﾝ</Text>
+        <View style={{ alignItems: "center" }}>
+          <TouchableOpacity ref={collectionIconRef} onPress={handlepress4}>
+            <Image
+              source={{
+                uri: "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/7d/d1/9e/7dd19ecc-fef9-bc7e-0a1d-10796501161e/AppIcon-0-0-1x_U007emarketing-0-10-0-85-220.png/434x0w.webp",
+              }}
+              style={styles.Icon}
+            />
+          </TouchableOpacity>
+          <Text style={styles.text}>コレクション</Text>
         </View>
-      
+
         {/* チュートリアルモーダル */}
         <Modal
           visible={modalVisible}
@@ -243,10 +241,10 @@ const Home = () => {
         </Modal>
       </View>
       <View style={styles.resetButtonContainer}>
-      <TouchableOpacity style={styles.resetButton} onPress={resetTutorial}>
-  <Text style={styles.resetButtonText}>チュートリアル</Text>
-</TouchableOpacity>
-</View>
+        <TouchableOpacity style={styles.resetButton} onPress={resetTutorial}>
+          <Text style={styles.resetButtonText}>チュートリアル</Text>
+        </TouchableOpacity>
+      </View>
     </ImageBackground>
   );
 };
@@ -365,14 +363,14 @@ const styles = StyleSheet.create({
     height: 65,
     borderRadius: 15,
     marginBottom: 5,
-    backgroundColor: "orange",
+    backgroundColor: "#ced3ff",
     alignItems: "center",
     justifyContent: "center"
   },
   resetButtonText: {
     textAlign: "center",
     fontWeight: "bold",
-    color: "000000" 
+    color: "#363d68"
   }
 });
 

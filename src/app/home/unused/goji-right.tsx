@@ -9,6 +9,7 @@ import ChangeButton from "../../../components/ChangeButton";
 import Address from "../../../components/Address";
 import { auth, db } from "../../../config";
 import { doc, getDoc } from "firebase/firestore";
+import FooterButton from "../../../components/FooterButton";
 
 const handlePress = (): void => {
   router.push("/home/question8/goji");
@@ -95,9 +96,7 @@ export default function App() {
           商品の発送準備が完了したら、お知らせいたします。
         </Text>
       </View>
-      <ChangeButton>
-        <AntDesign name='exclamation' size={40} />
-      </ChangeButton>
+      <FooterButton label="回答する" onPress={handlePress} />
     </ScrollView>
   );
 }

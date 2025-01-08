@@ -5,7 +5,9 @@ import { router } from "expo-router";
 import AnswerButton from "../../../components/AnswerButton";
 import { auth } from '../../../config';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-const handlepress = () : void => {
+import FooterButton from '../../../components/FooterButton';
+
+const handlepress = (): void => {
   router.push("/home/incorrect")
 }
 
@@ -16,9 +18,9 @@ const handlepresscorect = (): void => {
 export default function CallScreen() {
   const [modalVisible, setModalVisible] = useState(false); // モーダルの表示非表示を管理
 
-    useEffect(() => {
-            setModalVisible(true);
-      }, []);
+  useEffect(() => {
+    setModalVisible(true);
+  }, []);
   return (
     <View style={styles.container}>
       {/* 相手の名前 */}
@@ -47,23 +49,23 @@ export default function CallScreen() {
           <Text style={styles.actionText}>応答</Text>
         </TouchableOpacity>
       </View>
-      <AnswerButton label='何もしない' onPress={handlepresscorect} />
-      <Modal
-                          visible={modalVisible}
-                          transparent={true}
-                          animationType="fade"
-                          onRequestClose={() => setModalVisible(false)}
-                      >
-                          <View style={styles.modalOverlay}>
-                              <View style={styles.dialog}>
-                                  <Text style={styles.dialogText}>電話問題について</Text>
-                                  <Text style={styles.dialogText}>電話がかかってきています。対応を選択してください。</Text>
-                                  <TouchableOpacity style={styles.closeButton} onPress={() => setModalVisible(false)}>
-                                      <Text style={styles.closeButtonText}>閉じる</Text>
-                                  </TouchableOpacity>
-                              </View>
-                          </View>
-                      </Modal>
+      <FooterButton label='何もしない' onPress={handlepresscorect} />
+      {/* <Modal
+        visible={modalVisible}
+        transparent={true}
+        animationType="fade"
+        onRequestClose={() => setModalVisible(false)}
+      >
+        <View style={styles.modalOverlay}>
+          <View style={styles.dialog}>
+            <Text style={styles.dialogText}>電話問題について</Text>
+            <Text style={styles.dialogText}>電話がかかってきています。対応を選択してください。</Text>
+            <TouchableOpacity style={styles.closeButton} onPress={() => setModalVisible(false)}>
+              <Text style={styles.closeButtonText}>閉じる</Text>
+            </TouchableOpacity>
+          </View>
+        </View>
+      </Modal> */}
     </View>
   );
 }
@@ -78,7 +80,7 @@ const styles = StyleSheet.create({
   callerName: {
     fontSize: 28,
     color: 'white',
-    marginBottom: 80,
+    marginBottom: 170,
   },
   optionContainer: {
     flexDirection: 'row',
@@ -126,23 +128,23 @@ const styles = StyleSheet.create({
     justifyContent: "flex-end",
     backgroundColor: "rgba(0, 0, 0, 0.5)",
   },
-dialog: {
+  dialog: {
     backgroundColor: "white",
     padding: 20,
     borderTopLeftRadius: 20,
     borderTopRightRadius: 20,
     alignItems: "center",
-},
-dialogText: {
+  },
+  dialogText: {
     fontSize: 16,
     marginBottom: 20,
-},
-closeButton: {
+  },
+  closeButton: {
     padding: 10,
     backgroundColor: "blue",
     borderRadius: 5,
-},
-closeButtonText: {
+  },
+  closeButtonText: {
     color: "white",
     fontWeight: "bold",
   },

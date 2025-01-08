@@ -1,20 +1,31 @@
 import React, { forwardRef } from 'react';
-import { Text, StyleSheet, TouchableOpacity, type ViewStyle, TouchableOpacityProps } from "react-native"
+import {
+    Text,
+    StyleSheet,
+    View,
+    TouchableOpacity,
+    type ViewStyle,
+    TouchableOpacityProps
+} from "react-native";
 
-interface Props extends TouchableOpacityProps{
-    label: string
-    style?: ViewStyle
-    onPress?: () => void
+interface Props extends TouchableOpacityProps {
+    label: string;
+    style?: ViewStyle;
+    onPress?: () => void;
 }
 
 const AnswerButton = forwardRef<React.ElementRef<typeof TouchableOpacity>, Props>(
     ({ label, style, onPress }, ref) => {
-            return (
-                <TouchableOpacity ref={ref} onPress={onPress} style={[styles.answerButton, style]}>
+        return (
+            <View style={[styles.answerButton, style]}>
+                {/* ラベル部分を押したときのみ onPress が実行 */}
+                <TouchableOpacity onPress={onPress} ref={ref}>
                     <Text style={styles.answerButtonLabel}>{label}</Text>
                 </TouchableOpacity>
-            )}
-)
+            </View>
+        );
+    }
+);
 
 const styles = StyleSheet.create({
     answerButton: {
@@ -32,14 +43,14 @@ const styles = StyleSheet.create({
         shadowColor: '#000',
         shadowOpacity: 0.25,
         shadowRadius: 8,
-        shadowOffset: { width: 0, height: 8},
-        elevation: 8
+        shadowOffset: { width: 0, height: 8 },
+        elevation: 8,
     },
     answerButtonLabel: {
         color: '#000',
         fontSize: 30,
-        lineHeight: 48
-    }
-})
+        lineHeight: 48,
+    },
+});
 
-export default AnswerButton
+export default AnswerButton;

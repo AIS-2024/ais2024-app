@@ -9,8 +9,9 @@ import { AntDesign } from "@expo/vector-icons";
 import Address from "../../../components/Address";
 import { auth } from "../../../config";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import FooterButton from "../../../components/FooterButton";
 
-const handlepress = () : void => {
+const handlepress = (): void => {
   router.push("home/question6/question1-ans")
 }
 
@@ -19,36 +20,37 @@ const Question1 = () => {
   const [modalVisible, setModalVisible] = useState(false); // モーダルの表示非表示を管理
   const [arrowPosition, setArrowPosition] = useState({ top: 0, left: 0 });
 
-    
-const buttonRef = useRef<View>(null);
-const steps = [
-  {
-    title: "問題について",
-    description: "問題の回答をスタートするには！ボタンを押します。",
-    target: buttonRef,
-  }
-]
-useEffect(() => {
-  const timeout = setTimeout(() => {
-  const checkFirstVisit = async () => {
-  const user=auth.currentUser;
-      if(user){
-          const key=`hasVisitedQuestion_${user.uid}`
+
+  const buttonRef = useRef<View>(null);
+  const steps = [
+    {
+      title: "問題について",
+      description: "問題の回答をスタートするには「回答する」ボタンを押します。",
+      target: buttonRef,
+    }
+  ]
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      const checkFirstVisit = async () => {
+        const user = auth.currentUser;
+        if (user) {
+          const key = `hasVisitedQuestion_${user.uid}`
           const hasVisited = await AsyncStorage.getItem(key);
-    if (!hasVisited) {
-      // 初回訪問の場合、モーダルを表示
-      setModalVisible(true);
-      showTooltip();
-      await AsyncStorage.setItem(key, 'true');
-    }}
-  };
-  checkFirstVisit();
-}, 200);
+          if (!hasVisited) {
+            // 初回訪問の場合、モーダルを表示
+            setModalVisible(true);
+            showTooltip();
+            await AsyncStorage.setItem(key, 'true');
+          }
+        }
+      };
+      checkFirstVisit();
+    }, 200);
 
-return () => clearTimeout(timeout); // クリーンアップ
-}, []);
+    return () => clearTimeout(timeout); // クリーンアップ
+  }, []);
 
-//measureTargetでアイコンの位置を取得
+  //measureTargetでアイコンの位置を取得
   const measureTarget = async (targetRef: React.RefObject<View>) => {
     return new Promise<{ top: number; left: number }>((resolve, reject) => {
       if (targetRef.current) {
@@ -66,13 +68,13 @@ return () => clearTimeout(timeout); // クリーンアップ
   const showTooltip = async () => {
     try {
       const currentStep = steps[step];
-  
+
       if (!currentStep?.target) {
         console.warn("Target ref is undefined for step:", step);
         return;
       }
-        const position = await measureTarget(currentStep.target);
-        setArrowPosition(position);
+      const position = await measureTarget(currentStep.target);
+      setArrowPosition(position);
     } catch (error) {
       console.error("Error measuring target:", error);
     }
@@ -87,8 +89,8 @@ return () => clearTimeout(timeout); // クリーンアップ
 
         <Text style={styles.main}>
           また、Amazonプライム期間が終了したら、お急ぎ便無料やプライム・ビデオ見放題　などのプライム会員特典のご利用ができなくなります。（主なプライム会員特典を確認するには{" "}
-        <Text style={styles.link}>こちら </Text>
-        をクリックしてください）。お早めにお手続きの程よろしくお願い致します
+          <Text style={styles.link}>こちら </Text>
+          をクリックしてください）。お早めにお手続きの程よろしくお願い致します
         </Text>
 
         <Text style={styles.main}>
@@ -113,40 +115,38 @@ return () => clearTimeout(timeout); // クリーンアップ
           Amazonサービスをご利用いただき、ありがとうございました。
         </Text>
 
-      <Text style={styles.footer}>Amazon.co.jp　カスタマーサービス</Text>
-      
-    </ScrollView>
-    <ChangeButton ref={buttonRef} onPress={handlepress}>
-        <AntDesign name='exclamation' size={40} />
-      </ChangeButton>
+        <Text style={styles.footer}>Amazon.co.jp　カスタマーサービス</Text>
+
+      </ScrollView>
+      <FooterButton ref={buttonRef} label="回答する" onPress={handlepress} />
       <Modal
-                                                visible={modalVisible}
-                                                transparent={true}
-                                                animationType="fade"
-                                                onRequestClose={() => setModalVisible(false)}
-                                              >
-                                                <View style={styles.modalOverlay}>
-                                                  {/* 矢印 */}
-                                                    <View
-                                                      style={[
-                                                        styles.arrow,
-                                                        {
-                                                          top: arrowPosition.top-45, // 矢印の位置（ターゲットボタンの下部に合わせる）
-                                                          left: arrowPosition.left - 15, // 矢印の中央をターゲットに合わせる
-                                                        },
-                                                      ]}
-                                                    />
-                                                  
-                                                  {/* ダイアログ */}
-                                                  <View style={styles.dialog}>
-                                                    <Text style={styles.dialogText}>{steps[step]?.title}</Text>
-                                                    <Text style={styles.dialogText}>{steps[step]?.description}</Text>
-                                                    <TouchableOpacity style={styles.closeButton} onPress={()=>setModalVisible(false)}>
-                                                        <Text style={styles.closeButtonText}>閉じる</Text>
-                                                    </TouchableOpacity>
-                                                  </View>
-                                                </View>
-                                              </Modal>
+        visible={modalVisible}
+        transparent={true}
+        animationType="fade"
+        onRequestClose={() => setModalVisible(false)}
+      >
+        <View style={styles.modalOverlay}>
+          {/* 矢印 */}
+          <View
+            style={[
+              styles.arrow,
+              {
+                top: arrowPosition.top - 45, // 矢印の位置（ターゲットボタンの下部に合わせる）
+                left: arrowPosition.left - 15, // 矢印の中央をターゲットに合わせる
+              },
+            ]}
+          />
+
+          {/* ダイアログ */}
+          <View style={styles.dialog}>
+            <Text style={styles.dialogText}>{steps[step]?.title}</Text>
+            <Text style={styles.dialogText}>{steps[step]?.description}</Text>
+            <TouchableOpacity style={styles.closeButton} onPress={() => setModalVisible(false)}>
+              <Text style={styles.closeButtonText}>閉じる</Text>
+            </TouchableOpacity>
+          </View>
+        </View>
+      </Modal>
     </View>
   );
 };
@@ -191,14 +191,14 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     backgroundColor: "rgba(0, 0, 0, 0.5)",
-    padding:20
+    padding: 20
   },
   dialog: {
     backgroundColor: "white",
     padding: 20,
     borderTopLeftRadius: 20,
-    borderBottomLeftRadius:20,
-    borderBottomRightRadius:20,
+    borderBottomLeftRadius: 20,
+    borderBottomRightRadius: 20,
     borderTopRightRadius: 20,
     alignItems: "center",
   },
@@ -221,7 +221,7 @@ const styles = StyleSheet.create({
     height: 0,
     borderLeftWidth: 15,
     borderRightWidth: 15,
-    borderTopWidth:40,
+    borderTopWidth: 40,
     borderLeftColor: "transparent",
     borderRightColor: "transparent",
     borderTopColor: "white",

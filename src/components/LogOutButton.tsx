@@ -1,39 +1,41 @@
 import React, { useState } from "react";
-import { TouchableOpacity,StyleSheet,Text, Alert, ActivityIndicator, Pressable, View } from "react-native";
+import { TouchableOpacity, StyleSheet, Text, Alert, ActivityIndicator, Pressable, View } from "react-native";
 import { signOut } from "firebase/auth";
 import { router } from "expo-router";
 import { auth } from "../config";
 
-const LogOutButton=()=>{
+const LogOutButton = () => {
 
-    const handlePress=()=>{
-        signOut(auth).then(()=>{
+    const handlePress = () => {
+        signOut(auth).then(() => {
             router.replace("/");
-        }).catch((error)=>{
+        }).catch((error) => {
             Alert.alert('ログアウトに失敗しました')
         });
-                
+
     }
 
-    return(
+    return (
         <TouchableOpacity onPressIn={handlePress} style={styles.logoutButton}>
             <Text style={styles.text}>ログアウト</Text>
         </TouchableOpacity>
     )
 }
 
-const styles=StyleSheet.create({
+const styles = StyleSheet.create({
     logoutButton: {
-        marginRight: 10, // ヘッダー右端からの余白
-        padding: 10,
-        borderRadius: 5,
-        backgroundColor:'orange',
+        paddingVertical: 5,
+        paddingHorizontal: 10,
+        marginBottom: 5,
+        borderRadius: 20,
+        backgroundColor: '#4f64d7',
         zIndex: 10,
-      },
-    text:{
-        fontSize:12,
-        lineHeight:24,
-        color:'#000000'
+    },
+    text: {
+        fontWeight: "bold",
+        fontSize: 12,
+        lineHeight: 24,
+        color: '#ffffff'
     }
 })
 

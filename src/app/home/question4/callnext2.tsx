@@ -4,61 +4,61 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import { router } from "expo-router";
 import Address from '../../../components/Address';
 const handlePress = (): void => {
-    router.push("/home/question4/callnext");
-  };
+  router.push("/home/question4/callnext");
+};
 export default function CallNextScreen() {
   return (
     <ScrollView><View style={styles.container}>
       <Address />
-          {/* 警告メッセージ */}
-          <View style={styles.warningContainer}>
-          <TouchableOpacity style={styles.navButton}>
-              <Text style={styles.warningText}>
-                  【重要】 あなたのAmazonのアカウントで不正な行為が確認されたため、アカウントを凍結しました
-              </Text>
-          </TouchableOpacity>
-          </View>
-
-          {/* アイコンと差出人情報 */}
-          <View style={styles.senderContainer}>      
-              <View style={styles.iconContainer}>
-                  <Text style={styles.iconText}>A</Text>
-              </View>
-              <TouchableOpacity style={styles.navButton}>
-              <Text style={styles.senderName}>Amazon</Text>
-              </TouchableOpacity>
-          </View>
-
-          {/* メッセージ本文 */}
-          <TouchableOpacity style={styles.navButton}>
-          <Text style={styles.messageText}>
-              Amazonカスタマーサポートです。{"\n\n"}
-              電話でご連絡した通り、あなたのAmazonのアカウントで不正な行為が確認されたためアカウントを凍結しました。{"\n\n"}
-              アカウントを引き続き利用するために下のリンクよりアカウントにログインしてください。
+      {/* 警告メッセージ */}
+      <View style={styles.warningContainer}>
+        <TouchableOpacity style={styles.navButton}>
+          <Text style={styles.warningText}>
+            【重要】 あなたのAmazonのアカウントで不正な行為が確認されたため、アカウントを凍結しました
           </Text>
-          </TouchableOpacity>
+        </TouchableOpacity>
+      </View>
 
-          {/* ログインリンク */}
-          <TouchableOpacity  style={styles.loginLinkContainer}>
-              <Text style={styles.loginLink}>ログイン</Text>
-          </TouchableOpacity>
+      {/* アイコンと差出人情報 */}
+      <View style={styles.senderContainer}>
+        <View style={styles.iconContainer}>
+          <Text style={styles.iconText}>A</Text>
+        </View>
+        <TouchableOpacity style={styles.navButton}>
+          <Text style={styles.senderName}>Amazon</Text>
+        </TouchableOpacity>
+      </View>
 
-          {/* 注意テキスト */}
-          <TouchableOpacity style={styles.navButton}>
-          <Text style={styles.noticeText}>
-              ご入力いただいた情報は、厳重に保管し、プライバシーの保護に努めております。
-              ご不明な点がございましたら、カスタマーサービスへお問い合わせください。
-          </Text>
-          </TouchableOpacity>
+      {/* メッセージ本文 */}
+      <TouchableOpacity style={styles.navButton}>
+        <Text style={styles.messageText}>
+          Amazonカスタマーサポートです。{"\n\n"}
+          電話でご連絡した通り、あなたのAmazonのアカウントで不正な行為が確認されたためアカウントを凍結しました。{"\n\n"}
+          アカウントを引き続き利用するために下のリンクよりアカウントにログインしてください。
+        </Text>
+      </TouchableOpacity>
+
+      {/* ログインリンク */}
+      <TouchableOpacity style={styles.loginLinkContainer}>
+        <Text style={styles.loginLink}>ログイン</Text>
+      </TouchableOpacity>
+
+      {/* 注意テキスト */}
+      <TouchableOpacity style={styles.navButton}>
+        <Text style={styles.noticeText}>
+          ご入力いただいた情報は、厳重に保管し、プライバシーの保護に努めております。
+          ご不明な点がございましたら、カスタマーサービスへお問い合わせください。
+        </Text>
+      </TouchableOpacity>
 
 
-          {/* 移動ボタン */}
-      </View><View style={styles.actionContainer}>
-              <TouchableOpacity style={styles.declineButton} onPress={handlePress}>
-                  <Icon name="exclamation-circle" size={28} color="white" />
-                  <Text style={styles.actionText}>戻る</Text>
-              </TouchableOpacity>
-          </View></ScrollView>
+      {/* 移動ボタン */}
+    </View><View style={styles.actionContainer}>
+        <TouchableOpacity style={styles.declineButton} onPress={handlePress}>
+          <Icon name="exclamation-circle" size={28} color="white" />
+          <Text style={styles.actionText}>戻る</Text>
+        </TouchableOpacity>
+      </View></ScrollView>
 
 
 
@@ -164,7 +164,7 @@ const styles = StyleSheet.create({
     color: '#0000ff',
   },
 
-    //タッチャブルText//
+  //タッチャブルText//
   navButtonText: {
     textDecorationLine: 'underline',
     color: '#000000',

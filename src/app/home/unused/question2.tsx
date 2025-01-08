@@ -7,64 +7,62 @@ import ChangeButton from "../../../components/ChangeButton";
 import { AntDesign } from "@expo/vector-icons";
 import Address from "../../../components/Address";
 import AnswerButton from "../../../components/AnswerButton";
+import FooterButton from "../../../components/FooterButton";
 
-const handlepress = () : void => {
+const handlepress = (): void => {
   router.push("/home/incorrect")
 }
 
-const handlepresscorect = () : void => {
+const handlepresscorect = (): void => {
   router.push("/home/correct")
 }
 
 const Question2 = () => {
-    return (
-        <ScrollView contentContainerStyle={styles.container}>
-          <Address />
-        <View style={styles.headerContainer}>
-            <Text style={styles.header}>【重要】Amazon株式会社からの緊急のご連絡</Text>
+  return (
+    <ScrollView contentContainerStyle={styles.container}>
+      <Address />
+      <View style={styles.headerContainer}>
+        <Text style={styles.header}>【重要】Amazon株式会社からの緊急のご連絡</Text>
 
-            <Text style={styles.title}>amazon.co.jp</Text>
-            <Text style={styles.underline}>___________________________________________</Text>
-        </View>
+        <Text style={styles.title}>amazon.co.jp</Text>
+        <Text style={styles.underline}>___________________________________________</Text>
+      </View>
 
 
-        <View style={styles.mailContainer}>
-            <Text style={styles.sectionHeader}>【重要】カスタマセンターからのご案内</Text>
-            <TouchableOpacity onPress={handlepresscorect}style={styles.navButton}>
-            <Text style={styles.textunderline}>あなたのAmazonアカウント：○○○@sample.jp、異常なログインが見つかり、配送先住所が変更されました！</Text>
-            </TouchableOpacity>
+      <View style={styles.mailContainer}>
+        <Text style={styles.sectionHeader}>【重要】カスタマセンターからのご案内</Text>
+        <TouchableOpacity onPress={handlepresscorect} style={styles.navButton}>
+          <Text style={styles.textunderline}>あなたのAmazonアカウント：○○○@sample.jp、異常なログインが見つかり、配送先住所が変更されました！</Text>
+        </TouchableOpacity>
         <View style={styles.address}>
-            <Text>ログイン日時：2024-10-05, 4:23:31</Text>
-            <Text>IPアドレス：[000.0.0.00]</Text>
-            <Text>装備：iphone8 IOS 18.0.1</Text>
-            <Text>場所：水戸市</Text>
+          <Text>ログイン日時：2024-10-05, 4:23:31</Text>
+          <Text>IPアドレス：[000.0.0.00]</Text>
+          <Text>装備：iphone8 IOS 18.0.1</Text>
+          <Text>場所：水戸市</Text>
         </View>
 
-            <Text>つきましては、お客様の情報を保護するために次の措置を講じました</Text>
+        <Text>つきましては、お客様の情報を保護するために次の措置を講じました</Text>
 
-            <Text>--お客様のアカウントのパスワードを無効にいたしました</Text>
-            <Text>--不正アクセスによって行われた変更につきましては、無効にいたしました</Text>
-            <TouchableOpacity style={styles.navButton}>
-            <Text style={styles.warning}>お客様のアカウントに再度有効化していただけるようになります。次のリンクをクリックして指示に従ってください。</Text>
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.button} onPress={handlepress}>
-              <Text style={styles.buttonText}>アカウント管理に移動</Text>
-            </TouchableOpacity> 
+        <Text>--お客様のアカウントのパスワードを無効にいたしました</Text>
+        <Text>--不正アクセスによって行われた変更につきましては、無効にいたしました</Text>
+        <TouchableOpacity style={styles.navButton}>
+          <Text style={styles.warning}>お客様のアカウントに再度有効化していただけるようになります。次のリンクをクリックして指示に従ってください。</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.button} onPress={handlepress}>
+          <Text style={styles.buttonText}>アカウント管理に移動</Text>
+        </TouchableOpacity>
 
 
         <View style={styles.footerContainer}>
-            <Text style={styles.underline}>___________________________________________</Text>
-            <Text>Copyright ⓒ 2020 Amazon Inc. All rights reserved</Text>
-            <Text>発行元：Amazon株式会社</Text>
+          <Text style={styles.underline}>___________________________________________</Text>
+          <Text>Copyright ⓒ 2020 Amazon Inc. All rights reserved</Text>
+          <Text>発行元：Amazon株式会社</Text>
         </View>
 
-        </View>
-        <AnswerButton label='間違い無し' onPress={handlepress} />
-        {/* <AnswerButton  onPress={handlepress}>
-          <AntDesign name='check' size={40} />
-        </AnswerButton> */}
-        </ScrollView>
-    )
+      </View>
+      <FooterButton label="まちがいなし" onPress={handlepress} />
+    </ScrollView>
+  )
 }
 
 const styles = StyleSheet.create({
@@ -102,7 +100,7 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: "bold",
     marginBottom: 10,
-    alignSelf:"center"
+    alignSelf: "center"
   },
   address: {
     marginTop: 15,
@@ -115,7 +113,7 @@ const styles = StyleSheet.create({
   group: {
     marginBottom: 10,
   },
-  warning:{
+  warning: {
     marginBottom: 15,
     textDecorationLine: 'underline',
   },
@@ -127,7 +125,7 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     alignItems: "center",
     alignSelf: "center",
-    marginTop:40,
+    marginTop: 40,
     marginBottom: 40,
   },
   buttonText: {
@@ -141,14 +139,14 @@ const styles = StyleSheet.create({
 
   },
 
-    //タッチャブル//
+  //タッチャブル//
   navButton: {
     alignItems: 'center',
     textDecorationLine: 'underline',
     color: '#0000ff',
   },
   //underline//
-  textunderline:{
+  textunderline: {
     textDecorationLine: 'underline',
 
   }

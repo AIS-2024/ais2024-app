@@ -2,8 +2,8 @@ import { View, Text, StyleSheet, ScrollView, TextInput, Pressable, Alert, Activi
 import React, { useState } from 'react';
 import { useRouter } from 'expo-router';
 import { FirebaseError } from "firebase/app";
-import {signInWithEmailAndPassword}from "firebase/auth";
-import { auth,db } from "../../config";
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { auth, db } from "../../config";
 
 const Login = () => {
     const [mail, setMail] = useState('');
@@ -13,32 +13,32 @@ const Login = () => {
 
     const allFieldsFilled = mail !== "" && password !== "";
 
-    const handlePress1 = async()=> {
+    const handlePress1 = async () => {
         setLoading(true);
         try {
-            const userCredential = await signInWithEmailAndPassword(auth,mail, password);
+            const userCredential = await signInWithEmailAndPassword(auth, mail, password);
             const user = userCredential.user;
-        Alert.alert("ログイン成功", "ログインしました！");
-        router.replace("/home/home")
-        } catch (error:unknown) {
-            if (error instanceof FirebaseError){
+            Alert.alert("ログイン成功", "ログインしました！");
+            router.replace("/home/home")
+        } catch (error: unknown) {
+            if (error instanceof FirebaseError) {
                 Alert.alert("エラー", error.code);
-            }else {
-                Alert.alert("エラー","未知のエラーが発生しました。");
+            } else {
+                Alert.alert("エラー", "未知のエラーが発生しました。");
             }
-        }finally {
+        } finally {
             setLoading(false); // ローディング終了
-            }
-  };
-  const handlePress2 = () :void => {
+        }
+    };
+    const handlePress2 = (): void => {
         router.back();
-  };
+    };
 
     return (
         <ScrollView style={styles.container}>
-            <View style={styles.header}>
+            {/* <View style={styles.header}>
                 <Text style={styles.headerText}>ログイン</Text>
-            </View>
+            </View> */}
             <View>
                 <View style={styles.boxes}>
                     <Text>メールアドレス:</Text>
@@ -59,7 +59,7 @@ const Login = () => {
                 </View>
                 <View style={styles.button}>
                     <Pressable style={[styles.loginButton, !allFieldsFilled && styles.disabledButton]} onPress={handlePress1} disabled={loading || !allFieldsFilled}>
-                    {loading ? (
+                        {loading ? (
                             <ActivityIndicator size="small" color="#ffffff" /> // サーキュラーインジケータを表示
                         ) : (
                             <Text style={styles.buttonText}>ログイン</Text>
@@ -77,7 +77,7 @@ const Login = () => {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#fff'
+        backgroundColor: '#fbf8ff'
     },
     header: {
         height: 80,

@@ -31,7 +31,7 @@ const Collection = () => {
   const fetchExplanations = async () => {
     setLoading(true);
     console.log("explanations:", explanations);
-    
+
     try {
       const userId = auth.currentUser?.uid;
       if (!userId) {
@@ -48,7 +48,7 @@ const Collection = () => {
         setExplanations(
           Object.values(userInfoData.explanations || {}).slice(0, data.length) as boolean[]
         );
-        
+
       } else {
         console.error("userInfoドキュメントが見つかりません");
       }
@@ -85,8 +85,7 @@ const Collection = () => {
   return (
     <GestureHandlerRootView>
       <ScrollView contentContainerStyle={styles.container}>
-        <CollectionTop />
-
+        {/* <CollectionTop /> */}
         {loading ? (
           <Text>Loading...</Text>
         ) : (
@@ -109,7 +108,6 @@ const Collection = () => {
         )}
 
       </ScrollView>
-      <BackButton />
     </GestureHandlerRootView>
   );
 };
@@ -117,7 +115,7 @@ const Collection = () => {
 const styles = StyleSheet.create({
   container: {
     flexGrow: 1,
-    backgroundColor: "#ffffff",
+    backgroundColor: "#fbf8ff",
     paddingBottom: 80,
     alignItems: "center",
   },
@@ -136,7 +134,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
   },
   disabledButton: {
-    backgroundColor: "#B0B0B0",
+    backgroundColor: "#e3e1eb",
   },
 });
 
