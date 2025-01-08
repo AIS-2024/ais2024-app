@@ -11,7 +11,7 @@ const Quiz2 = () => {
     const router = useRouter();
 
     const handlepressCorrect = () => {
-        router.push("/home/correct");
+        router.push("/home/correct?questionNumber=7");
       };
       const handlepressIncorrect = () => {
         router.push("/home/incorrect");
@@ -20,8 +20,8 @@ const Quiz2 = () => {
       const [step, setStep] = useState(0);
       const [modalVisible, setModalVisible] = useState(false); // モーダルの表示非表示を管理
       const [arrowPosition, setArrowPosition] = useState({ top: 0, left: 0 });
-    
-        
+
+
     const buttonRef = useRef<View>(null);
     const steps = [
       {
@@ -46,10 +46,10 @@ const Quiz2 = () => {
       };
       checkFirstVisit();
     }, 200);
-    
+
     return () => clearTimeout(timeout); // クリーンアップ
     }, []);
-    
+
     //measureTargetでアイコンの位置を取得
       const measureTarget = async (targetRef: React.RefObject<View>) => {
         return new Promise<{ top: number; left: number }>((resolve, reject) => {
@@ -63,12 +63,12 @@ const Quiz2 = () => {
           }
         });
       };
-    
+
       //矢印の位置をarrowPositionに設定
       const showTooltip = async () => {
         try {
           const currentStep = steps[step];
-      
+
           if (!currentStep?.target) {
             console.warn("Target ref is undefined for step:", step);
             return;
@@ -125,7 +125,7 @@ const Quiz2 = () => {
                                                                             },
                                                                           ]}
                                                                         />
-                                                                      
+
                                                                       {/* ダイアログ */}
                                                                       <View style={styles.dialog}>
                                                                         <Text style={styles.dialogText}>{steps[step]?.title}</Text>

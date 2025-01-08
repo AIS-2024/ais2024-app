@@ -22,16 +22,16 @@ const Collection = () => {
     { title: "メールアドレス" },
     { title: "誤字" },
     { title: "電話" },
-    { title: "タイトル5" },
+    { title: "至急" },
     { title: "電話番号" },
     { title: "受け取りスポット" },
-    { title: "タイトル8" },
+    { title: "URL" },
   ];
 
   const fetchExplanations = async () => {
     setLoading(true);
     console.log("explanations:", explanations);
-    
+
     try {
       const userId = auth.currentUser?.uid;
       if (!userId) {
@@ -48,7 +48,7 @@ const Collection = () => {
         setExplanations(
           Object.values(userInfoData.explanations || {}).slice(0, data.length) as boolean[]
         );
-        
+
       } else {
         console.error("userInfoドキュメントが見つかりません");
       }
