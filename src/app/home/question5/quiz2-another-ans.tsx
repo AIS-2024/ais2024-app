@@ -27,7 +27,7 @@ const Quiz2 = () => {
   const steps = [
     {
       title: "解答について",
-      description: "画面に表示されているメッセージにはSMS詐欺で送られてくるメッセージに書かれているような表現が含まれている可能性があります。\n怪しいと感じる表現が含まれる部分をタップして解答してください。\n特に怪しいと感じる部分がなければ右下の「間違い無し」ボタンを押してください。問題がないメッセージの場合もあります。",
+      description: "画面に表示されているメッセージにはSMS詐欺で送られてくるメッセージに書かれているような表現が含まれている可能性があります。\n怪しいと感じる表現が含まれる部分をタップして解答してください。\n特に怪しいと感じる部分がなければ画面下の「まちがいなし」ボタンを押してください。問題がないメッセージの場合もあります。",
       target: buttonRef,
     }
   ]
@@ -109,7 +109,7 @@ const Quiz2 = () => {
           </View>
         </View>
       </ScrollView>
-      <FooterButton label="まちがいなし" onPress={handlepressIncorrect} />
+      <FooterButton ref={buttonRef} label="まちがいなし" onPress={handlepressIncorrect} />
       <Modal
         visible={modalVisible}
         transparent={true}

@@ -27,7 +27,7 @@ const Question1 = () => {
   const steps = [
     {
       title: "解答について",
-      description: "画面に表示されているメールには詐欺メールに書かれているような表現が含まれている可能性があります。\n怪しいと感じる表現が含まれる部分をタップして解答してください。\n特に怪しいと感じる部分がなければ右下の「間違い無し」ボタンを押してください。問題がないメールの場合もあります。",
+      description: "画面に表示されているメールには詐欺メールに書かれているような表現が含まれている可能性があります。\n怪しいと感じる表現が含まれる部分をタップして解答してください。\n特に怪しいと感じる部分がなければ画面下の「まちがいなし」ボタンを押してください。問題がないメールの場合もあります。",
       target: buttonRef,
     }
   ]
@@ -138,7 +138,7 @@ const Question1 = () => {
 
         <TouchableOpacity onPress={handlepressIncorrect}><Text style={styles.footer}>Amazon.co.jp　カスタマーサービス</Text></TouchableOpacity>
       </ScrollView>
-      <FooterButton label="まちがいなし" onPress={handlepressIncorrect} />
+      <FooterButton ref={buttonRef} label="まちがいなし" onPress={handlepressIncorrect} />
       <Modal
         visible={modalVisible}
         transparent={true}

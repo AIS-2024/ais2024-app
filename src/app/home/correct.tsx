@@ -73,7 +73,7 @@ const Correct = () => {
     <ScrollView style={styles.all}>
       <View>
         <View style={styles.correctContent}>
-          <Text style={styles.correct}>詐欺を見破った！</Text>
+          {questionNumber!==8?<Text style={styles.correct}>詐欺を見破った！</Text>:<Text style={styles.correct}>正解！</Text>}
         </View>
         {/* 素晴らしい判断です！,危険を回避した 安心、安全な選択です！*/}
         <View style={styles.explainContent}>
@@ -102,7 +102,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#fbf8ff",
   },
   correctContent: {
-    paddingTop: 70,
+    paddingTop: 40,
     alignItems: "center",
     paddingBottom: 20,
   },
@@ -130,7 +130,7 @@ const styles = StyleSheet.create({
   },
   explainScroll: {
     flexGrow: 0,
-    maxHeight: 300,
+    maxHeight: 180,
   },
   explainLetter: {
     fontSize: 20,

@@ -27,7 +27,7 @@ const handlepress2 = (): void => {
 };
 
 const handlepress3 = (): void => {
-  router.push("home/callbefore");
+  router.push("home/question4/callbefore");
 };
 
 const handlepress4 = (): void => {

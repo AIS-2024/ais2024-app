@@ -22,7 +22,7 @@ const quiz1 = () => {
   const steps = [
     {
       title: "問題について",
-      description: "問題の回答をスタートするには！ボタンを押します。",
+      description: "問題の回答をスタートするには「回答する」ボタンを押します。",
       target: buttonRef,
     }
   ]
