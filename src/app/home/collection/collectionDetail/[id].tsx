@@ -26,8 +26,6 @@ const CollectionDetail = () => {
   return (
     <GestureHandlerRootView>
       <ScrollView contentContainerStyle={styles.container}>
-        <CollectionTop />
-
         <View style={styles.explanationContainer}>
           <Text style={styles.title}>{item.title}</Text>
           <Text style={styles.subTitle}>解説</Text>
@@ -35,7 +33,6 @@ const CollectionDetail = () => {
           <Text style={styles.text}>{item.text2}</Text>
         </View>
       </ScrollView>
-      <BackButton />
     </GestureHandlerRootView>
   );
 };
