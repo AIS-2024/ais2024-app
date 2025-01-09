@@ -11,28 +11,28 @@ import FooterButton from "../../../components/FooterButton";
 const Quiz2 = () => {
   const router = useRouter();
 
-  const handlepressCorrect = () => {
-    router.push("/home/correct");
-  };
-  const handlepressIncorrect = () => {
-    router.push("/home/incorrect");
-  };
+    const handlepressCorrect = () => {
+        router.push("/home/correct?questionNumber=7");
+      };
+      const handlepressIncorrect = () => {
+        router.push("/home/incorrect");
+      };
 
-  const [step, setStep] = useState(0);
-  const [modalVisible, setModalVisible] = useState(false); // モーダルの表示非表示を管理
-  const [arrowPosition, setArrowPosition] = useState({ top: 0, left: 0 });
+      const [step, setStep] = useState(0);
+      const [modalVisible, setModalVisible] = useState(false); // モーダルの表示非表示を管理
+      const [arrowPosition, setArrowPosition] = useState({ top: 0, left: 0 });
 
 
-  const buttonRef = useRef<View>(null);
-  const steps = [
-    {
-      title: "解答について",
-      description: "画面に表示されているメッセージにはSMS詐欺で送られてくるメッセージに書かれているような表現が含まれている可能性があります。\n怪しいと感じる表現が含まれる部分をタップして解答してください。\n特に怪しいと感じる部分がなければ画面下の「まちがいなし」ボタンを押してください。問題がないメッセージの場合もあります。",
-      target: buttonRef,
-    }
-  ]
-  useEffect(() => {
-    const timeout = setTimeout(() => {
+    const buttonRef = useRef<View>(null);
+    const steps = [
+      {
+        title: "解答について",
+        description: "画面に表示されているメッセージにはSMS詐欺で送られてくるメッセージに書かれているような表現が含まれている可能性があります。\n怪しいと感じる表現が含まれる部分をタップして解答してください。\n特に怪しいと感じる部分がなければ画面下の「間違い無し」ボタンを押してください。問題がないメッセージの場合もあります。",
+        target: buttonRef,
+      }
+    ]
+    useEffect(() => {
+      const timeout = setTimeout(() => {
       const checkFirstVisit = async () => {
         const user = auth.currentUser;
         if (user) {
