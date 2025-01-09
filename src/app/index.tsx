@@ -33,6 +33,14 @@ const Index = () => {
       <TouchableOpacity style={styles.button} onPress={handlepress2}>
         <Text style={styles.buttonText}>ログイン</Text>
       </TouchableOpacity>
+
+      <View style={styles.intro}>
+        <Text style={styles.introText}>
+          フィッシング詐欺について、実際に送られてくるメッセージの内容を通して学ぼう！{"\n"}{"\n"}
+          フィッシング詐欺によく使われる文章や、本来だったら送られてこないような違和感のある文章を選択して解答！{"\n"}{"\n"}
+          全ての問題を解いてコレクションのコンプリートを目指そう！
+        </Text>
+      </View>
     </View>
   );
 };
@@ -57,6 +65,19 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     fontSize: 20,
   },
+  intro: {
+    backgroundColor: "#fff",
+    borderColor: "#ff8c00",
+    padding: 20,
+    margin: 20,
+    borderRadius: 10,
+    borderWidth: 2
+  },
+  introText: {
+    fontSize: 17,
+    lineHeight: 20,
+    fontWeight: 'bold'
+  }
 });
 
 export default Index;

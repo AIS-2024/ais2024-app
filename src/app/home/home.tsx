@@ -34,6 +34,10 @@ const handlepress4 = (): void => {
   router.push("home/collection");
 };
 
+const handlepress5 = (): void => {
+  router.push("home/hint");
+};
+
 const Home = () => {
   const searchParams = useLocalSearchParams();
   const isNewUser = searchParams.isNewUser === "true";
@@ -200,7 +204,7 @@ const Home = () => {
               style={styles.Icon}
             />
           </TouchableOpacity>
-          <Text style={styles.text}>コレクション</Text>
+          <Text style={styles.text}>ｺﾚｸｼｮﾝ</Text>
         </View>
 
         {/* チュートリアルモーダル */}
@@ -239,6 +243,11 @@ const Home = () => {
             </View>
           </View>
         </Modal>
+        <TouchableOpacity style={styles.hint} onPress={handlepress5}>
+          <Text>
+            遊び方などはこちら！
+          </Text>
+        </TouchableOpacity>
       </View>
       <View style={styles.resetButtonContainer}>
         <TouchableOpacity style={styles.resetButton} onPress={resetTutorial}>
@@ -271,7 +280,8 @@ const styles = StyleSheet.create({
   text: {
     alignItems: "flex-start",
     justifyContent: "space-between",
-    color: "#ffffff"
+    color: "#ffffff",
+    paddingBottom:10
 
   },
   Icon: {
@@ -371,6 +381,11 @@ const styles = StyleSheet.create({
     textAlign: "center",
     fontWeight: "bold",
     color: "#363d68"
+  },
+  hint: {
+    backgroundColor: "#fff",
+    margin: 10,
+    padding: 10
   }
 });
 
