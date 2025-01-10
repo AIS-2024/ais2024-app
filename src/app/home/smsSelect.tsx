@@ -61,7 +61,7 @@ const smsSelect = () => {
                     <View style={styles.modalOverlay}>
                         <View style={styles.dialog}>
                             <Text style={styles.dialogText}>問題選択画面について</Text>
-                            <Text style={styles.dialogText}>一覧からいずれかのメール（問題）をタップして選択します。</Text>
+                            <Text style={styles.dialogText}>一覧からいずれかのメッセージ（問題）をタップして選択します。</Text>
                             <TouchableOpacity style={styles.closeButton} onPress={() => setModalVisible(false)}>
                                 <Text style={styles.closeButtonText}>閉じる</Text>
                             </TouchableOpacity>
