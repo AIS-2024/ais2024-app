@@ -242,12 +242,11 @@ const Question2 = () => {
 
 const styles = StyleSheet.create({
   container: {
-    flexGrow: 1,
+    flex: 1,
     backgroundColor: "#ffffff",
     paddingHorizontal: 20,
     paddingVertical: 30,
     //paddingBottom: 80,
-    alignItems: "center"
   },
   headerContainer: {
     alignItems: "center",
@@ -311,7 +310,6 @@ const styles = StyleSheet.create({
   footerContainer: {
     alignItems: "center",
     alignSelf: "center",
-
   },
   navButton: {
     alignItems: 'center',
