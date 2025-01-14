@@ -1,6 +1,6 @@
 import { router } from "expo-router"
 import React, { useEffect, useState } from "react"
-import { Modal, StyleSheet, Text, TouchableOpacity, View } from "react-native"
+import { Image, Modal, StyleSheet, Text, TouchableOpacity, View } from "react-native"
 import { GestureHandlerRootView, ScrollView } from "react-native-gesture-handler"
 import BackButton from "../../components/BackButton"
 import { auth } from "../../config"
@@ -40,6 +40,10 @@ const smsSelect = () => {
 
                 <TouchableOpacity onPress={handlePress1} style={styles.mailBorder}>
                     <View style={styles.mailContainer}>
+                        <Image
+                            source={require('assets\ログイン・アカウントのアイコン素材.png')}
+                            style={styles.Icon}
+                        />
                         <Text style={styles.from}>Amazon.co.jp</Text>
                         <Text style={styles.mailTitle}>昨日</Text>
                         <Text style={styles.text} numberOfLines={2}>支払いの問題でAmazonがロックされました。</Text>
@@ -47,6 +51,10 @@ const smsSelect = () => {
                 </TouchableOpacity>
                 <TouchableOpacity onPress={handlePress2} style={styles.mailBorder}>
                     <View style={styles.mailContainer}>
+                        <Image
+                            source={require('assets\ログイン・アカウントのアイコン素材.png')}
+                            style={styles.Icon}
+                        />
                         <Text style={styles.from}>Amazon.co.jp</Text>
                         <Text style={styles.mailTitle}>昨日</Text>
                         <Text style={styles.text} numberOfLines={2}>【重要】Amazonアカウントが一時的に停止されています</Text>
@@ -150,6 +158,12 @@ const styles = StyleSheet.create({
     closeButtonText: {
         color: "white",
         fontWeight: "bold",
+    },
+    Icon: {
+        width: 65,
+        height: 65,
+        borderRadius: 15,
+        marginBottom: 5, // 下に余白を追加
     },
 })
 
