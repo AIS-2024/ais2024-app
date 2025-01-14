@@ -40,10 +40,10 @@ const smsSelect = () => {
 
                 <TouchableOpacity onPress={handlePress1} style={styles.mailBorder}>
                     <View style={styles.mailContainer}>
-                        <Image
+                        {/* <Image
                             source={require('assets\ログイン・アカウントのアイコン素材.png')}
                             style={styles.Icon}
-                        />
+                        /> */}
                         <Text style={styles.from}>Amazon.co.jp</Text>
                         <Text style={styles.mailTitle}>昨日</Text>
                         <Text style={styles.text} numberOfLines={2}>支払いの問題でAmazonがロックされました。</Text>
@@ -51,10 +51,10 @@ const smsSelect = () => {
                 </TouchableOpacity>
                 <TouchableOpacity onPress={handlePress2} style={styles.mailBorder}>
                     <View style={styles.mailContainer}>
-                        <Image
+                        {/* <Image
                             source={require('assets\ログイン・アカウントのアイコン素材.png')}
                             style={styles.Icon}
-                        />
+                        /> */}
                         <Text style={styles.from}>Amazon.co.jp</Text>
                         <Text style={styles.mailTitle}>昨日</Text>
                         <Text style={styles.text} numberOfLines={2}>【重要】Amazonアカウントが一時的に停止されています</Text>
