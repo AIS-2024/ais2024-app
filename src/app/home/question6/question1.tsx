@@ -3,7 +3,7 @@
 
 import { router } from "expo-router";
 import React, { useEffect, useRef, useState } from "react";
-import { View, Text, StyleSheet, ScrollView, Modal, TouchableOpacity } from "react-native";
+import { View, Text, StyleSheet, ScrollView, Modal, TouchableOpacity, SafeAreaView } from "react-native";
 import ChangeButton from "../../../components/ChangeButton";
 import { AntDesign } from "@expo/vector-icons";
 import Address from "../../../components/Address";
@@ -80,8 +80,8 @@ const Question1 = () => {
     }
   };
   return (
-    <View style={styles.container}>
-      <ScrollView>
+    <SafeAreaView style={styles.container} >
+      <ScrollView >
         <Address />
         <Text style={styles.main}>
           クレジットカード情報の更新、追加などにつきまして、以下の手順をご確認ください。アカウントサービスからAmazon情報を管理するページにアクセスして、更新してください。
@@ -114,9 +114,7 @@ const Question1 = () => {
         <Text style={styles.main}>
           Amazonサービスをご利用いただき、ありがとうございました。
         </Text>
-
         <Text style={styles.footer}>Amazon.co.jp　カスタマーサービス</Text>
-
       </ScrollView>
       <FooterButton ref={buttonRef} label="回答する" onPress={handlepress} />
       <Modal
@@ -147,7 +145,7 @@ const Question1 = () => {
           </View>
         </View>
       </Modal>
-    </View>
+    </SafeAreaView >
   );
 };
 
@@ -155,7 +153,7 @@ const styles = StyleSheet.create({
   container: {
     padding: 25,
     backgroundColor: "#ffffff",
-
+    flex: 1
   },
   main: {
     marginBottom: 20,
