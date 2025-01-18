@@ -70,10 +70,10 @@ const Correct = () => {
   };
 
   return (
-    <ScrollView style={styles.all}>
+    <View style={styles.all}>
       <View>
         <View style={styles.correctContent}>
-          {questionNumber!==8?<Text style={styles.correct}>詐欺を見破った！</Text>:<Text style={styles.correct}>正解！</Text>}
+          {questionNumber !== 8 ? <Text style={styles.correct}>素晴らしい判断です!!  </Text> : <Text style={styles.correct}>正解！</Text>}
         </View>
         {/* 素晴らしい判断です！,危険を回避した 安心、安全な選択です！*/}
         <View style={styles.explainContent}>
@@ -92,7 +92,7 @@ const Correct = () => {
           </TouchableOpacity>
         </View>
       </View>
-    </ScrollView>
+    </View>
   );
 };
 
@@ -107,8 +107,10 @@ const styles = StyleSheet.create({
     paddingBottom: 20,
   },
   correct: {
-    fontSize: 96,
+    textAlign: "center",
+    fontSize: 70,
     color: "#D42727",
+    padding: 10
   },
   explainContent: {
     alignSelf: "center",
@@ -129,8 +131,8 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   explainScroll: {
-    flexGrow: 0,
-    maxHeight: 180,
+    flexGrow: 1,
+    maxHeight: 250,
   },
   explainLetter: {
     fontSize: 20,

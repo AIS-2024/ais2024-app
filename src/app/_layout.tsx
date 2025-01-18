@@ -7,6 +7,7 @@ const Layout = () => {
     <Stack
       screenOptions={({ route }) => ({
         headerRight: () => route.name.startsWith("home/") ? <LogOutButton /> : null,
+        headerBackTitle: "戻る",
         headerStyle: {
           backgroundColor: "#263db1",
         },
@@ -41,10 +42,11 @@ const Layout = () => {
       <Stack.Screen name="home/question5/quiz2-ans" options={{ title: "解答画面" }} />
       <Stack.Screen name="home/question5/quiz2-another" options={{ title: "SMS問題2" }} />
       <Stack.Screen name="home/question5/quiz2-another-ans" options={{ title: "解答画面" }} />
+      <Stack.Screen name="home/question4/call" options={{ title: "電話問題" }} />
       <Stack.Screen name="home/correct" options={{ title: "正解" }} />
       <Stack.Screen name="home/incorrect" options={{ title: "不正解" }} />
       <Stack.Screen name="home/hint" options={{ title: "遊び方" }} />
-      <Stack.Screen name="home/collection/collectionDetail/[id]" options={{ title: "コレクション"}} />
+      <Stack.Screen name="home/collection/collectionDetail/[id]" options={{ title: "コレクション" }} />
       <Stack.Screen name="home" options={{ headerShown: false }} />
     </Stack>
   );
