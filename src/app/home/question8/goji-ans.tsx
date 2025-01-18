@@ -10,6 +10,7 @@ import { auth, db } from "../../../config";
 import { doc, getDoc } from "firebase/firestore";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import FooterButton from "../../../components/FooterButton";
+import Footer from "../../../components/Footer";
 
 const handlePress = (): void => {
   router.push("/home/correct?questionNumber=2"); // クエリパラメータを渡す
@@ -165,6 +166,7 @@ export default function App() {
               商品の発送準備が完了したら、お知らせいたします。
             </Text>
           </TouchableOpacity>
+          <Footer />
         </View>
       </ScrollView>
       <FooterButton ref={buttonRef} label="まちがいなし" onPress={handlePressHome} />
@@ -204,6 +206,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#fff",
+    paddingBottom: 80,
   },
   header: {
     backgroundColor: "#EEE",

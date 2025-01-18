@@ -80,7 +80,7 @@ const Question1 = () => {
     }
   };
   return (
-    <SafeAreaView style={styles.container} >
+    <View style={styles.container} >
       <ScrollView >
         <Address />
         <Text style={styles.main}>
@@ -145,7 +145,7 @@ const Question1 = () => {
           </View>
         </View>
       </Modal>
-    </SafeAreaView >
+    </View >
   );
 };
 
@@ -153,7 +153,8 @@ const styles = StyleSheet.create({
   container: {
     padding: 25,
     backgroundColor: "#ffffff",
-    flex: 1
+    flex: 1,
+    paddingBottom: 100
   },
   main: {
     marginBottom: 20,
