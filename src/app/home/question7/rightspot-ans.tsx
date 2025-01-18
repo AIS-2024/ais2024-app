@@ -83,7 +83,7 @@ export default function App() {
     }
   };
   return (
-    <SafeAreaView style={styles.container}>
+    <View style={styles.container}>
       <ScrollView>
         <TouchableOpacity onPress={handlepressIncorrect}>
           {/* 差出人情報 */}
@@ -170,7 +170,7 @@ export default function App() {
           </View>
         </View>
       </Modal>
-    </SafeAreaView>
+    </View>
   );
 }
 

@@ -1,6 +1,6 @@
 import { router } from "expo-router"
 import React, { useEffect, useState } from "react"
-import { Modal, StyleSheet, Text, TouchableOpacity, View } from "react-native"
+import { Image, Modal, StyleSheet, Text, TouchableOpacity, View } from "react-native"
 import { GestureHandlerRootView, ScrollView } from "react-native-gesture-handler"
 import BackButton from "../../components/BackButton"
 import { auth } from "../../config"
@@ -150,6 +150,12 @@ const styles = StyleSheet.create({
     closeButtonText: {
         color: "white",
         fontWeight: "bold",
+    },
+    Icon: {
+        width: 65,
+        height: 65,
+        borderRadius: 15,
+        marginBottom: 5, // 下に余白を追加
     },
 })
 

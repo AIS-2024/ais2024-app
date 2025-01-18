@@ -121,7 +121,7 @@ const Nottori = () => {
   }, []);
   return (
     <View style={styles.container}>
-      <ScrollView>
+      <ScrollView >
         <Address />
         <View style={styles.header}>
           <Text style={styles.title}>
@@ -216,6 +216,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#fff",
+    paddingBottom: 80
   },
   header: {
     backgroundColor: "#EEE",

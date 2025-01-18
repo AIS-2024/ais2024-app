@@ -78,7 +78,7 @@ export default function App() {
     }
   };
   return (
-    <SafeAreaView style={styles.container}>
+    <View style={styles.container}>
       <ScrollView>
         {/* 差出人情報 */}
         <Address />
@@ -163,7 +163,7 @@ export default function App() {
           </View>
         </View>
       </Modal>
-    </SafeAreaView>
+    </View>
   );
 }
 
@@ -172,6 +172,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#fff',
     paddingHorizontal: 16,
+    padding: 25
   },
   separator: {
     height: 1,

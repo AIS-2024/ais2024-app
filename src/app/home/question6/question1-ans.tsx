@@ -136,7 +136,7 @@ const Question1 = () => {
           </Text>
         </TouchableOpacity>
 
-        <TouchableOpacity onPress={handlepressIncorrect}><Text style={styles.footer}>Amazon.co.jp　カスタマーサービス</Text></TouchableOpacity>
+        <TouchableOpacity onPress={handlepressIncorrect}>Amazon.co.jp　カスタマーサービス<Text style={styles.footer}>Amazon.co.jp　カスタマーサービス</Text></TouchableOpacity>
       </ScrollView>
       <FooterButton ref={buttonRef} label="まちがいなし" onPress={handlepressIncorrect} />
       <Modal
@@ -175,7 +175,8 @@ const styles = StyleSheet.create({
   container: {
     padding: 25,
     backgroundColor: "#ffffff",
-
+    flex: 1,
+    paddingBottom: 100
   },
   main: {
     marginBottom: 20,
