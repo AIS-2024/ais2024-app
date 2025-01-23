@@ -86,17 +86,16 @@ const Quiz2 = () => {
         <View style={styles.message1}>
           <View style={styles.messageBox1}>
             <View style={styles.message1Container}>
-              <View>
-                <TouchableOpacity onPress={handlepressIncorrect}>
-                  <Text>支払いの問題でAmazonがロックされました。</Text>
+              <View></View>
+                <TouchableOpacity onPress={handlepressIncorrect}  style={{ flexShrink: 1, alignSelf: 'flex-start' }}>
+                <Text style={{flexWrap: "wrap"}}>支払いの問題でAmazonがロックされました。</Text>
                 </TouchableOpacity>
                 <TouchableOpacity onPress={handlepressIncorrect}>
-                  <Text style={styles.link}>https://www.amazon.co.jp/</Text>
+                <Text style={styles.link}>https://www.amazon.co.jp/</Text>
                 </TouchableOpacity>
-                <TouchableOpacity onPress={handlepressCorrect}>
-                  <Text>本日中にご確認いただけない場合、法的な手続きをとることがあります。</Text>
+                <TouchableOpacity onPress={handlepressCorrect}  style={{ flexShrink: 1, alignSelf: 'flex-start' }}>
+                <Text style={{flexWrap: "wrap"}}>本日中にご確認いただけない場合、法的な手続きをとることがあります。</Text>
                 </TouchableOpacity>
-              </View>
             </View>
           </View>
         </View>
@@ -176,10 +175,14 @@ const styles = StyleSheet.create({
     backgroundColor: "#D9D9D9",
     padding: 15,
     borderRadius: 10,
+    alignSelf: "flex-start",
+    maxWidth: "95%", // 幅を画面の90%に制限
+    // minWidth: "60%", // 最小幅を設定（必要に応じて調整）
   },
   message1Container: {
     marginVertical: 10,
-    flexDirection: 'row'
+    flexDirection: 'row',
+     flexWrap: "wrap"
   },
   link: {
     color: "blue",

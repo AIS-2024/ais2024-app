@@ -3,7 +3,7 @@
 import React from "react";
 import { Link, Redirect, router } from "expo-router";
 import { useEffect } from "react";
-import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "../config";
@@ -26,6 +26,13 @@ const Index = () => {
   }, []);
   return (
     <View style={styles.container}>
+            <Image
+              source={{
+                uri: "https://pbs.twimg.com/media/Gh84JQuacAAyemi?format=jpg&name=medium",
+              }}
+              style={styles.name}
+            />
+
       <TouchableOpacity style={styles.button} onPress={handlepress1}>
         <Text style={styles.buttonText}>新規登録</Text>
       </TouchableOpacity>
@@ -77,6 +84,13 @@ const styles = StyleSheet.create({
     fontSize: 17,
     lineHeight: 20,
     fontWeight: 'bold'
+  },
+  name: {
+    width: 360,
+    height: 200,
+    borderRadius: 15,
+    marginBottom: 50, // 下に余白を追加
+    marginRight: 50
   }
 });
 

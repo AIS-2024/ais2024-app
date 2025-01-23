@@ -87,11 +87,9 @@ const Quiz2 = () => {
           <View style={styles.messageBox1}>
             <View style={styles.message1Container}>
               <View></View>
-              <View>
-                <Text>支払いの問題でAmazonがロックされました。</Text>
+                <Text style={{flexWrap: "wrap"}}>支払いの問題でAmazonがロックされました。</Text>
                 <Text style={styles.link}>https://www.amazon.co.jp/</Text>
-                <Text>本日中にご確認いただけない場合、法的な手続きをとることがあります。</Text>
-              </View>
+                <Text style={{flexWrap: "wrap"}}>本日中にご確認いただけない場合、法的な手続きをとることがあります。</Text>
             </View>
           </View>
         </View>
@@ -174,10 +172,13 @@ const styles = StyleSheet.create({
     backgroundColor: "#D9D9D9",
     padding: 15,
     borderRadius: 10,
+    alignSelf: "flex-start",
+    maxWidth: "95%", 
   },
   message1Container: {
     marginVertical: 10,
-    flexDirection: 'row'
+    flexDirection: 'row',
+     flexWrap: "wrap"
   },
   link: {
     color: "blue",

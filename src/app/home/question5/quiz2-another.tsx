@@ -88,7 +88,6 @@ const Quiz2 = () => {
           <View style={styles.messageBox1}>
             <View style={styles.message1Container}>
               <View></View>
-              <View>
                 <Text>【重要】Amazonアカウントが一時的に停止されています{"\n"}{"\n"}
                   あなたのアカウントは私たちの利用規約に違反しています。 Amazon.co.jp{"\n"}
                   アカウントは一時的に停止されています。{"\n"}
@@ -98,7 +97,7 @@ const Quiz2 = () => {
                 </Text>
                 <Text style={styles.link}>https://bit.ly/..</Text>
                 <Text>Amazon.co.jp どうぞよろしくお願いいたします。</Text>
-              </View>
+
             </View>
           </View>
         </View>
@@ -180,10 +179,13 @@ const styles = StyleSheet.create({
     backgroundColor: "#D9D9D9",
     padding: 15,
     borderRadius: 10,
+    alignSelf: "flex-start",
+    maxWidth: "95%", 
   },
   message1Container: {
     marginVertical: 10,
-    flexDirection: 'row'
+    flexDirection: 'row',
+     flexWrap: "wrap"
   },
   link: {
     color: "blue",
