@@ -88,8 +88,8 @@ const Quiz2 = () => {
           <View style={styles.messageBox1}>
             <View style={styles.message1Container}>
               <View>
-                <TouchableOpacity onPress={handlepressIncorrect}>
-                  <Text>【重要】Amazonアカウントが一時的に停止されています{"\n"}{"\n"}
+                <TouchableOpacity onPress={handlepressIncorrect} style={{ flexShrink: 1, alignSelf: 'flex-start' }}>
+                  <Text style={{flexWrap: "wrap"}}>【重要】Amazonアカウントが一時的に停止されています{"\n"}{"\n"}
                     あなたのアカウントは私たちの利用規約に違反しています。 Amazon.co.jp{"\n"}
                     アカウントは一時的に停止されています。{"\n"}
                     理由: お支払い情報を更新できませんでした{"\n"}
@@ -184,10 +184,13 @@ const styles = StyleSheet.create({
     backgroundColor: "#D9D9D9",
     padding: 15,
     borderRadius: 10,
+    alignSelf: "flex-start",
+    maxWidth: "95%", 
   },
   message1Container: {
     marginVertical: 10,
-    flexDirection: 'row'
+    flexDirection: 'row',
+     flexWrap: "wrap",
   },
   link: {
     color: "blue",
